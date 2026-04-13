@@ -1453,3 +1453,136 @@ TRANSLATION = [
         ),
     },
 ]
+
+# ─── Unified learn flow: first three sentences ────────────────────────────────
+# Each entry bundles the Italian text, vocabulary to learn/review, one
+# word-order exercise, and one translation exercise for a single tercet.
+
+SENTENCES = [
+    {
+        "id": "s1",
+        "lines": (1, 3),
+        "italian": (
+            "Nel mezzo del cammin di nostra vita\n"
+            "mi ritrovai per una selva oscura,\n"
+            "ché la diritta via era smarrita."
+        ),
+        # Words from VOCABULARY that appear in this tercet, in order
+        "vocab_ids": [
+            "nel", "mezzo", "del", "cammin", "prep_di", "vita",
+            "pron_mi", "prep_per", "selva", "oscura",
+            "conj_ché", "art_la", "diritta", "via", "smarrita",
+        ],
+        "word_order": {
+            "line": 2,
+            "tokens": ["mi", "ritrovai", "per", "una", "selva", "oscura,"],
+            "translation": "I came to myself in a dark wood,",
+            "hint": (
+                "Ritrovai is passato remoto of ritrovarsi (reflexive: to find oneself again). "
+                "Mi is the reflexive pronoun. Per = in, through."
+            ),
+        },
+        "translation": {
+            "lines": (1, 3),
+            "prompt": (
+                "In the middle of the journey of our life\n"
+                "myself I found again in a wood dark,\n"
+                "for the straight way was lost."
+            ),
+            "italian": (
+                "Nel mezzo del cammin di nostra vita\n"
+                "mi ritrovai per una selva oscura,\n"
+                "ché la diritta via era smarrita."
+            ),
+            "note": (
+                "Mi ritrovai is reflexive (ritrovarsi): 'I found myself again'. "
+                "Ché (with accent) = because/for, distinct from che (that/which). "
+                "Diritta via = the straight way, echoed by verace via at line 12."
+            ),
+        },
+    },
+    {
+        "id": "s2",
+        "lines": (4, 6),
+        "italian": (
+            "Ahi quanto a dir qual era è cosa dura\n"
+            "esta selva selvaggia e aspra e forte\n"
+            "che nel pensier rinova la paura!"
+        ),
+        # New: interj_ahi, prep_a, conj_e, conj_che, paura
+        # Review: selva, nel, art_la
+        "vocab_ids": [
+            "interj_ahi", "prep_a", "selva", "conj_e",
+            "conj_che", "nel", "art_la", "paura",
+        ],
+        "word_order": {
+            "line": 6,
+            "tokens": ["che", "nel", "pensier", "rinova", "la", "paura!"],
+            "translation": "which in thought renews the fear!",
+            "hint": (
+                "Che = which (relative pronoun, referring back to the wood). "
+                "Nel = in + il. Rinova is 3rd person singular present indicative."
+            ),
+        },
+        "translation": {
+            "lines": (4, 6),
+            "prompt": (
+                "Ah how much to say what it was is a thing hard\n"
+                "this wood savage and harsh and fierce\n"
+                "that in the thought renews the fear!"
+            ),
+            "italian": (
+                "Ahi quanto a dir qual era è cosa dura\n"
+                "esta selva selvaggia e aspra e forte\n"
+                "che nel pensier rinova la paura!"
+            ),
+            "note": (
+                "Esta is the archaic/poetic demonstrative (= questa, this). "
+                "Selvaggia echoes selva: the adjective derives from the same root (Latin silvaticus). "
+                "Rinova is present indicative: renews, not past tense."
+            ),
+        },
+    },
+    {
+        "id": "s3",
+        "lines": (7, 9),
+        "italian": (
+            "Tant'è amara che poco è più morte;\n"
+            "ma per trattar del ben ch'i' vi trovai,\n"
+            "dirò de l'altre cose ch'i' v'ho scorte."
+        ),
+        # New: morte, conj_ma
+        # Review: conj_che, prep_per, del
+        "vocab_ids": [
+            "conj_che", "morte", "conj_ma", "prep_per", "del",
+        ],
+        "word_order": {
+            "line": 8,
+            "tokens": ["ma", "per", "trattar", "del", "ben", "ch'i'", "vi", "trovai,"],
+            "translation": "but in order to treat of the good that I found there,",
+            "hint": (
+                "Ma = but. Per + infinitive = in order to (trattar = to treat, speak of). "
+                "Del = di + il. Ch'i' = che io (elided). Vi = there (adverb)."
+            ),
+        },
+        "translation": {
+            "lines": (7, 9),
+            "prompt": (
+                "So much is it bitter that little is more death;\n"
+                "but in order to treat of the good that I there found,\n"
+                "I will tell of the other things that I there have seen."
+            ),
+            "italian": (
+                "Tant'è amara che poco è più morte;\n"
+                "ma per trattar del ben ch'i' vi trovai,\n"
+                "dirò de l'altre cose ch'i' v'ho scorte."
+            ),
+            "note": (
+                "Tant'è = tanto è (elision before è): so much/so bitter is it. "
+                "Per trattar: per + infinitive expresses purpose (in order to speak of). "
+                "Ch'i' = che io; vi = there (adverb of place, archaic/poetic). "
+                "Dirò: future of dire (I will tell). Scorte: past participle of scorgere (to perceive, see)."
+            ),
+        },
+    },
+]

@@ -2,7 +2,7 @@ import re
 import unicodedata
 from flask import Flask, render_template, session, request, jsonify
 
-from data.canto1 import VOCABULARY, WORD_ORDER, TRANSLATION, LINES
+from data.canto1 import VOCABULARY, WORD_ORDER, TRANSLATION, LINES, SENTENCES
 
 app = Flask(__name__)
 app.secret_key = "la-selva-oscura-key"
@@ -283,6 +283,129 @@ def api_translation_submit():
         v = "have" if wrong_lines != 1 else "has"
         response["hint"] = f"{wrong_lines} of {total_lines} line{s} {v} errors — try again."
     # pass: return line_results only; student must retype before advancing
+
+    return jsonify(response)
+
+
+# ─── Learn flow ──────────────────────────────────────────────────────────────
+
+def _vocab_map():
+    needed = {vid for s in SENTENCES for vid in s["vocab_ids"]}
+    return {w["id"]: w for w in VOCABULARY if w["id"] in needed}
+
+
+@app.route("/learn")
+def learn():
+    mastery = session.get("word_mastery", {})
+    raw     = session.get("learn_phase", {})
+    phases  = {s["id"]: raw.get(s["id"], "vocab") for s in SENTENCES}
+    p = get_progress()
+    return render_template(
+        "learn.html",
+        sentences=SENTENCES,
+        vocab_map=_vocab_map(),
+        mastery=mastery,
+        phases=phases,
+        word_order_unlocked=True,
+        translation_unlocked=True,
+    )
+
+
+@app.route("/api/learn/vocab/result", methods=["POST"])
+def api_learn_vocab_result():
+    data    = request.get_json()
+    word_id = data.get("word_id")
+    result  = data.get("result")   # 'new' | 'knew' | 'forgot'
+
+    mastery = session.get("word_mastery", {})
+    current = mastery.get(word_id, 0)
+
+    if result == "new":
+        mastery[word_id] = 1          # first viewing counts as one pass
+    elif result == "knew":
+        mastery[word_id] = min(current + 1, 3)
+    # 'forgot': no change
+
+    session["word_mastery"] = mastery
+    return jsonify({"mastery": mastery.get(word_id, 0)})
+
+
+@app.route("/api/learn/phase/advance", methods=["POST"])
+def api_learn_phase_advance():
+    data       = request.get_json()
+    sent_id    = data.get("sentence_id")
+    from_phase = data.get("from_phase")
+
+    order  = ["vocab", "word_order", "translation", "done"]
+    phases = session.get("learn_phase", {})
+    current = phases.get(sent_id, "vocab")
+
+    if current == from_phase and from_phase in order:
+        idx = order.index(from_phase)
+        if idx + 1 < len(order):
+            phases[sent_id] = order[idx + 1]
+
+    session["learn_phase"] = phases
+    return jsonify({"phase": phases.get(sent_id, "vocab")})
+
+
+@app.route("/api/learn/word-order/check", methods=["POST"])
+def api_learn_word_order_check():
+    data    = request.get_json()
+    sent_id = data.get("sentence_id")
+    answer  = data.get("answer", [])
+
+    sentence = next((s for s in SENTENCES if s["id"] == sent_id), None)
+    if not sentence:
+        return jsonify({"error": "not found"}), 404
+
+    wo = sentence["word_order"]
+    results     = token_match(answer, wo["tokens"])
+    all_correct = all(r["ok"] for r in results) and len(answer) == len(wo["tokens"])
+
+    if all_correct:
+        phases = session.get("learn_phase", {})
+        if phases.get(sent_id, "vocab") == "word_order":
+            phases[sent_id] = "translation"
+            session["learn_phase"] = phases
+
+    return jsonify({
+        "correct":     all_correct,
+        "results":     results,
+        "translation": wo["translation"],
+        "hint":        wo["hint"],
+    })
+
+
+@app.route("/api/learn/translation/submit", methods=["POST"])
+def api_learn_translation_submit():
+    data    = request.get_json()
+    sent_id = data.get("sentence_id")
+    answer  = data.get("answer", "")
+
+    sentence = next((s for s in SENTENCES if s["id"] == sent_id), None)
+    if not sentence:
+        return jsonify({"error": "not found"}), 404
+
+    tr     = sentence["translation"]
+    result = compare_translation(answer, tr["italian"])
+    status = result["status"]
+    response = {"status": status, "line_results": result["line_results"]}
+
+    if status == "correct":
+        phases = session.get("learn_phase", {})
+        if phases.get(sent_id, "vocab") == "translation":
+            phases[sent_id] = "done"
+            session["learn_phase"] = phases
+        response["note"] = tr["note"]
+    elif status == "pass":
+        response["note"] = tr["note"]   # show note even on pass (for reference)
+    elif status == "retry":
+        wrong = sum(1 for lr in result["line_results"] if not lr["ok"])
+        total = len(result["line_results"])
+        s = "s" if wrong != 1 else ""
+        v = "have" if wrong != 1 else "has"
+        response["hint"] = f"{wrong} of {total} line{s} {v} errors — try again."
 
     return jsonify(response)
 

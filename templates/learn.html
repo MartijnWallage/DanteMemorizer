@@ -1,0 +1,576 @@
+{% extends "base.html" %}
+{% block title %}Learn — La Selva{% endblock %}
+{% block content %}
+
+<div class="page-header">
+  <h1>Learn</h1>
+  <p class="page-subtitle">Inferno, Canto I · first three tercets</p>
+</div>
+
+<div class="learn-shell">
+
+  <!-- Left: sentence tabs -->
+  <div class="learn-sentlist" id="learn-sentlist">
+    {% for s in sentences %}
+    <button class="learn-sent-tab" data-idx="{{ loop.index0 }}">
+      Lines {{ s.lines[0] }}–{{ s.lines[1] }}
+    </button>
+    {% endfor %}
+  </div>
+
+  <!-- Right: phase panels -->
+  <div class="learn-main">
+
+    <!-- ── Intro ─────────────────────────────────────────────────────────────── -->
+    <div id="ph-intro" style="display:none">
+      <div class="learn-phase-tag">Passage</div>
+      <div class="intro-italian" id="intro-italian"></div>
+      <p class="intro-desc" id="intro-desc"></p>
+      <button class="btn-primary" id="btn-intro-start">Begin →</button>
+    </div>
+
+    <!-- ── Vocabulary ─────────────────────────────────────────────────────────── -->
+    <div id="ph-vocab" style="display:none">
+      <div class="learn-phase-tag">
+        Vocabulary &nbsp;<span class="vc-progress" id="vc-progress"></span>
+      </div>
+      <div class="vc-card" id="vc-card">
+        <div class="vc-badge"    id="vc-badge"></div>
+        <div class="vc-word"     id="vc-word"></div>
+        <div class="vc-pos"      id="vc-pos"></div>
+        <hr  class="vc-sep"      id="vc-sep"     style="display:none">
+        <div class="vc-english"  id="vc-english"  style="display:none"></div>
+        <div class="vc-example"  id="vc-example"  style="display:none">
+          <div class="vc-ex-it" id="vc-ex-it"></div>
+          <div class="vc-ex-en" id="vc-ex-en"></div>
+        </div>
+        <div class="vc-note"     id="vc-note"     style="display:none"></div>
+      </div>
+      <div class="vc-btns" id="vc-btns">
+        <button class="btn-primary" id="vc-reveal-btn">Show →</button>
+      </div>
+    </div>
+
+    <!-- ── Word order ─────────────────────────────────────────────────────────── -->
+    <div id="ph-wo" style="display:none">
+      <div class="learn-phase-tag">Word Order</div>
+      <div class="wo-line-number" id="wo-line-num"></div>
+      <div class="wo-answer-label">Your line:</div>
+      <div class="wo-answer" id="wo-answer"></div>
+      <div class="wo-pool-label">Word pool:</div>
+      <div class="wo-pool"   id="wo-pool"></div>
+      <div class="wo-actions">
+        <button class="btn-ghost"    id="wo-clear">Clear</button>
+        <button class="btn-primary"  id="wo-check" disabled>Check</button>
+      </div>
+      <div class="wo-feedback" id="wo-feedback" style="display:none">
+        <div class="wo-result"      id="wo-result"></div>
+        <div class="wo-translation" id="wo-translation"></div>
+        <div class="wo-hint"        id="wo-hint"></div>
+        <button class="btn-primary" id="wo-next" style="display:none">Next: Translation →</button>
+      </div>
+    </div>
+
+    <!-- ── Translation ────────────────────────────────────────────────────────── -->
+    <div id="ph-tr" style="display:none">
+      <div class="learn-phase-tag">Translation</div>
+
+      <div class="tr-line-range" id="tr-line-range"></div>
+      <div class="tr-italian"    id="tr-italian"></div>
+
+      <label class="tr-label">Your Italian:</label>
+
+      <div class="tr-markup"      id="tr-markup" tabindex="0"
+           aria-label="Your Italian with corrections — click to edit"
+           style="display:none"></div>
+      <div class="tr-markup-hint" id="tr-markup-hint" style="display:none">Click to edit</div>
+      <textarea id="tr-input" class="tr-textarea" rows="6"
+                placeholder="Write Dante's Italian here…"></textarea>
+
+      <div class="tr-actions">
+        <button class="btn-primary" id="tr-check">Check</button>
+        <button class="btn-ghost"   id="tr-next" style="display:none">Next →</button>
+      </div>
+
+      <div class="tr-retry-feedback" id="tr-retry-feedback" style="display:none">
+        <p class="tr-hint-msg"     id="tr-hint-msg"></p>
+        <div class="tr-line-hints" id="tr-line-hints"></div>
+      </div>
+
+      <div class="tr-note-area" id="tr-note-area" style="display:none">
+        <div class="tr-note-label">Language note</div>
+        <div class="tr-note-text" id="tr-note"></div>
+      </div>
+    </div>
+
+  </div><!-- .learn-main -->
+</div><!-- .learn-shell -->
+
+<script>
+// ── Server data ────────────────────────────────────────────────────────────────
+const SENTENCES = {{ sentences | tojson }};
+const VOCAB_MAP = {{ vocab_map | tojson }};
+let mastery     = {{ mastery | tojson }};
+let sPhase      = {{ phases | tojson }};
+
+// ── State ──────────────────────────────────────────────────────────────────────
+let curS      = 0;
+let uiPhase   = null;
+
+// Vocab
+let vQueue    = [];
+let vIdx      = 0;
+
+// Word-order
+let woAnswer  = [];
+let woPool    = [];
+
+// Translation
+let trPhase   = "normal";  // "normal" | "retype" | "done"
+
+// ── Utilities ──────────────────────────────────────────────────────────────────
+function esc(s) {
+  return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+function shuffleArr(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+}
+function showPhase(id) {
+  ["ph-intro", "ph-vocab", "ph-wo", "ph-tr"].forEach(p => {
+    document.getElementById(p).style.display = p === id ? "" : "none";
+  });
+}
+
+// ── Sentence tabs ──────────────────────────────────────────────────────────────
+function renderTabs() {
+  document.querySelectorAll(".learn-sent-tab").forEach((tab, i) => {
+    const sent   = SENTENCES[i];
+    const phase  = sPhase[sent.id] || "vocab";
+    const isDone = phase === "done";
+    const isActive = i === curS;
+    const isLocked = i > 0 && (sPhase[SENTENCES[i - 1].id] || "vocab") !== "done";
+
+    tab.classList.toggle("learn-sent-active", isActive);
+    tab.classList.toggle("learn-sent-done",   isDone && !isActive);
+    tab.classList.toggle("learn-sent-locked",  isLocked);
+    tab.disabled = isLocked;
+
+    tab.textContent = `Lines ${sent.lines[0]}–${sent.lines[1]}${isDone ? " ✓" : ""}`;
+  });
+}
+
+document.querySelectorAll(".learn-sent-tab").forEach((tab, i) => {
+  tab.addEventListener("click", () => {
+    if (i > 0 && (sPhase[SENTENCES[i - 1].id] || "vocab") !== "done") return;
+    loadSentence(i);
+  });
+});
+
+// ── Sentence loading ───────────────────────────────────────────────────────────
+function loadSentence(idx) {
+  curS = idx;
+  const sent  = SENTENCES[idx];
+  const phase = sPhase[sent.id] || "vocab";
+
+  renderTabs();
+
+  if (phase === "vocab") {
+    vQueue = sent.vocab_ids.filter(id => (mastery[id] || 0) < 3);
+    vIdx   = 0;
+    if (vQueue.length === 0) {
+      apiAdvancePhase(sent.id, "vocab", () => showWordOrder());
+    } else {
+      showIntro();
+    }
+  } else if (phase === "word_order") {
+    showWordOrder();
+  } else {
+    // translation or done
+    showTranslation();
+  }
+}
+
+// ── Phase advance ──────────────────────────────────────────────────────────────
+function apiAdvancePhase(sentId, fromPhase, cb) {
+  fetch("/api/learn/phase/advance", {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({sentence_id: sentId, from_phase: fromPhase}),
+  }).then(r => r.json()).then(d => {
+    sPhase[sentId] = d.phase;
+    renderTabs();
+    if (cb) cb();
+  });
+}
+
+// ── Intro ──────────────────────────────────────────────────────────────────────
+function showIntro() {
+  uiPhase = "intro";
+  showPhase("ph-intro");
+  const sent = SENTENCES[curS];
+
+  const italEl = document.getElementById("intro-italian");
+  italEl.innerHTML = sent.italian.split("\n")
+    .map(l => `<div>${esc(l)}</div>`).join("");
+
+  const newCount = vQueue.filter(id => !(mastery[id] || 0)).length;
+  const revCount = vQueue.length - newCount;
+  const parts = [];
+  if (newCount) parts.push(`${newCount} new word${newCount !== 1 ? "s" : ""}`);
+  if (revCount) parts.push(`${revCount} to review`);
+  document.getElementById("intro-desc").textContent =
+    (parts.length ? parts.join(", ") : "all words mastered") +
+    " · then word order · then translation";
+}
+
+document.getElementById("btn-intro-start").addEventListener("click", () => {
+  showVocabCard();
+});
+
+// ── Vocabulary ─────────────────────────────────────────────────────────────────
+function showVocabCard() {
+  if (vIdx >= vQueue.length) {
+    apiAdvancePhase(SENTENCES[curS].id, "vocab", () => showWordOrder());
+    return;
+  }
+  uiPhase = "vocab";
+  showPhase("ph-vocab");
+
+  const wordId = vQueue[vIdx];
+  const word   = VOCAB_MAP[wordId];
+  const m      = mastery[wordId] || 0;
+
+  document.getElementById("vc-progress").textContent =
+    `(${vIdx + 1} / ${vQueue.length})`;
+
+  const badge = document.getElementById("vc-badge");
+  badge.textContent = m === 0 ? "NEW" : "REVIEW";
+  badge.className   = "vc-badge " + (m === 0 ? "vc-badge-new" : "vc-badge-review");
+
+  document.getElementById("vc-word").textContent = word.italian;
+  document.getElementById("vc-pos").textContent  = word.pos;
+
+  // Hide back-of-card content
+  ["vc-sep", "vc-english", "vc-example", "vc-note"].forEach(id => {
+    document.getElementById(id).style.display = "none";
+  });
+
+  // Reset buttons: only show reveal
+  const btns = document.getElementById("vc-btns");
+  btns.innerHTML = "";
+  const revealBtn = document.createElement("button");
+  revealBtn.className   = "btn-primary";
+  revealBtn.textContent = "Show →";
+  revealBtn.id          = "vc-reveal-btn";
+  revealBtn.addEventListener("click", revealCard);
+  btns.appendChild(revealBtn);
+}
+
+function revealCard() {
+  const wordId = vQueue[vIdx];
+  const word   = VOCAB_MAP[wordId];
+  const m      = mastery[wordId] || 0;
+
+  // Show back-of-card content
+  document.getElementById("vc-sep").style.display     = "";
+  document.getElementById("vc-english").style.display = "";
+  document.getElementById("vc-example").style.display = "";
+  document.getElementById("vc-note").style.display    = "";
+
+  document.getElementById("vc-english").textContent = word.english;
+  document.getElementById("vc-ex-it").textContent   = word.example_italian;
+  document.getElementById("vc-ex-en").textContent   = word.example_english;
+  document.getElementById("vc-note").textContent    = word.note;
+
+  // Swap buttons
+  const btns = document.getElementById("vc-btns");
+  btns.innerHTML = "";
+
+  if (m === 0) {
+    // New word — just acknowledge
+    const next = document.createElement("button");
+    next.className   = "btn-primary";
+    next.textContent = "Got it →";
+    next.addEventListener("click", () => recordVocab("new"));
+    btns.appendChild(next);
+  } else {
+    // Review — self-assess
+    const knew = document.createElement("button");
+    knew.className   = "btn-primary";
+    knew.textContent = "✓ I knew it";
+    knew.addEventListener("click", () => recordVocab("knew"));
+    btns.appendChild(knew);
+
+    const forgot = document.createElement("button");
+    forgot.className = "btn-ghost";
+    forgot.textContent = "✗ Didn't know it";
+    forgot.addEventListener("click", () => recordVocab("forgot"));
+    btns.appendChild(forgot);
+  }
+}
+
+function recordVocab(result) {
+  const wordId = vQueue[vIdx];
+  fetch("/api/learn/vocab/result", {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({word_id: wordId, result}),
+  }).then(r => r.json()).then(d => {
+    mastery[wordId] = d.mastery;
+    vIdx++;
+    showVocabCard();
+  });
+}
+
+// ── Word order ─────────────────────────────────────────────────────────────────
+function showWordOrder() {
+  uiPhase = "word_order";
+  showPhase("ph-wo");
+  const wo = SENTENCES[curS].word_order;
+
+  woAnswer = [];
+  woPool   = [...wo.tokens];
+  shuffleArr(woPool);
+
+  document.getElementById("wo-line-num").textContent  = "Line " + wo.line;
+  document.getElementById("wo-feedback").style.display = "none";
+  document.getElementById("wo-check").disabled         = true;
+  renderWoPool();
+  renderWoAnswer();
+}
+
+function renderWoPool() {
+  const el = document.getElementById("wo-pool");
+  el.innerHTML = "";
+  woPool.forEach((tok, i) => {
+    const btn = document.createElement("button");
+    btn.className   = "wo-token";
+    btn.textContent = tok;
+    btn.addEventListener("click", () => woMoveToAnswer(i));
+    el.appendChild(btn);
+  });
+}
+function renderWoAnswer() {
+  const el = document.getElementById("wo-answer");
+  el.innerHTML = "";
+  woAnswer.forEach((tok, i) => {
+    const btn = document.createElement("button");
+    btn.className   = "wo-token wo-token-answer";
+    btn.textContent = tok;
+    btn.addEventListener("click", () => woMoveToPool(i));
+    el.appendChild(btn);
+  });
+  document.getElementById("wo-check").disabled = woAnswer.length === 0;
+}
+function woMoveToAnswer(pi) {
+  const tok = woPool.splice(pi, 1)[0];
+  woAnswer.push(tok);
+  renderWoPool(); renderWoAnswer();
+}
+function woMoveToPool(ai) {
+  const tok = woAnswer.splice(ai, 1)[0];
+  woPool.push(tok);
+  renderWoPool(); renderWoAnswer();
+}
+
+document.getElementById("wo-clear").addEventListener("click", () => {
+  woPool = woPool.concat(woAnswer);
+  woAnswer = [];
+  renderWoPool(); renderWoAnswer();
+  document.getElementById("wo-feedback").style.display = "none";
+});
+
+document.getElementById("wo-check").addEventListener("click", () => {
+  const sent = SENTENCES[curS];
+  fetch("/api/learn/word-order/check", {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({sentence_id: sent.id, answer: woAnswer}),
+  }).then(r => r.json()).then(d => {
+    if (d.correct) {
+      sPhase[sent.id] = "translation";
+      renderTabs();
+    }
+    showWoFeedback(d);
+  });
+});
+
+function showWoFeedback(d) {
+  document.getElementById("wo-feedback").style.display = "";
+  const resultEl = document.getElementById("wo-result");
+  resultEl.innerHTML = "";
+
+  if (d.correct) {
+    resultEl.textContent = "✓ Correct!";
+    resultEl.className   = "wo-result wo-correct";
+    document.getElementById("wo-next").style.display = "";
+  } else {
+    resultEl.className = "wo-result wo-wrong";
+    d.results.forEach(r => {
+      const span = document.createElement("span");
+      span.className   = "wo-tok-result " + (r.ok ? "tok-ok" : "tok-wrong");
+      span.textContent = r.user || "—";
+      if (!r.ok) span.title = "should be: " + r.correct;
+      resultEl.appendChild(span);
+      resultEl.appendChild(document.createTextNode(" "));
+    });
+    document.getElementById("wo-next").style.display = "none";
+  }
+
+  document.getElementById("wo-translation").textContent = d.translation;
+  const hintEl = document.getElementById("wo-hint");
+  hintEl.textContent    = d.hint;
+  hintEl.style.display  = d.hint ? "" : "none";
+}
+
+document.getElementById("wo-next").addEventListener("click", () => {
+  showTranslation();
+});
+
+// ── Translation ────────────────────────────────────────────────────────────────
+function showTranslation() {
+  uiPhase = "translation";
+  showPhase("ph-tr");
+  const sent  = SENTENCES[curS];
+  const tr    = sent.translation;
+  const isDone = sPhase[sent.id] === "done";
+  trPhase = isDone ? "done" : "normal";
+
+  document.getElementById("tr-line-range").textContent = "Lines " + tr.lines[0] + "–" + tr.lines[1];
+  document.getElementById("tr-italian").textContent    = tr.prompt;
+  document.getElementById("tr-input").value            = "";
+  document.getElementById("tr-input").disabled         = false;
+  document.getElementById("tr-input").style.display    = "";
+  document.getElementById("tr-markup").style.display   = "none";
+  document.getElementById("tr-markup").classList.remove("tr-markup-done");
+  document.getElementById("tr-markup-hint").style.display = "none";
+  document.getElementById("tr-retry-feedback").style.display = "none";
+  document.getElementById("tr-check").disabled         = false;
+  document.getElementById("tr-check").style.display    = "";
+  document.getElementById("tr-next").style.display     = "none";
+  document.getElementById("tr-note-area").style.display = isDone ? "" : "none";
+  if (isDone) {
+    document.getElementById("tr-note").textContent = tr.note;
+    showTrNextBtn();
+  }
+}
+
+function showTrNextBtn() {
+  const nextBtn = document.getElementById("tr-next");
+  const nextIdx = curS + 1;
+  if (nextIdx < SENTENCES.length) {
+    nextBtn.textContent = "Next passage →";
+    nextBtn.disabled    = false;
+  } else {
+    nextBtn.textContent = "All done!";
+    nextBtn.disabled    = true;
+  }
+  nextBtn.style.display = "";
+}
+
+// Markup display — same as translation.html
+function showMarkup(lineResults) {
+  const html = lineResults.map(line =>
+    line.tokens.map(tok => {
+      if (tok.ok) {
+        return `<span class="tr-word-ok">${esc(tok.correct)}</span>`;
+      } else if (tok.student != null) {
+        return `<span class="tr-word-err">${esc(tok.student)}</span><span class="tr-word-correction">${esc(tok.correct)}</span>`;
+      } else {
+        return `<span class="tr-word-ghost">${esc(tok.correct)}</span>`;
+      }
+    }).join(" ")
+  ).join("<br>");
+
+  document.getElementById("tr-markup").innerHTML      = html;
+  document.getElementById("tr-input").style.display   = "none";
+  document.getElementById("tr-markup").style.display  = "";
+  document.getElementById("tr-markup-hint").style.display = "";
+  document.getElementById("tr-check").disabled        = true;
+}
+
+function activateTextarea() {
+  if (trPhase === "done") return;
+  document.getElementById("tr-markup").style.display      = "none";
+  document.getElementById("tr-markup-hint").style.display = "none";
+  document.getElementById("tr-input").style.display       = "";
+  document.getElementById("tr-check").disabled            = false;
+  document.getElementById("tr-input").focus();
+}
+
+document.getElementById("tr-markup").addEventListener("click", activateTextarea);
+document.getElementById("tr-markup").addEventListener("keydown", e => {
+  if (!e.ctrlKey && !e.metaKey && !e.altKey) { e.preventDefault(); activateTextarea(); }
+});
+document.getElementById("tr-input").addEventListener("input", () => {
+  document.getElementById("tr-retry-feedback").style.display = "none";
+});
+
+document.getElementById("tr-check").addEventListener("click", () => {
+  const sent   = SENTENCES[curS];
+  const answer = document.getElementById("tr-input").value;
+
+  fetch("/api/learn/translation/submit", {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({sentence_id: sent.id, answer}),
+  }).then(r => r.json()).then(d => {
+
+    if (d.status === "correct") {
+      showMarkup(d.line_results);
+      document.getElementById("tr-markup").classList.add("tr-markup-done");
+      document.getElementById("tr-markup-hint").style.display  = "none";
+      document.getElementById("tr-retry-feedback").style.display = "none";
+      document.getElementById("tr-note").textContent           = d.note;
+      document.getElementById("tr-note-area").style.display    = "";
+      document.getElementById("tr-check").style.display        = "none";
+      sPhase[sent.id] = "done";
+      renderTabs();
+      trPhase = "done";
+      showTrNextBtn();
+
+    } else if (d.status === "pass") {
+      showMarkup(d.line_results);
+      document.getElementById("tr-hint-msg").textContent =
+        trPhase === "normal"
+          ? "Close — study the corrections above and try again."
+          : "Still a few errors — try again.";
+      document.getElementById("tr-line-hints").innerHTML = "";
+      document.getElementById("tr-retry-feedback").style.display = "";
+      trPhase = "retype";
+
+    } else {
+      const studentLines = answer.split("\n");
+      const lineHtml = d.line_results.map((line, i) => {
+        const cls  = line.ok ? "hint-line-ok" : "hint-line-err";
+        const icon = line.ok ? "✓" : "✗";
+        const text = i < studentLines.length ? studentLines[i] : "";
+        return `<div class="${cls}"><span class="hint-icon">${icon}</span>${esc(text)}</div>`;
+      }).join("");
+      showMarkup(d.line_results);
+      document.getElementById("tr-hint-msg").textContent    = d.hint;
+      document.getElementById("tr-line-hints").innerHTML    = lineHtml;
+      document.getElementById("tr-retry-feedback").style.display = "";
+    }
+  });
+});
+
+document.getElementById("tr-next").addEventListener("click", () => {
+  const nextIdx = curS + 1;
+  if (nextIdx < SENTENCES.length) loadSentence(nextIdx);
+});
+
+// ── Startup ────────────────────────────────────────────────────────────────────
+function findStart() {
+  for (let i = 0; i < SENTENCES.length; i++) {
+    if ((sPhase[SENTENCES[i].id] || "vocab") !== "done") return i;
+  }
+  return SENTENCES.length - 1;
+}
+
+loadSentence(findStart());
+</script>
+{% endblock %}
