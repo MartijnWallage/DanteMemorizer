@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}Locked — La Selva{% endblock %}
+{% block content %}
+<div class="locked-page">
+  <div class="locked-icon">🔒</div>
+  <p class="locked-reason">{{ reason }}</p>
+  <a href="{{ back_url }}" class="btn-primary">Go back</a>
+</div>
+{% endblock %}

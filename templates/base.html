@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}La Selva{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header>
+    <nav class="nav">
+      <a href="/" class="nav-brand">La Selva</a>
+      <div class="nav-links">
+        <a href="/flashcards" class="nav-link {% if request.path == '/flashcards' %}active{% endif %}">Vocabulary</a>
+        <a href="/word-order"
+           class="nav-link {% if request.path == '/word-order' %}active{% endif %} {% if not word_order_unlocked %}locked{% endif %}">
+          Word Order{% if not word_order_unlocked %} 🔒{% endif %}
+        </a>
+        <a href="/translation"
+           class="nav-link {% if request.path == '/translation' %}active{% endif %} {% if not translation_unlocked %}locked{% endif %}">
+          Translation{% if not translation_unlocked %} 🔒{% endif %}
+        </a>
+        <a href="/text" class="nav-link {% if request.path == '/text' %}active{% endif %}">Full Text</a>
+        <a href="/about" class="nav-link {% if request.path == '/about' %}active{% endif %}">About</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer>
+    <p><em>Nel mezzo del cammin di nostra vita …</em> &nbsp;·&nbsp; Inferno, Canto I</p>
+  </footer>
+</body>
+</html>

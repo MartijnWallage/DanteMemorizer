@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+{% block title %}La Selva — Inferno I{% endblock %}
+{% block content %}
+
+<section class="hero">
+  <div class="hero-text">
+    <p class="hero-line">Nel mezzo del cammin di nostra vita</p>
+    <p class="hero-line">mi ritrovai per una selva oscura,</p>
+    <p class="hero-line">ché la diritta via era smarrita.</p>
+    <p class="hero-attribution">— Dante Alighieri, <em>Inferno</em> I, 1–3</p>
+  </div>
+  <p class="hero-intro">
+    Learn to read these words in the original medieval Italian.
+    Three stages take you from single words to whole tercets.
+  </p>
+</section>
+
+<section class="stages">
+
+  <a href="/flashcards" class="stage-card stage-vocab">
+    <div class="stage-number">I</div>
+    <div class="stage-body">
+      <h2>Vocabulary</h2>
+      <p>
+        Thirty words drawn directly from Canto I, each shown with its example line
+        and a note on grammar or etymology.
+      </p>
+      <div class="stage-progress">
+        <div class="progress-bar">
+          <div class="progress-fill"
+               style="width: {{ [progress.vocab_known|length / vocab_total * 100, 100]|min }}%"></div>
+        </div>
+        <span class="progress-label">
+          {{ progress.vocab_known|length }} / {{ vocab_total }} known
+        </span>
+      </div>
+    </div>
+  </a>
+
+  <a href="/word-order"
+     class="stage-card stage-word-order {% if not word_order_unlocked %}stage-locked{% endif %}">
+    <div class="stage-number">II</div>
+    <div class="stage-body">
+      <h2>Word Order</h2>
+      {% if word_order_unlocked %}
+        <p>
+          Ten lines, each shuffled into a word pool. Click the words back into
+          Dante's original order.
+        </p>
+        <div class="stage-progress">
+          <div class="progress-bar">
+            <div class="progress-fill"
+                 style="width: {{ [progress.word_order_done|length / word_order_total * 100, 100]|min }}%"></div>
+          </div>
+          <span class="progress-label">
+            {{ progress.word_order_done|length }} / {{ word_order_total }} done
+          </span>
+        </div>
+      {% else %}
+        <p class="locked-msg">
+          Learn {{ vocab_threshold }} vocabulary words to unlock this stage.<br>
+          <span class="locked-count">{{ progress.vocab_known|length }} / {{ vocab_threshold }} so far.</span>
+        </p>
+      {% endif %}
+    </div>
+  </a>
+
+  <a href="/translation"
+     class="stage-card stage-translation {% if not translation_unlocked %}stage-locked{% endif %}">
+    <div class="stage-number">III</div>
+    <div class="stage-body">
+      <h2>Translation</h2>
+      {% if translation_unlocked %}
+        <p>
+          Ten key passages. Read the Italian, write your translation,
+          then compare it to a literal scholarly rendering.
+        </p>
+        <div class="stage-progress">
+          <div class="progress-bar">
+            <div class="progress-fill"
+                 style="width: {{ [progress.translation_done|length / translation_total * 100, 100]|min }}%"></div>
+          </div>
+          <span class="progress-label">
+            {{ progress.translation_done|length }} / {{ translation_total }} done
+          </span>
+        </div>
+      {% else %}
+        <p class="locked-msg">
+          Complete {{ word_order_threshold }} word-order exercises to unlock this stage.<br>
+          <span class="locked-count">{{ progress.word_order_done|length }} / {{ word_order_threshold }} so far.</span>
+        </p>
+      {% endif %}
+    </div>
+  </a>
+
+</section>
+
+<div class="reset-bar">
+  <button id="reset-btn" class="btn-ghost">Reset all progress</button>
+</div>
+
+<script>
+document.getElementById("reset-btn").addEventListener("click", () => {
+  if (!confirm("Reset all progress?")) return;
+  fetch("/api/reset", { method: "POST" })
+    .then(() => location.reload());
+});
+</script>
+{% endblock %}

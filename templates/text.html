@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Full Text — La Selva{% endblock %}
+{% block content %}
+
+<div class="page-header">
+  <h1>Inferno, Canto I</h1>
+  <p class="page-subtitle">Complete Italian text · Petrocchi edition</p>
+</div>
+
+<div class="text-shell">
+  <div class="canto-text">
+    {% set ns = namespace(count=0) %}
+    {% for num, line in lines %}
+      {% set ns.count = ns.count + 1 %}
+      {% if ns.count == 1 or (ns.count - 1) % 3 == 0 %}
+        {% if ns.count > 1 %}</div>{% endif %}
+        <div class="tercet">
+      {% endif %}
+      <div class="canto-line">
+        <span class="line-num">{{ num }}</span>
+        <span class="line-text">{{ line }}</span>
+      </div>
+      {% if ns.count == lines|length %}</div>{% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}

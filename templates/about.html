@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+{% block title %}About — La Selva{% endblock %}
+{% block content %}
+
+<div class="page-header">
+  <h1>About</h1>
+</div>
+
+<div class="about-body">
+
+  <section class="about-section">
+    <h2>What this app does</h2>
+    <p>
+      <em>La Selva</em> is a tool for learning to read Dante's <em>Divine Comedy</em>
+      in the original medieval Italian. The name is taken from the second line of the poem:
+      <em>mi ritrovai per una selva oscura</em> — "I came to myself in a dark wood."
+    </p>
+    <p>
+      The first version covers <strong>Inferno, Canto I</strong> in full (136 lines).
+      Learning is structured in three stages that unlock in sequence:
+    </p>
+    <ol class="about-stages">
+      <li>
+        <strong>Vocabulary</strong> — flashcards for 64 words drawn directly from Canto I:
+        30 content words (nouns, adjectives, verbs) and 34 function words
+        (articles, prepositions, conjunctions, pronouns, adverbs).
+        Each card shows the word's part of speech, its meaning, an example line from the text,
+        and a note on grammar or etymology.
+      </li>
+      <li>
+        <strong>Word order</strong> — ten individual lines, each presented as a shuffled
+        pool of tokens. You click the words back into Dante's order. Completing an exercise
+        shows the literal English translation and a short grammatical note.
+      </li>
+      <li>
+        <strong>Translation</strong> — ten key passages, ranging from a single tercet
+        to a run of nine lines. Each passage is presented as a word-for-word English
+        prompt that follows Dante's Italian word order exactly. You write the Italian,
+        then compare it to the original text.
+      </li>
+    </ol>
+    <p>
+      Progress is saved in the browser session and resets when the session ends,
+      or manually from the home page.
+    </p>
+  </section>
+
+  <section class="about-section">
+    <h2>Sources</h2>
+
+    <h3>Italian text</h3>
+    <p>
+      The Italian text follows the edition of Giorgio Petrocchi:
+    </p>
+    <blockquote>
+      Dante Alighieri, <em>La Commedia secondo l'antica vulgata</em>, ed. Giorgio Petrocchi,
+      4 vols. Milan: Mondadori, 1966–67.
+    </blockquote>
+    <p>
+      Petrocchi's critical edition, based on the earliest manuscript tradition,
+      remains the standard text used in scholarly work on the <em>Commedia</em>.
+    </p>
+
+    <h3>English translations</h3>
+    <p>
+      The translations used for the word-order hints, and for constructing the
+      word-for-word English prompts in the translation exercises, are drawn from two
+      scholarly, highly literal translations:
+    </p>
+    <blockquote>
+      Robert M. Durling and Ronald L. Martinez, <em>The Divine Comedy of Dante Alighieri,
+      Vol. 1: Inferno</em>. New York and Oxford: Oxford University Press, 1996.
+    </blockquote>
+    <blockquote>
+      Robert Hollander and Jean Hollander, <em>Inferno</em>. New York: Doubleday, 2000.
+    </blockquote>
+    <p>
+      Both translations prioritise fidelity to Dante's syntax and word choice over
+      English readability, making them well suited to the close-reading approach of this app.
+      Where the two translations differ, the version used here is the one judged most
+      transparent to the Italian.
+    </p>
+
+    <h3>Grammar and etymology notes</h3>
+    <p>
+      The notes on grammatical forms (tense, mood, agreement, apocopation, elision)
+      and etymology (Latin sources, modern Italian cognates, borrowed forms) draw on
+      the standard reference literature for historical Italian linguistics:
+    </p>
+    <blockquote>
+      Gerhard Rohlfs, <em>Grammatica storica della lingua italiana e dei suoi dialetti</em>,
+      3 vols. Turin: Einaudi, 1966–69. (Translation of the 1949–54 German original.)
+    </blockquote>
+    <blockquote>
+      Manlio Cortelazzo and Paolo Zolli, <em>Dizionario etimologico della lingua italiana</em>
+      (DELI), 5 vols. Bologna: Zanichelli, 1979–88. Second edition by Cortelazzo and
+      Michele A. Cortelazzo, 1999.
+    </blockquote>
+    <p>
+      For medieval Italian grammar specifically, and for notes on forms peculiar to the
+      <em>Commedia</em>'s Florentine dialect of the early fourteenth century:
+    </p>
+    <blockquote>
+      Giampaolo Salvi and Lorenzo Renzi (eds.), <em>Grammatica dell'italiano antico</em>,
+      2 vols. Bologna: il Mulino, 2010.
+    </blockquote>
+  </section>
+
+</div>
+
+{% endblock %}

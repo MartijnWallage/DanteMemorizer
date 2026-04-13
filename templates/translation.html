@@ -1,0 +1,253 @@
+{% extends "base.html" %}
+{% block title %}Translation — La Selva{% endblock %}
+{% block content %}
+
+<div class="page-header">
+  <h1>Translation</h1>
+  <p class="page-subtitle">
+    {{ done|length }} / {{ exercises|length }} passages completed
+  </p>
+</div>
+
+<div class="tr-shell">
+
+  <div class="tr-exercise-list">
+    {% for ex in exercises %}
+    <button class="tr-tab {% if loop.first %}tr-tab-active{% endif %} {% if ex.id in done %}tr-tab-done{% endif %}"
+            data-id="{{ ex.id }}">
+      {{ ex.lines[0] }}–{{ ex.lines[1] }}{% if ex.id in done %} ✓{% endif %}
+    </button>
+    {% endfor %}
+  </div>
+
+  <div class="tr-main">
+
+    <div class="tr-line-range" id="tr-line-range"></div>
+
+    <div class="tr-italian" id="tr-italian"></div>
+
+    <label class="tr-label">Your Italian:</label>
+
+    <!-- markup view: shown after every check; click or type to switch back to textarea -->
+    <div class="tr-markup" id="tr-markup" tabindex="0"
+         aria-label="Your Italian with corrections — click to edit"
+         style="display:none"></div>
+    <div class="tr-markup-hint" id="tr-markup-hint" style="display:none">
+      Click to edit
+    </div>
+
+    <textarea id="tr-input" class="tr-textarea" rows="6"
+              placeholder="Write Dante's Italian here…"></textarea>
+
+    <div class="tr-actions">
+      <button id="tr-check" class="btn-primary">Check</button>
+      <button id="tr-next" class="btn-ghost" style="display:none">Next →</button>
+    </div>
+
+    <div class="tr-retry-feedback" id="tr-retry-feedback" style="display:none">
+      <p class="tr-hint-msg" id="tr-hint-msg"></p>
+      <div class="tr-line-hints" id="tr-line-hints"></div>
+    </div>
+
+    <div class="tr-note-area" id="tr-note-area" style="display:none">
+      <div class="tr-note-label">Language note</div>
+      <div class="tr-note-text" id="tr-note"></div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+const EXERCISES = {{ exercises | tojson }};
+const done = new Set({{ done | tojson }});
+let curIdx     = 0;
+let retryCount = 0;
+let phase      = "normal"; // "normal" | "retype" | "done"
+
+// ── Utilities ─────────────────────────────────────────────────────────────────
+
+function esc(s) {
+  return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+// Build all-correct token results from a plain Italian string (used for reveal)
+function allCorrectTokens(italian) {
+  return italian.split("\n").map(line => ({
+    tokens: line.split(" ").map(w => ({ correct: w, student: w, ok: true })),
+    ok: true,
+  }));
+}
+
+// ── Markup view ───────────────────────────────────────────────────────────────
+// For ok tokens: always show tok.correct so accents are always right.
+// For wrong tokens: show tok.student (what they actually typed) in red.
+// For missing tokens: show tok.correct in ghost italic.
+
+function showMarkup(lineResults) {
+  const html = lineResults.map(line =>
+    line.tokens.map(tok => {
+      if (tok.ok) {
+        return `<span class="tr-word-ok">${esc(tok.correct)}</span>`;
+      } else if (tok.student != null) {
+        return `<span class="tr-word-err">${esc(tok.student)}</span>`;
+      } else {
+        return `<span class="tr-word-ghost">${esc(tok.correct)}</span>`;
+      }
+    }).join(" ")
+  ).join("<br>");
+
+  document.getElementById("tr-markup").innerHTML       = html;
+  document.getElementById("tr-input").style.display   = "none";
+  document.getElementById("tr-markup").style.display  = "";
+  document.getElementById("tr-markup-hint").style.display = "";
+  document.getElementById("tr-check").disabled        = true;
+}
+
+function activateTextarea() {
+  if (phase === "done") return;
+  document.getElementById("tr-markup").style.display      = "none";
+  document.getElementById("tr-markup-hint").style.display = "none";
+  document.getElementById("tr-input").style.display       = "";
+  document.getElementById("tr-check").disabled            = false;
+  document.getElementById("tr-input").focus();
+}
+
+const markupEl = document.getElementById("tr-markup");
+markupEl.addEventListener("click", activateTextarea);
+markupEl.addEventListener("keydown", e => {
+  if (!e.ctrlKey && !e.metaKey && !e.altKey) {
+    e.preventDefault();
+    activateTextarea();
+  }
+});
+
+// ── Helpers ───────────────────────────────────────────────────────────────────
+
+function setFeedback(msg, lineHtml) {
+  document.getElementById("tr-hint-msg").textContent = msg;
+  document.getElementById("tr-line-hints").innerHTML = lineHtml || "";
+  document.getElementById("tr-retry-feedback").style.display = "";
+}
+
+function clearFeedback() {
+  document.getElementById("tr-retry-feedback").style.display = "none";
+}
+
+function markDone(ex) {
+  done.add(ex.id);
+  const tab = document.querySelectorAll(".tr-tab")[curIdx];
+  tab.classList.add("tr-tab-done");
+  tab.textContent = ex.lines[0] + "–" + ex.lines[1] + " ✓";
+  const sub = document.querySelector(".page-subtitle");
+  if (sub) sub.textContent = done.size + " / " + EXERCISES.length + " passages completed";
+}
+
+// ── Exercise loading ──────────────────────────────────────────────────────────
+
+function loadExercise(idx) {
+  curIdx     = idx;
+  retryCount = 0;
+  phase      = "normal";
+  const ex   = EXERCISES[idx];
+
+  document.getElementById("tr-line-range").textContent    = "Lines " + ex.lines[0] + "–" + ex.lines[1];
+  document.getElementById("tr-italian").textContent       = ex.prompt;
+  document.getElementById("tr-input").value               = "";
+  document.getElementById("tr-input").disabled            = false;
+  document.getElementById("tr-input").style.display       = "";
+  document.getElementById("tr-markup").style.display      = "none";
+  document.getElementById("tr-markup").classList.remove("tr-markup-done");
+  document.getElementById("tr-markup-hint").style.display = "none";
+  document.getElementById("tr-retry-feedback").style.display = "none";
+  document.getElementById("tr-note-area").style.display   = "none";
+  document.getElementById("tr-check").disabled            = false;
+  document.getElementById("tr-check").style.display       = "";
+  document.getElementById("tr-next").style.display        = "none";
+
+  document.querySelectorAll(".tr-tab").forEach((tab, i) => {
+    tab.classList.toggle("tr-tab-active", i === idx);
+  });
+}
+
+// ── Check handler ─────────────────────────────────────────────────────────────
+
+document.getElementById("tr-input").addEventListener("input", () => {
+  clearFeedback();
+});
+
+document.getElementById("tr-check").addEventListener("click", () => {
+  const ex     = EXERCISES[curIdx];
+  const answer = document.getElementById("tr-input").value;
+
+  fetch("/api/translation/submit", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ id: ex.id, answer: answer }),
+  }).then(r => r.json()).then(d => {
+
+    if (d.status === "correct") {
+      // ── Done: text turns all green with correct accents ───────────────────
+      showMarkup(d.line_results);
+      document.getElementById("tr-markup").classList.add("tr-markup-done");
+      document.getElementById("tr-markup-hint").style.display = "none";
+      clearFeedback();
+      document.getElementById("tr-note").textContent        = d.note;
+      document.getElementById("tr-note-area").style.display = "";
+      document.getElementById("tr-check").style.display     = "none";
+      document.getElementById("tr-next").style.display      = "";
+      markDone(ex);
+      phase = "done";
+
+    } else if (d.status === "pass") {
+      // ── Slightly off ──────────────────────────────────────────────────────
+      showMarkup(d.line_results);
+      setFeedback(
+        phase === "normal"
+          ? "Close — study the corrections above and try again."
+          : "Still a few errors — try again.",
+        null
+      );
+      phase = "retype";
+
+    } else {
+      // ── Significantly off ─────────────────────────────────────────────────
+      if (phase === "normal") {
+        retryCount++;
+        if (retryCount >= 3) {
+          // Reveal: show correct Italian all green, clear textarea for fresh write
+          showMarkup(allCorrectTokens(ex.italian));
+          document.getElementById("tr-input").value = "";
+          setFeedback("Study the Italian above, then write it yourself below.", null);
+          phase = "retype";
+        } else {
+          // Per-line hints + word-level markup
+          const studentLines = answer.split("\n");
+          const lineHtml = d.line_results.map((line, i) => {
+            const cls  = line.ok ? "hint-line-ok" : "hint-line-err";
+            const icon = line.ok ? "✓" : "✗";
+            const text = i < studentLines.length ? studentLines[i] : "";
+            return `<div class="${cls}"><span class="hint-icon">${icon}</span>${esc(text)}</div>`;
+          }).join("");
+          showMarkup(d.line_results);
+          setFeedback(d.hint, lineHtml);
+        }
+      } else {
+        // Retype phase: updated markup + brief message
+        showMarkup(d.line_results);
+        setFeedback("Not quite right yet — try again.", null);
+      }
+    }
+  });
+});
+
+document.getElementById("tr-next").addEventListener("click", () => {
+  loadExercise((curIdx + 1) % EXERCISES.length);
+});
+
+document.querySelectorAll(".tr-tab").forEach((tab, i) => {
+  tab.addEventListener("click", () => loadExercise(i));
+});
+
+loadExercise(0);
+</script>
+{% endblock %}
