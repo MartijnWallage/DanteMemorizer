@@ -674,7 +674,8 @@ button, .btn-primary {
 /* Word-level colours inside the markup overlay */
 .tr-word-ok    { color: var(--green-bright); }
 .tr-word-err   { color: #d07070; }
-.tr-word-ghost { color: var(--text-dim); font-style: italic; }
+.tr-word-ghost      { color: var(--text-dim); font-style: italic; }
+.tr-word-correction { color: var(--text-dim); font-style: italic; margin-left: 0.15em; }
 
 /* "Click to edit" caption below the markup overlay */
 .tr-markup-hint {

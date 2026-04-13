@@ -60,22 +60,13 @@
 <script>
 const EXERCISES = {{ exercises | tojson }};
 const done = new Set({{ done | tojson }});
-let curIdx     = 0;
-let retryCount = 0;
-let phase      = "normal"; // "normal" | "retype" | "done"
+let curIdx = 0;
+let phase  = "normal"; // "normal" | "retype" | "done"
 
 // ── Utilities ─────────────────────────────────────────────────────────────────
 
 function esc(s) {
   return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-}
-
-// Build all-correct token results from a plain Italian string (used for reveal)
-function allCorrectTokens(italian) {
-  return italian.split("\n").map(line => ({
-    tokens: line.split(" ").map(w => ({ correct: w, student: w, ok: true })),
-    ok: true,
-  }));
 }
 
 // ── Markup view ───────────────────────────────────────────────────────────────
@@ -89,7 +80,7 @@ function showMarkup(lineResults) {
       if (tok.ok) {
         return `<span class="tr-word-ok">${esc(tok.correct)}</span>`;
       } else if (tok.student != null) {
-        return `<span class="tr-word-err">${esc(tok.student)}</span>`;
+        return `<span class="tr-word-err">${esc(tok.student)}</span><span class="tr-word-correction">${esc(tok.correct)}</span>`;
       } else {
         return `<span class="tr-word-ghost">${esc(tok.correct)}</span>`;
       }
@@ -145,9 +136,8 @@ function markDone(ex) {
 // ── Exercise loading ──────────────────────────────────────────────────────────
 
 function loadExercise(idx) {
-  curIdx     = idx;
-  retryCount = 0;
-  phase      = "normal";
+  curIdx = idx;
+  phase  = "normal";
   const ex   = EXERCISES[idx];
 
   document.getElementById("tr-line-range").textContent    = "Lines " + ex.lines[0] + "–" + ex.lines[1];
@@ -210,32 +200,16 @@ document.getElementById("tr-check").addEventListener("click", () => {
       phase = "retype";
 
     } else {
-      // ── Significantly off ─────────────────────────────────────────────────
-      if (phase === "normal") {
-        retryCount++;
-        if (retryCount >= 3) {
-          // Reveal: show correct Italian all green, clear textarea for fresh write
-          showMarkup(allCorrectTokens(ex.italian));
-          document.getElementById("tr-input").value = "";
-          setFeedback("Study the Italian above, then write it yourself below.", null);
-          phase = "retype";
-        } else {
-          // Per-line hints + word-level markup
-          const studentLines = answer.split("\n");
-          const lineHtml = d.line_results.map((line, i) => {
-            const cls  = line.ok ? "hint-line-ok" : "hint-line-err";
-            const icon = line.ok ? "✓" : "✗";
-            const text = i < studentLines.length ? studentLines[i] : "";
-            return `<div class="${cls}"><span class="hint-icon">${icon}</span>${esc(text)}</div>`;
-          }).join("");
-          showMarkup(d.line_results);
-          setFeedback(d.hint, lineHtml);
-        }
-      } else {
-        // Retype phase: updated markup + brief message
-        showMarkup(d.line_results);
-        setFeedback("Not quite right yet — try again.", null);
-      }
+      // ── Significantly off — always show markup + per-line hints ───────────
+      const studentLines = answer.split("\n");
+      const lineHtml = d.line_results.map((line, i) => {
+        const cls  = line.ok ? "hint-line-ok" : "hint-line-err";
+        const icon = line.ok ? "✓" : "✗";
+        const text = i < studentLines.length ? studentLines[i] : "";
+        return `<div class="${cls}"><span class="hint-icon">${icon}</span>${esc(text)}</div>`;
+      }).join("");
+      showMarkup(d.line_results);
+      setFeedback(d.hint, lineHtml);
     }
   });
 });
