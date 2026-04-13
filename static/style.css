@@ -996,13 +996,63 @@ blockquote em { color: var(--text); }
 }
 
 /* ─── Vocabulary card ────────────────────────────────────────────────────── */
-.vc-card {
+/* ── Flip card wrapper ─────────────────────────────────────────────────────── */
+.vc-card-flip {
+  perspective: 900px;
+  cursor: pointer;
+  user-select: none;
+  margin-bottom: 1rem;
+}
+.vc-card-inner {
+  display: grid;
+  grid-template-areas: "card";
+  transform-style: preserve-3d;
+  transition: transform .42s ease;
+  border-radius: var(--radius-lg);
+}
+.vc-card-inner.flipped { transform: rotateY(180deg); }
+
+.vc-face {
+  grid-area: card;
   background: var(--bg2);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: 1.75rem 2rem;
-  min-height: 160px;
-  margin-bottom: 1rem;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.vc-face-back { transform: rotateY(180deg); }
+
+.vc-face-front {
+  display: flex;
+  flex-direction: column;
+  min-height: 140px;
+}
+.vc-flip-hint {
+  margin-top: auto;
+  padding-top: 1.5rem;
+  font-size: .72rem;
+  color: var(--text-dimmer);
+  text-align: center;
+  letter-spacing: .04em;
+}
+/* Smaller word label shown at top of back face */
+.vc-word-b {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--text-dim);
+  margin-bottom: .15rem;
+}
+.vc-badge-b {
+  display: inline-block;
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  padding: .18rem .55rem;
+  border-radius: 20px;
+  margin-bottom: .6rem;
 }
 .vc-progress {
   font-size: .78rem;

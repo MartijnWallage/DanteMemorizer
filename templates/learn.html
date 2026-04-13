@@ -34,22 +34,36 @@
       <div class="learn-phase-tag">
         Vocabulary &nbsp;<span class="vc-progress" id="vc-progress"></span>
       </div>
-      <div class="vc-card" id="vc-card">
-        <div class="vc-badge"    id="vc-badge"></div>
-        <div class="vc-word"     id="vc-word"></div>
-        <div class="vc-pos"      id="vc-pos"></div>
-        <hr  class="vc-sep"      id="vc-sep"     style="display:none">
-        <div class="vc-english"  id="vc-english"  style="display:none"></div>
-        <div class="vc-example"  id="vc-example"  style="display:none">
-          <div class="vc-ex-it" id="vc-ex-it"></div>
-          <div class="vc-ex-en" id="vc-ex-en"></div>
+
+      <div class="vc-card-flip" id="vc-card-flip">
+        <div class="vc-card-inner" id="vc-card-inner">
+
+          <!-- Front face: Italian word + conjugation table -->
+          <div class="vc-face vc-face-front">
+            <div class="vc-badge" id="vc-badge"></div>
+            <div class="vc-word"  id="vc-word"></div>
+            <div class="vc-pos"   id="vc-pos"></div>
+            <div class="vc-verb-table-wrap" id="vc-verb-table-wrap"></div>
+            <div class="vc-flip-hint">click to flip</div>
+          </div>
+
+          <!-- Back face: English meaning + note + example -->
+          <div class="vc-face vc-face-back">
+            <div class="vc-badge-b" id="vc-badge-b"></div>
+            <div class="vc-word-b"  id="vc-word-b"></div>
+            <hr class="vc-sep">
+            <div class="vc-english" id="vc-english"></div>
+            <div class="vc-note"    id="vc-note"></div>
+            <div class="vc-example" id="vc-example">
+              <div class="vc-ex-it" id="vc-ex-it"></div>
+              <div class="vc-ex-en" id="vc-ex-en"></div>
+            </div>
+          </div>
+
         </div>
-        <div class="vc-note"     id="vc-note"     style="display:none"></div>
-        <div class="vc-verb-table-wrap" id="vc-verb-table-wrap" style="display:none"></div>
       </div>
-      <div class="vc-btns" id="vc-btns">
-        <button class="btn-primary" id="vc-reveal-btn">Show →</button>
-      </div>
+
+      <div class="vc-btns" id="vc-btns" style="display:none"></div>
     </div>
 
     <!-- ── Word order ─────────────────────────────────────────────────────────── -->
@@ -233,6 +247,8 @@ document.getElementById("btn-intro-start").addEventListener("click", () => {
 });
 
 // ── Vocabulary ─────────────────────────────────────────────────────────────────
+let cardRevealed = false;
+
 function showVocabCard() {
   if (vIdx >= vQueue.length) {
     apiAdvancePhase(SENTENCES[curS].id, "vocab", () => showWordOrder());
@@ -244,31 +260,45 @@ function showVocabCard() {
   const wordId = vQueue[vIdx];
   const word   = VOCAB_MAP[wordId];
   const m      = mastery[wordId] || 0;
+  cardRevealed = false;
 
   document.getElementById("vc-progress").textContent =
     `(${vIdx + 1} / ${vQueue.length})`;
 
-  const badge = document.getElementById("vc-badge");
-  badge.textContent = m === 0 ? "NEW" : "REVIEW";
-  badge.className   = "vc-badge " + (m === 0 ? "vc-badge-new" : "vc-badge-review");
+  const badgeCls = "vc-badge " + (m === 0 ? "vc-badge-new" : "vc-badge-review");
+  const badgeTxt = m === 0 ? "NEW" : "REVIEW";
 
+  // Front face: Italian word + verb table
+  const badge = document.getElementById("vc-badge");
+  badge.textContent = badgeTxt;
+  badge.className   = badgeCls;
   document.getElementById("vc-word").textContent = word.italian;
   document.getElementById("vc-pos").textContent  = word.pos;
 
-  // Hide back-of-card content
-  ["vc-sep", "vc-english", "vc-example", "vc-note", "vc-verb-table-wrap"].forEach(id => {
-    document.getElementById(id).style.display = "none";
-  });
+  const verbWrap = document.getElementById("vc-verb-table-wrap");
+  const verbHtml = buildVerbTable(wordId);
+  verbWrap.innerHTML     = verbHtml || "";
+  verbWrap.style.display = verbHtml ? "" : "none";
 
-  // Reset buttons: only show reveal
-  const btns = document.getElementById("vc-btns");
-  btns.innerHTML = "";
-  const revealBtn = document.createElement("button");
-  revealBtn.className   = "btn-primary";
-  revealBtn.textContent = "Show →";
-  revealBtn.id          = "vc-reveal-btn";
-  revealBtn.addEventListener("click", revealCard);
-  btns.appendChild(revealBtn);
+  // Back face: English meaning + note + example
+  const badgeB = document.getElementById("vc-badge-b");
+  badgeB.textContent = badgeTxt;
+  badgeB.className   = badgeCls;
+  document.getElementById("vc-word-b").textContent  = word.italian;
+  document.getElementById("vc-english").textContent = word.english;
+  document.getElementById("vc-note").textContent    = word.note;
+  document.getElementById("vc-ex-it").textContent   = word.example_italian;
+  document.getElementById("vc-ex-en").textContent   = word.example_english;
+
+  // Reset to front instantly (no animation), then re-enable transition
+  const inner = document.getElementById("vc-card-inner");
+  inner.style.transition = "none";
+  inner.classList.remove("flipped");
+  void inner.offsetHeight;          // force reflow so transition removal takes effect
+  inner.style.transition = "";
+
+  document.getElementById("vc-btns").style.display = "none";
+  document.getElementById("vc-btns").innerHTML = "";
 }
 
 // ── Verb conjugation table ─────────────────────────────────────────────────────
@@ -326,44 +356,18 @@ function buildVerbTable(wordId) {
   return html;
 }
 
-function revealCard() {
-  const wordId = vQueue[vIdx];
-  const word   = VOCAB_MAP[wordId];
-  const m      = mastery[wordId] || 0;
-
-  // Show back-of-card content
-  document.getElementById("vc-sep").style.display     = "";
-  document.getElementById("vc-english").style.display = "";
-  document.getElementById("vc-example").style.display = "";
-  document.getElementById("vc-note").style.display    = "";
-
-  document.getElementById("vc-english").textContent = word.english;
-  document.getElementById("vc-ex-it").textContent   = word.example_italian;
-  document.getElementById("vc-ex-en").textContent   = word.example_english;
-  document.getElementById("vc-note").textContent    = word.note;
-
-  const verbWrap = document.getElementById("vc-verb-table-wrap");
-  const verbHtml = buildVerbTable(wordId);
-  if (verbHtml) {
-    verbWrap.innerHTML      = verbHtml;
-    verbWrap.style.display  = "";
-  } else {
-    verbWrap.style.display  = "none";
-  }
-
-  // Swap buttons
+function showVocabButtons() {
   const btns = document.getElementById("vc-btns");
+  const m    = mastery[vQueue[vIdx]] || 0;
   btns.innerHTML = "";
 
   if (m === 0) {
-    // New word — just acknowledge
     const next = document.createElement("button");
     next.className   = "btn-primary";
     next.textContent = "Got it →";
     next.addEventListener("click", () => recordVocab("new"));
     btns.appendChild(next);
   } else {
-    // Review — self-assess
     const knew = document.createElement("button");
     knew.className   = "btn-primary";
     knew.textContent = "✓ I knew it";
@@ -371,12 +375,24 @@ function revealCard() {
     btns.appendChild(knew);
 
     const forgot = document.createElement("button");
-    forgot.className = "btn-ghost";
+    forgot.className   = "btn-ghost";
     forgot.textContent = "✗ Didn't know it";
     forgot.addEventListener("click", () => recordVocab("forgot"));
     btns.appendChild(forgot);
   }
+  btns.style.display = "";
 }
+
+document.getElementById("vc-card-flip").addEventListener("click", () => {
+  if (uiPhase !== "vocab") return;
+  const inner      = document.getElementById("vc-card-inner");
+  const nowFlipped = !inner.classList.contains("flipped");
+  inner.classList.toggle("flipped");
+  if (nowFlipped && !cardRevealed) {
+    cardRevealed = true;
+    showVocabButtons();
+  }
+});
 
 function recordVocab(result) {
   const wordId = vQueue[vIdx];
