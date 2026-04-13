@@ -1029,6 +1029,413 @@ VOCABULARY = [
         ),
         "category": "function",
     },
+
+    # ─── Words from lines 1–9 not yet covered above ───────────────────────────
+
+    # Verbs
+    {
+        "id": "essere",
+        "italian": "essere",
+        "english": "to be",
+        "pos": "verb (essere — key forms)",
+        "example_italian": "ché la diritta via era smarrita",
+        "example_english": "for the straight way was lost",
+        "note": (
+            "The most important Italian verb. Key forms in lines 1–9: "
+            "è (3rd sg. present: is), era (3rd sg. imperfect: was). "
+            "Other forms in Canto I: fu (3rd sg. passato remoto: was, line 19), "
+            "se' / sei (2nd sg. present: you are, line 85), fui (1st sg. p.r.: I was, line 67). "
+            "Era smarrita = imperfect passive: 'was lost / had been lost'."
+        ),
+        "conjugations": {
+            "present":        {"label": "Presente",        "forms": ["sono", "sei", "è",   "siamo",   "siete",   "sono"]},
+            "imperfect":      {"label": "Imperfetto",      "forms": ["ero",  "eri", "era",  "eravamo", "eravate", "erano"]},
+            "passato_remoto": {"label": "Passato remoto",  "forms": ["fui",  "fosti", "fu", "fummo",   "foste",   "furono"]},
+            "future":         {"label": "Futuro",          "forms": ["sarò", "sarai", "sarà", "saremo", "sarete", "saranno"]},
+        },
+    },
+    {
+        "id": "ritrovai",
+        "italian": "ritrovai",
+        "english": "I found myself again; I came to myself",
+        "pos": "verb (1st pers. sg. passato remoto of ritrovarsi)",
+        "example_italian": "mi ritrovai per una selva oscura",
+        "example_english": "I came to myself in a dark wood",
+        "note": (
+            "Passato remoto of ritrovarsi (reflexive: to find oneself again, to come to). "
+            "Mi is the reflexive clitic (myself). Ri- adds the sense of 'back / again'. "
+            "Trovarsi = to find oneself; ritrovarsi = to regain one's bearings."
+        ),
+        "conjugations": {
+            "present":        {"label": "Presente (ritrovarsi)",       "forms": ["mi ritrovo", "ti ritrovi", "si ritrova", "ci ritroviamo", "vi ritrovate", "si ritrovano"]},
+            "passato_remoto": {"label": "Passato remoto (ritrovarsi)", "forms": ["mi ritrovai", "ti ritrovasti", "si ritrovò", "ci ritrovammo", "vi ritrovaste", "si ritrovarono"]},
+        },
+    },
+    {
+        "id": "trovare",
+        "italian": "trovare",
+        "english": "to find",
+        "pos": "verb (trovare)",
+        "example_italian": "ma per trattar del ben ch'i' vi trovai",
+        "example_english": "but in order to speak of the good that I found there",
+        "note": (
+            "From Latin *tropare (to compose, find) via Old Provençal trobar. "
+            "Trovai is 1st person singular passato remoto (I found). "
+            "Cf. ritrovai (line 2, reflexive: I found myself again). "
+            "Related to English 'troubadour' (trovatore). Unchanged in modern Italian."
+        ),
+        "conjugations": {
+            "present":        {"label": "Presente",       "forms": ["trovo", "trovi", "trova", "troviamo", "trovate", "trovano"]},
+            "passato_remoto": {"label": "Passato remoto", "forms": ["trovai", "trovasti", "trovò", "trovammo", "trovaste", "trovarono"]},
+        },
+    },
+    {
+        "id": "dire",
+        "italian": "dire",
+        "english": "to say, to tell",
+        "pos": "verb (dire)",
+        "example_italian": "Ahi quanto a dir qual era è cosa dura",
+        "example_english": "Ah, how hard a thing it is to tell what it was",
+        "note": (
+            "From Latin dicere. Irregular verb. "
+            "Dir is the apocopated infinitive (used in verse for metre). "
+            "Dirò (line 9) is 1st sg. future: I will tell. "
+            "Io non so ben ridir (line 10): I do not well know how to re-tell. "
+            "Related to English 'diction', 'dictate', 'indicate'."
+        ),
+        "conjugations": {
+            "present": {"label": "Presente", "forms": ["dico", "dici", "dice", "diciamo", "dite", "dicono"]},
+            "future":  {"label": "Futuro",   "forms": ["dirò", "dirai", "dirà", "diremo", "direte", "diranno"]},
+        },
+    },
+    {
+        "id": "rinova",
+        "italian": "rinova",
+        "english": "renews",
+        "pos": "verb (3rd pers. sg. present of rinnovare)",
+        "example_italian": "che nel pensier rinova la paura",
+        "example_english": "which in the very thought renews the fear",
+        "note": (
+            "3rd person singular present of rinnovare (to renew). "
+            "Ri- adds 'again': novare (to make new) → rinnovare. "
+            "The subject is che referring back to the selva: "
+            "the wood renews the fear even in thought, even in memory."
+        ),
+        "conjugations": {
+            "present": {"label": "Presente (rinnovare)", "forms": ["rinnovo", "rinnovi", "rinnova", "rinnoviamo", "rinnovate", "rinnovano"]},
+        },
+    },
+    {
+        "id": "trattare",
+        "italian": "trattare",
+        "english": "to treat, to speak of, to deal with",
+        "pos": "verb (trattare)",
+        "example_italian": "ma per trattar del ben ch'i' vi trovai",
+        "example_english": "but in order to speak of the good that I found there",
+        "note": (
+            "From Latin tractare (to handle, manage). "
+            "Trattar is the apocopated infinitive. "
+            "Per trattar = in order to speak of (per + infinitive = purpose). "
+            "Unchanged in modern Italian."
+        ),
+        "conjugations": {
+            "present": {"label": "Presente", "forms": ["tratto", "tratti", "tratta", "trattiamo", "trattate", "trattano"]},
+        },
+    },
+    {
+        "id": "avere",
+        "italian": "avere",
+        "english": "to have",
+        "pos": "verb (avere — key forms)",
+        "example_italian": "dirò de l'altre cose ch'i' v'ho scorte",
+        "example_english": "I will tell of the other things that I have seen there",
+        "note": (
+            "From Latin habere. Key forms: ho (I have), hai (you have), ha (he/she has). "
+            "V'ho = vi ho (I have there). Used as auxiliary to form compound tenses: "
+            "v'ho scorte = I have (there) seen/made out (past participle scorte). "
+            "Unchanged in modern Italian."
+        ),
+        "conjugations": {
+            "present":        {"label": "Presente",       "forms": ["ho",   "hai",    "ha",   "abbiamo", "avete",   "hanno"]},
+            "passato_remoto": {"label": "Passato remoto", "forms": ["ebbi", "avesti", "ebbe", "avemmo",  "aveste",  "ebbero"]},
+        },
+    },
+    {
+        "id": "scorgere",
+        "italian": "scorgere",
+        "english": "to perceive, to see, to make out",
+        "pos": "verb (scorgere)",
+        "example_italian": "dirò de l'altre cose ch'i' v'ho scorte",
+        "example_english": "I will tell of the other things that I have seen there",
+        "note": (
+            "Scorte is the feminine plural past participle, agreeing with cose (f. pl.). "
+            "Scorgere implies perceiving or discerning something, often at a distance. "
+            "V'ho scorte = I have seen/made out there. Still used in modern Italian."
+        ),
+        "conjugations": {
+            "present": {"label": "Presente", "forms": ["scorgo", "scorgi", "scorge", "scorgiamo", "scorgete", "scorgono"]},
+            "past_participle": {"label": "Participio passato", "forms": ["scòrto", "scòrta", "scòrti", "scòrte"]},
+        },
+    },
+
+    # Nouns
+    {
+        "id": "cosa",
+        "italian": "cosa",
+        "english": "thing",
+        "pos": "noun (f.)",
+        "example_italian": "quanto a dir qual era è cosa dura",
+        "example_english": "how hard a thing it is to tell what it was",
+        "note": (
+            "From Latin causa (cause, reason → thing). Plural: cose. "
+            "È cosa dura = it is a hard thing. "
+            "In modern Italian cosa also means 'what' in questions (cosa fai? = what are you doing?). "
+            "Unchanged in modern Italian."
+        ),
+    },
+    {
+        "id": "pensier",
+        "italian": "pensiero",
+        "english": "thought",
+        "pos": "noun (m.)",
+        "example_italian": "che nel pensier rinova la paura",
+        "example_english": "which in the very thought renews the fear",
+        "note": (
+            "Apocopated form of pensiero (loss of final -o before a following consonant). "
+            "From pensare (to think), from Latin pensare. "
+            "Nel pensier = in (the very) thought, just by thinking of it. "
+            "Pensieri (pl.) = thoughts; Dante uses it again at line 57."
+        ),
+    },
+    {
+        "id": "ben",
+        "italian": "bene / ben",
+        "english": "good; well",
+        "pos": "noun (m.) / adverb",
+        "example_italian": "ma per trattar del ben ch'i' vi trovai",
+        "example_english": "but in order to speak of the good that I found there",
+        "note": (
+            "From Latin bonum (noun) and bene (adverb). "
+            "As noun (il bene): the good, the benefit. Del ben = of the good. "
+            "As adverb: well (io non so ben ridir, line 10: I do not well know how to tell). "
+            "Ben (apocopated) used before consonants in verse."
+        ),
+    },
+
+    # Adjectives
+    {
+        "id": "nostra",
+        "italian": "nostro / nostra",
+        "english": "our",
+        "pos": "possessive adjective (1st pers. pl.)",
+        "example_italian": "nel mezzo del cammin di nostra vita",
+        "example_english": "in the middle of the journey of our life",
+        "note": (
+            "From Latin noster. Agrees with the noun it modifies: "
+            "nostro (m. sg.), nostra (f. sg.), nostri (m. pl.), nostre (f. pl.). "
+            "Nostra vita = our life (vita is feminine). "
+            "In the opening line, nostra includes all humanity in Dante's journey. "
+            "Unchanged in modern Italian."
+        ),
+    },
+    {
+        "id": "duro",
+        "italian": "duro / dura",
+        "english": "hard, difficult",
+        "pos": "adjective",
+        "example_italian": "quanto a dir qual era è cosa dura",
+        "example_english": "how hard a thing it is to tell what it was",
+        "note": (
+            "From Latin durus (hard, tough). Dura (feminine) agrees with cosa (f.). "
+            "Metaphorical: hard = difficult, heavy. "
+            "Related to English 'durable', 'endure', 'duration'. Unchanged in modern Italian."
+        ),
+    },
+    {
+        "id": "esta",
+        "italian": "esta / esto",
+        "english": "this (archaic/poetic)",
+        "pos": "demonstrative adjective (f. sg.)",
+        "example_italian": "esta selva selvaggia e aspra e forte",
+        "example_english": "this wood savage and harsh and fierce",
+        "note": (
+            "Archaic/poetic form of questa (this, feminine). From Latin ista. "
+            "Dante prefers esta/esto in verse for metrical reasons. "
+            "Modern Italian: questa selva. "
+            "Esto loco selvaggio (line 93) = this savage place."
+        ),
+    },
+    {
+        "id": "selvaggio",
+        "italian": "selvaggio / selvaggia",
+        "english": "savage, wild",
+        "pos": "adjective",
+        "example_italian": "esta selva selvaggia e aspra e forte",
+        "example_english": "this wood savage and harsh and fierce",
+        "note": (
+            "Derived from selva + -aggio, from Latin silvaticus (of the forest). "
+            "Selvaggia (feminine) agrees with selva (f.). "
+            "The line echoes the noun: selva selvaggia = wild wood (the adjective shares its root). "
+            "Related to English 'savage' via Old French sauvage, from Latin silvaticus."
+        ),
+    },
+    {
+        "id": "aspro",
+        "italian": "aspro / aspra",
+        "english": "harsh, rough",
+        "pos": "adjective",
+        "example_italian": "esta selva selvaggia e aspra e forte",
+        "example_english": "this wood savage and harsh and fierce",
+        "note": (
+            "From Latin asper (rough, harsh). Aspra (feminine) agrees with selva (f.). "
+            "The three adjectives selvaggia, aspra, forte build up an overwhelming picture "
+            "of the wood. Related to English 'asperity'. Unchanged in modern Italian."
+        ),
+    },
+    {
+        "id": "forte",
+        "italian": "forte",
+        "english": "fierce, strong; hard",
+        "pos": "adjective / adverb",
+        "example_italian": "esta selva selvaggia e aspra e forte",
+        "example_english": "this wood savage and harsh and fierce",
+        "note": (
+            "From Latin fortis (strong, brave). The climax of the three-adjective description. "
+            "As adjective: strong, fierce. As adverb: strongly, hard. "
+            "Related to English 'force', 'fort', 'comfort'. Unchanged in modern Italian."
+        ),
+    },
+    {
+        "id": "amaro",
+        "italian": "amaro / amara",
+        "english": "bitter",
+        "pos": "adjective",
+        "example_italian": "Tant'è amara che poco è più morte",
+        "example_english": "So bitter is it that death is scarcely more",
+        "note": (
+            "From Latin amarus (bitter). Amara (feminine) agrees with selva understood. "
+            "Tant'è amara: so bitter is it. The predicate adjective follows è. "
+            "Related to English 'amaretto', 'amaranth'. Unchanged in modern Italian."
+        ),
+    },
+    {
+        "id": "altro",
+        "italian": "altro / altra",
+        "english": "other, else; another",
+        "pos": "adjective / pronoun",
+        "example_italian": "dirò de l'altre cose ch'i' v'ho scorte",
+        "example_english": "I will tell of the other things that I have seen there",
+        "note": (
+            "From Latin alter (the other of two). Altre is feminine plural, agreeing with cose. "
+            "L'altre = le altre (elision of le before a vowel). De l'altre = of the others. "
+            "Altro viaggio (line 91): another way. Unchanged in modern Italian."
+        ),
+    },
+
+    # Adverbs and pronouns (function-word-like)
+    {
+        "id": "quanto",
+        "italian": "quanto",
+        "english": "how much; as much; how",
+        "pos": "adverb / adjective / pronoun",
+        "example_italian": "Ahi quanto a dir qual era è cosa dura",
+        "example_english": "Ah, how hard a thing it is to tell what it was",
+        "note": (
+            "From Latin quantum. As exclamative adverb: how (much). "
+            "Quanto è dura = how hard it is. "
+            "As relative pronoun: as much as. As adjective it agrees in gender/number. "
+            "Unchanged in modern Italian."
+        ),
+        "category": "function",
+    },
+    {
+        "id": "qual",
+        "italian": "quale / qual",
+        "english": "which, what, as",
+        "pos": "adjective / pronoun",
+        "example_italian": "Ahi quanto a dir qual era è cosa dura",
+        "example_english": "Ah, how hard a thing it is to tell what it was",
+        "note": (
+            "From Latin qualis (of what kind). Qual is the apocopated form used before consonants. "
+            "Dir qual era = to tell what it was (qual = what, of what kind). "
+            "Also used in comparisons: tal … qual = such … as (line 55). "
+            "Unchanged in modern Italian."
+        ),
+        "category": "function",
+    },
+    {
+        "id": "tanto",
+        "italian": "tanto / tant'",
+        "english": "so much, so",
+        "pos": "adverb / adjective",
+        "example_italian": "Tant'è amara che poco è più morte",
+        "example_english": "So bitter is it that death is scarcely more",
+        "note": (
+            "From Latin tantus. Tant'è = tanto è (elision before è): so much is it, so bitter is it. "
+            "Tanto … che = so … that (result clause). "
+            "Unchanged in modern Italian."
+        ),
+        "category": "function",
+    },
+    {
+        "id": "poco",
+        "italian": "poco",
+        "english": "little, a little; scarcely",
+        "pos": "adverb / adjective",
+        "example_italian": "Tant'è amara che poco è più morte",
+        "example_english": "So bitter is it that death is scarcely more",
+        "note": (
+            "From Latin paucus (few, little). As adverb: a little, scarcely "
+            "(poco più morte = death is little more, i.e. scarcely worse than this wood). "
+            "Un poco = a little. Unchanged in modern Italian."
+        ),
+        "category": "function",
+    },
+    {
+        "id": "piu",
+        "italian": "più",
+        "english": "more",
+        "pos": "adverb / adjective",
+        "example_italian": "Tant'è amara che poco è più morte",
+        "example_english": "So bitter is it that death is scarcely more",
+        "note": (
+            "From Latin plus (more). Forms comparatives: più amara = more bitter. "
+            "Non … più = no longer. Il più = the most. "
+            "Più … che / di = more … than. Unchanged in modern Italian."
+        ),
+        "category": "function",
+    },
+    {
+        "id": "adv_vi",
+        "italian": "vi",
+        "english": "there; to you; yourselves",
+        "pos": "adverb of place / pronoun clitic (2nd pers. pl.)",
+        "example_italian": "ma per trattar del ben ch'i' vi trovai",
+        "example_english": "but in order to speak of the good that I found there",
+        "note": (
+            "As adverb (Latin ibi): there, in that place. Vi trovai = I found there. "
+            "V' is the elided form before a vowel: v'ho scorte (line 9), v'intrai (line 10). "
+            "Also a clitic pronoun: 2nd person plural (to you / yourselves). "
+            "Context determines which: after a verb of motion or 'trovare', vi = there."
+        ),
+        "category": "function",
+    },
+
+    # Indefinite article
+    {
+        "id": "art_un",
+        "italian": "un / una",
+        "english": "a, an",
+        "pos": "indefinite article",
+        "example_italian": "mi ritrovai per una selva oscura",
+        "example_english": "I came to myself in a dark wood",
+        "note": (
+            "Forms: un (m., before most consonants and vowels), uno (m., before s+cons./z/gn), "
+            "una (f., before consonants), un' (f., before vowels). "
+            "Una selva = a wood (selva is feminine). Unchanged in modern Italian."
+        ),
+        "category": "function",
+    },
 ]
 
 # ─── Word-order exercises ──────────────────────────────────────────────────────
@@ -1469,19 +1876,44 @@ SENTENCES = [
         ),
         # Words from VOCABULARY that appear in this tercet, in order
         "vocab_ids": [
-            "nel", "mezzo", "del", "cammin", "prep_di", "vita",
-            "pron_mi", "prep_per", "selva", "oscura",
-            "conj_ché", "art_la", "diritta", "via", "smarrita",
+            "nel", "mezzo", "del", "cammin", "prep_di", "nostra", "vita",
+            "pron_mi", "ritrovai", "prep_per", "art_un", "selva", "oscura",
+            "conj_ché", "art_la", "diritta", "via", "essere", "smarrita",
         ],
-        "word_order": {
-            "line": 2,
-            "tokens": ["mi", "ritrovai", "per", "una", "selva", "oscura,"],
-            "translation": "I came to myself in a dark wood,",
-            "hint": (
-                "Ritrovai is passato remoto of ritrovarsi (reflexive: to find oneself again). "
-                "Mi is the reflexive pronoun. Per = in, through."
-            ),
+        # person_idx: 0=io 1=tu 2=egli 3=noi 4=voi 5=essi
+        "verb_highlights": {
+            "essere":   [{"tense": "imperfect",      "person_idx": 2}],  # era
+            "ritrovai": [{"tense": "passato_remoto", "person_idx": 0}],  # mi ritrovai
         },
+        "word_order": [
+            {
+                "line": 1,
+                "tokens": ["Nel", "mezzo", "del", "cammin", "di", "nostra", "vita"],
+                "translation": "In the middle of the journey of our life",
+                "hint": (
+                    "Del = di + il. The poem opens in medias res — Dante is midway through life's journey. "
+                    "Nostra vita = our life (nostra is feminine, agreeing with vita)."
+                ),
+            },
+            {
+                "line": 2,
+                "tokens": ["mi", "ritrovai", "per", "una", "selva", "oscura,"],
+                "translation": "I came to myself in a dark wood,",
+                "hint": (
+                    "Ritrovai is passato remoto of ritrovarsi (reflexive: to find oneself again). "
+                    "Mi is the reflexive pronoun. Per = in, through."
+                ),
+            },
+            {
+                "line": 3,
+                "tokens": ["ché", "la", "diritta", "via", "era", "smarrita."],
+                "translation": "for the straight way was lost.",
+                "hint": (
+                    "Ché = because, for (note the grave accent — different from che, which/that). "
+                    "Era smarrita: imperfect passive of smarrire (to lose one's way)."
+                ),
+            },
+        ],
         "translation": {
             "lines": (1, 3),
             "prompt": (
@@ -1509,21 +1941,55 @@ SENTENCES = [
             "esta selva selvaggia e aspra e forte\n"
             "che nel pensier rinova la paura!"
         ),
-        # New: interj_ahi, prep_a, conj_e, conj_che, paura
-        # Review: selva, nel, art_la
+        # New: interj_ahi, quanto, prep_a, dire, qual, essere, cosa, duro,
+        #      esta, selvaggio, conj_e, aspro, forte, pensier, rinova
+        # Review: selva, conj_che, nel, art_la, paura
         "vocab_ids": [
-            "interj_ahi", "prep_a", "selva", "conj_e",
-            "conj_che", "nel", "art_la", "paura",
+            "interj_ahi", "quanto", "prep_a", "dire", "qual", "essere",
+            "cosa", "duro", "esta", "selva", "selvaggio", "conj_e",
+            "aspro", "forte", "conj_che", "nel", "pensier", "rinova",
+            "art_la", "paura",
         ],
-        "word_order": {
-            "line": 6,
-            "tokens": ["che", "nel", "pensier", "rinova", "la", "paura!"],
-            "translation": "which in thought renews the fear!",
-            "hint": (
-                "Che = which (relative pronoun, referring back to the wood). "
-                "Nel = in + il. Rinova is 3rd person singular present indicative."
-            ),
+        # essere appears as both è (present 3sg) and era (imperfect 3sg) in line 4
+        "verb_highlights": {
+            "essere": [
+                {"tense": "present",   "person_idx": 2},   # è
+                {"tense": "imperfect", "person_idx": 2},   # era
+            ],
+            "dire":   [],   # dir is an infinitive — no cell to highlight
+            "rinova": [{"tense": "present", "person_idx": 2}],  # rinnova/rinova
         },
+        "word_order": [
+            {
+                "line": 4,
+                "tokens": ["Ahi", "quanto", "a", "dir", "qual", "era", "è", "cosa", "dura"],
+                "translation": "Ah, how hard a thing it is to tell what it was",
+                "hint": (
+                    "Ahi = alas! Quanto = how (much). Dir qual era = to tell what it was. "
+                    "È cosa dura = it is a hard thing. "
+                    "Note era (imperfect: was) and è (present: is) side by side."
+                ),
+            },
+            {
+                "line": 5,
+                "tokens": ["esta", "selva", "selvaggia", "e", "aspra", "e", "forte"],
+                "translation": "this wood savage and harsh and fierce",
+                "hint": (
+                    "Esta = questa (this), archaic poetic form. "
+                    "Three adjectives build up the description: selvaggia (savage), aspra (harsh), forte (fierce). "
+                    "All feminine, agreeing with selva (f.)."
+                ),
+            },
+            {
+                "line": 6,
+                "tokens": ["che", "nel", "pensier", "rinova", "la", "paura!"],
+                "translation": "which in thought renews the fear!",
+                "hint": (
+                    "Che = which (relative pronoun, referring back to the wood). "
+                    "Nel = in + il. Rinova is 3rd person singular present indicative."
+                ),
+            },
+        ],
         "translation": {
             "lines": (4, 6),
             "prompt": (
@@ -1551,20 +2017,53 @@ SENTENCES = [
             "ma per trattar del ben ch'i' vi trovai,\n"
             "dirò de l'altre cose ch'i' v'ho scorte."
         ),
-        # New: morte, conj_ma
-        # Review: conj_che, prep_per, del
+        # New: tanto, essere, amaro, poco, piu, trattare, ben, adv_vi,
+        #      trovare, dire, altro, cosa, avere, scorgere
+        # Review: conj_che, morte, conj_ma, prep_per, del
         "vocab_ids": [
-            "conj_che", "morte", "conj_ma", "prep_per", "del",
+            "tanto", "essere", "amaro", "conj_che", "poco", "piu", "morte",
+            "conj_ma", "prep_per", "trattare", "del", "ben", "adv_vi",
+            "trovare", "dire", "altro", "cosa", "avere", "scorgere",
         ],
-        "word_order": {
-            "line": 8,
-            "tokens": ["ma", "per", "trattar", "del", "ben", "ch'i'", "vi", "trovai,"],
-            "translation": "but in order to treat of the good that I found there,",
-            "hint": (
-                "Ma = but. Per + infinitive = in order to (trattar = to treat, speak of). "
-                "Del = di + il. Ch'i' = che io (elided). Vi = there (adverb)."
-            ),
+        "verb_highlights": {
+            "essere":   [{"tense": "present",        "person_idx": 2}],  # è
+            "trattare": [],   # trattar is infinitive
+            "trovare":  [{"tense": "passato_remoto", "person_idx": 0}],  # trovai
+            "dire":     [{"tense": "future",         "person_idx": 0}],  # dirò
+            "avere":    [{"tense": "present",        "person_idx": 0}],  # ho
+            "scorgere": [{"tense": "past_participle","person_idx": 3}],  # scòrte (f.pl.)
         },
+        "word_order": [
+            {
+                "line": 7,
+                "tokens": ["Tant'è", "amara", "che", "poco", "è", "più", "morte;"],
+                "translation": "So bitter is it that death is scarcely more;",
+                "hint": (
+                    "Tant'è = tanto è (elision before è): so much is it, so bitter. "
+                    "Poco è più morte = death is little more (scarcely worse than the wood). "
+                    "Note che here introduces a result clause (so … that)."
+                ),
+            },
+            {
+                "line": 8,
+                "tokens": ["ma", "per", "trattar", "del", "ben", "ch'i'", "vi", "trovai,"],
+                "translation": "but in order to speak of the good that I found there,",
+                "hint": (
+                    "Ma = but. Per + infinitive = in order to (trattar = to treat, speak of). "
+                    "Del = di + il. Ch'i' = che io (elided). Vi = there (adverb)."
+                ),
+            },
+            {
+                "line": 9,
+                "tokens": ["dirò", "de", "l'altre", "cose", "ch'i'", "v'ho", "scorte."],
+                "translation": "I will tell of the other things that I have seen there.",
+                "hint": (
+                    "Dirò = I will tell (1st sg. future of dire). "
+                    "De l'altre = di le altre = of the other. "
+                    "Ch'i' = che io. V'ho scorte = vi ho scorgere, I have perceived/seen there."
+                ),
+            },
+        ],
         "translation": {
             "lines": (7, 9),
             "prompt": (

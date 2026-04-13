@@ -116,17 +116,27 @@ def compare_translation(student_text, correct_text):
 
 @app.route("/")
 def index():
-    p = get_progress()
+    learn_phases = session.get("learn_phase", {})
+    sentence_statuses = []
+    for i, s in enumerate(SENTENCES):
+        phase = learn_phases.get(s["id"], "vocab")
+        if phase == "done":
+            status = "done"
+        elif i == 0 or learn_phases.get(SENTENCES[i - 1]["id"], "vocab") == "done":
+            status = "active"
+        else:
+            status = "locked"
+        sentence_statuses.append({
+            "lines": s["lines"],
+            "phase": phase,
+            "status": status,
+        })
+    sentences_done = sum(1 for ss in sentence_statuses if ss["status"] == "done")
     return render_template(
         "index.html",
-        progress=p,
-        vocab_total=len(VOCABULARY),
-        word_order_total=len(WORD_ORDER),
-        translation_total=len(TRANSLATION),
-        vocab_threshold=VOCAB_THRESHOLD,
-        word_order_threshold=WORD_ORDER_THRESHOLD,
-        word_order_unlocked=word_order_unlocked(p),
-        translation_unlocked=translation_unlocked(p),
+        sentence_statuses=sentence_statuses,
+        sentences_done=sentences_done,
+        sentences_total=len(SENTENCES),
     )
 
 
@@ -351,29 +361,39 @@ def api_learn_phase_advance():
 
 @app.route("/api/learn/word-order/check", methods=["POST"])
 def api_learn_word_order_check():
-    data    = request.get_json()
-    sent_id = data.get("sentence_id")
-    answer  = data.get("answer", [])
+    data      = request.get_json()
+    sent_id   = data.get("sentence_id")
+    answer    = data.get("answer", [])
+    line_idx  = data.get("line_index", 0)
 
     sentence = next((s for s in SENTENCES if s["id"] == sent_id), None)
     if not sentence:
         return jsonify({"error": "not found"}), 404
 
-    wo = sentence["word_order"]
+    wo_list = sentence["word_order"]
+    if line_idx < 0 or line_idx >= len(wo_list):
+        return jsonify({"error": "invalid line_index"}), 400
+
+    wo          = wo_list[line_idx]
     results     = token_match(answer, wo["tokens"])
     all_correct = all(r["ok"] for r in results) and len(answer) == len(wo["tokens"])
+    is_last     = line_idx == len(wo_list) - 1
 
-    if all_correct:
+    phase_advanced = False
+    if all_correct and is_last:
         phases = session.get("learn_phase", {})
         if phases.get(sent_id, "vocab") == "word_order":
             phases[sent_id] = "translation"
             session["learn_phase"] = phases
+            phase_advanced = True
 
     return jsonify({
-        "correct":     all_correct,
-        "results":     results,
-        "translation": wo["translation"],
-        "hint":        wo["hint"],
+        "correct":        all_correct,
+        "results":        results,
+        "translation":    wo["translation"],
+        "hint":           wo["hint"],
+        "is_last":        is_last,
+        "phase_advanced": phase_advanced,
     })
 
 

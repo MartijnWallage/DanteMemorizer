@@ -10,89 +10,51 @@
     <p class="hero-attribution">— Dante Alighieri, <em>Inferno</em> I, 1–3</p>
   </div>
   <p class="hero-intro">
-    Learn to read these words in the original medieval Italian.
-    Vocabulary, word order, and translation — one tercet at a time.
+    Learn to read these words in the original medieval Italian —
+    one tercet at a time.
   </p>
 </section>
 
-<section class="stages">
+<section class="learn-entry-section">
+  <a href="/learn" class="learn-entry-card">
+    <div class="learn-entry-header">
+      <span class="learn-entry-title">Learn</span>
+      <span class="learn-entry-sub">vocabulary · word order · translation</span>
+    </div>
 
-  <a href="/flashcards" class="stage-card stage-vocab">
-    <div class="stage-number">I</div>
-    <div class="stage-body">
-      <h2>Vocabulary</h2>
-      <p>
-        Thirty words drawn directly from Canto I, each shown with its example line
-        and a note on grammar or etymology.
-      </p>
-      <div class="stage-progress">
-        <div class="progress-bar">
-          <div class="progress-fill"
-               style="width: {{ [progress.vocab_known|length / vocab_total * 100, 100]|min }}%"></div>
-        </div>
-        <span class="progress-label">
-          {{ progress.vocab_known|length }} / {{ vocab_total }} known
-        </span>
+    <div class="passage-row">
+      {% for ss in sentence_statuses %}
+      <div class="passage-chip passage-{{ ss.status }}">
+        <span class="passage-lines">Lines {{ ss.lines[0] }}–{{ ss.lines[1] }}</span>
+        {% if ss.status == "done" %}
+          <span class="passage-icon">✓</span>
+        {% elif ss.status == "active" %}
+          <span class="passage-icon">→</span>
+        {% else %}
+          <span class="passage-icon">·</span>
+        {% endif %}
       </div>
+      {% endfor %}
     </div>
-  </a>
 
-  <a href="/word-order"
-     class="stage-card stage-word-order {% if not word_order_unlocked %}stage-locked{% endif %}">
-    <div class="stage-number">II</div>
-    <div class="stage-body">
-      <h2>Word Order</h2>
-      {% if word_order_unlocked %}
-        <p>
-          Ten lines, each shuffled into a word pool. Click the words back into
-          Dante's original order.
-        </p>
-        <div class="stage-progress">
-          <div class="progress-bar">
-            <div class="progress-fill"
-                 style="width: {{ [progress.word_order_done|length / word_order_total * 100, 100]|min }}%"></div>
-          </div>
-          <span class="progress-label">
-            {{ progress.word_order_done|length }} / {{ word_order_total }} done
-          </span>
-        </div>
+    <div class="learn-entry-progress">
+      <div class="progress-bar">
+        <div class="progress-fill"
+             style="width: {{ [sentences_done / sentences_total * 100, 100]|min }}%"></div>
+      </div>
+      <span class="progress-label">{{ sentences_done }} / {{ sentences_total }} passages complete</span>
+    </div>
+
+    <div class="learn-entry-cta">
+      {% if sentences_done == sentences_total %}
+        All done!
+      {% elif sentences_done > 0 %}
+        Continue →
       {% else %}
-        <p class="locked-msg">
-          Learn {{ vocab_threshold }} vocabulary words to unlock this stage.<br>
-          <span class="locked-count">{{ progress.vocab_known|length }} / {{ vocab_threshold }} so far.</span>
-        </p>
+        Begin →
       {% endif %}
     </div>
   </a>
-
-  <a href="/translation"
-     class="stage-card stage-translation {% if not translation_unlocked %}stage-locked{% endif %}">
-    <div class="stage-number">III</div>
-    <div class="stage-body">
-      <h2>Translation</h2>
-      {% if translation_unlocked %}
-        <p>
-          Ten key passages. Read the Italian, write your translation,
-          then compare it to a literal scholarly rendering.
-        </p>
-        <div class="stage-progress">
-          <div class="progress-bar">
-            <div class="progress-fill"
-                 style="width: {{ [progress.translation_done|length / translation_total * 100, 100]|min }}%"></div>
-          </div>
-          <span class="progress-label">
-            {{ progress.translation_done|length }} / {{ translation_total }} done
-          </span>
-        </div>
-      {% else %}
-        <p class="locked-msg">
-          Complete {{ word_order_threshold }} word-order exercises to unlock this stage.<br>
-          <span class="locked-count">{{ progress.word_order_done|length }} / {{ word_order_threshold }} so far.</span>
-        </p>
-      {% endif %}
-    </div>
-  </a>
-
 </section>
 
 <div class="reset-bar">

@@ -45,6 +45,7 @@
           <div class="vc-ex-en" id="vc-ex-en"></div>
         </div>
         <div class="vc-note"     id="vc-note"     style="display:none"></div>
+        <div class="vc-verb-table-wrap" id="vc-verb-table-wrap" style="display:none"></div>
       </div>
       <div class="vc-btns" id="vc-btns">
         <button class="btn-primary" id="vc-reveal-btn">Show →</button>
@@ -53,7 +54,7 @@
 
     <!-- ── Word order ─────────────────────────────────────────────────────────── -->
     <div id="ph-wo" style="display:none">
-      <div class="learn-phase-tag">Word Order</div>
+      <div class="learn-phase-tag">Word Order &nbsp;<span class="wo-progress" id="wo-progress"></span></div>
       <div class="wo-line-number" id="wo-line-num"></div>
       <div class="wo-answer-label">Your line:</div>
       <div class="wo-answer" id="wo-answer"></div>
@@ -124,6 +125,7 @@ let vIdx      = 0;
 // Word-order
 let woAnswer  = [];
 let woPool    = [];
+let woLineIdx = 0;
 
 // Translation
 let trPhase   = "normal";  // "normal" | "retype" | "done"
@@ -254,7 +256,7 @@ function showVocabCard() {
   document.getElementById("vc-pos").textContent  = word.pos;
 
   // Hide back-of-card content
-  ["vc-sep", "vc-english", "vc-example", "vc-note"].forEach(id => {
+  ["vc-sep", "vc-english", "vc-example", "vc-note", "vc-verb-table-wrap"].forEach(id => {
     document.getElementById(id).style.display = "none";
   });
 
@@ -267,6 +269,61 @@ function showVocabCard() {
   revealBtn.id          = "vc-reveal-btn";
   revealBtn.addEventListener("click", revealCard);
   btns.appendChild(revealBtn);
+}
+
+// ── Verb conjugation table ─────────────────────────────────────────────────────
+const PERSONS = ["io", "tu", "egli / ella", "noi", "voi", "essi / esse"];
+
+function buildVerbTable(wordId) {
+  const word = VOCAB_MAP[wordId];
+  if (!word.conjugations) return null;
+
+  const conj       = word.conjugations;
+  const sent       = SENTENCES[curS];
+  const highlights = (sent.verb_highlights || {})[wordId] || [];
+
+  // Determine tense columns: always "present", plus any non-present, non-pp tense from highlights
+  const extraTenses = [];
+  const seenTenses  = new Set(["present"]);
+  for (const h of highlights) {
+    if (h.tense !== "present" && h.tense !== "past_participle" && conj[h.tense] && !seenTenses.has(h.tense)) {
+      extraTenses.push(h.tense);
+      seenTenses.add(h.tense);
+    }
+  }
+  const tenseCols = ["present", ...extraTenses];
+
+  // Build highlight lookup: "tense:personIdx" → true
+  const hlSet = new Set(highlights.map(h => `${h.tense}:${h.person_idx}`));
+  const hasPP = highlights.some(h => h.tense === "past_participle");
+  const ppHL  = new Set(highlights.filter(h => h.tense === "past_participle").map(h => h.person_idx));
+
+  let html = `<table class="vc-verb-table"><thead><tr><th></th>`;
+  for (const t of tenseCols) html += `<th>${conj[t].label}</th>`;
+  html += `</tr></thead><tbody>`;
+
+  for (let i = 0; i < 6; i++) {
+    html += `<tr><td>${PERSONS[i]}</td>`;
+    for (const t of tenseCols) {
+      const isHL = hlSet.has(`${t}:${i}`);
+      html += `<td${isHL ? ' class="vc-verb-hl"' : ""}>${esc(conj[t].forms[i])}</td>`;
+    }
+    html += `</tr>`;
+  }
+  html += `</tbody></table>`;
+
+  // Past participle section (if the verb has one)
+  if (conj.past_participle) {
+    const pp     = conj.past_participle;
+    const ppLbls = ["m. sg.", "f. sg.", "m. pl.", "f. pl."];
+    const parts  = pp.forms.map((f, i) => {
+      const isHL = ppHL.has(i);
+      return isHL ? `<span class="vc-verb-hl">${esc(f)}</span>` : esc(f);
+    });
+    html += `<div class="vc-verb-pp"><strong>${pp.label}:</strong> ${parts.join(" · ")}</div>`;
+  }
+
+  return html;
 }
 
 function revealCard() {
@@ -284,6 +341,15 @@ function revealCard() {
   document.getElementById("vc-ex-it").textContent   = word.example_italian;
   document.getElementById("vc-ex-en").textContent   = word.example_english;
   document.getElementById("vc-note").textContent    = word.note;
+
+  const verbWrap = document.getElementById("vc-verb-table-wrap");
+  const verbHtml = buildVerbTable(wordId);
+  if (verbHtml) {
+    verbWrap.innerHTML      = verbHtml;
+    verbWrap.style.display  = "";
+  } else {
+    verbWrap.style.display  = "none";
+  }
 
   // Swap buttons
   const btns = document.getElementById("vc-btns");
@@ -327,14 +393,22 @@ function recordVocab(result) {
 
 // ── Word order ─────────────────────────────────────────────────────────────────
 function showWordOrder() {
-  uiPhase = "word_order";
+  uiPhase   = "word_order";
+  woLineIdx = 0;
   showPhase("ph-wo");
-  const wo = SENTENCES[curS].word_order;
+  loadWoLine();
+}
+
+function loadWoLine() {
+  const woList = SENTENCES[curS].word_order;
+  const wo     = woList[woLineIdx];
 
   woAnswer = [];
   woPool   = [...wo.tokens];
   shuffleArr(woPool);
 
+  document.getElementById("wo-progress").textContent =
+    `(${woLineIdx + 1} / ${woList.length})`;
   document.getElementById("wo-line-num").textContent  = "Line " + wo.line;
   document.getElementById("wo-feedback").style.display = "none";
   document.getElementById("wo-check").disabled         = true;
@@ -388,9 +462,9 @@ document.getElementById("wo-check").addEventListener("click", () => {
   fetch("/api/learn/word-order/check", {
     method: "POST",
     headers: {"Content-Type": "application/json"},
-    body: JSON.stringify({sentence_id: sent.id, answer: woAnswer}),
+    body: JSON.stringify({sentence_id: sent.id, answer: woAnswer, line_index: woLineIdx}),
   }).then(r => r.json()).then(d => {
-    if (d.correct) {
+    if (d.correct && d.phase_advanced) {
       sPhase[sent.id] = "translation";
       renderTabs();
     }
@@ -403,10 +477,12 @@ function showWoFeedback(d) {
   const resultEl = document.getElementById("wo-result");
   resultEl.innerHTML = "";
 
+  const nextBtn = document.getElementById("wo-next");
   if (d.correct) {
     resultEl.textContent = "✓ Correct!";
     resultEl.className   = "wo-result wo-correct";
-    document.getElementById("wo-next").style.display = "";
+    nextBtn.textContent  = d.is_last ? "Next: Translation →" : "Next line →";
+    nextBtn.style.display = "";
   } else {
     resultEl.className = "wo-result wo-wrong";
     d.results.forEach(r => {
@@ -417,17 +493,23 @@ function showWoFeedback(d) {
       resultEl.appendChild(span);
       resultEl.appendChild(document.createTextNode(" "));
     });
-    document.getElementById("wo-next").style.display = "none";
+    nextBtn.style.display = "none";
   }
 
   document.getElementById("wo-translation").textContent = d.translation;
   const hintEl = document.getElementById("wo-hint");
-  hintEl.textContent    = d.hint;
-  hintEl.style.display  = d.hint ? "" : "none";
+  hintEl.textContent   = d.hint;
+  hintEl.style.display = d.hint ? "" : "none";
 }
 
 document.getElementById("wo-next").addEventListener("click", () => {
-  showTranslation();
+  const woList = SENTENCES[curS].word_order;
+  if (woLineIdx + 1 < woList.length) {
+    woLineIdx++;
+    loadWoLine();
+  } else {
+    showTranslation();
+  }
 });
 
 // ── Translation ────────────────────────────────────────────────────────────────

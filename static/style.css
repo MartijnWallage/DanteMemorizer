@@ -187,7 +187,89 @@ button, .btn-primary {
   line-height: 1.6;
 }
 
-/* ─── Stage cards ───────────────────────────────────────────────────────── */
+/* ─── Learn entry card (home page) ─────────────────────────────────────── */
+.learn-entry-section {
+  max-width: 480px;
+  margin: 0 auto 2rem;
+}
+
+.learn-entry-card {
+  display: block;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem 2rem;
+  transition: border-color .2s, background .2s;
+  cursor: pointer;
+  text-decoration: none;
+}
+.learn-entry-card:hover {
+  border-color: var(--gold-dim);
+  background: var(--bg3);
+}
+
+.learn-entry-header {
+  display: flex;
+  align-items: baseline;
+  gap: .75rem;
+  margin-bottom: 1.25rem;
+}
+.learn-entry-title {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  color: var(--gold);
+}
+.learn-entry-sub {
+  font-size: .8rem;
+  color: var(--text-dim);
+}
+
+.passage-row {
+  display: flex;
+  gap: .6rem;
+  margin-bottom: 1.1rem;
+  flex-wrap: wrap;
+}
+.passage-chip {
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+  border-radius: var(--radius);
+  padding: .3rem .65rem;
+  font-size: .78rem;
+  border: 1px solid transparent;
+}
+.passage-done {
+  background: rgba(180, 140, 50, 0.12);
+  border-color: var(--gold-dim);
+  color: var(--gold);
+}
+.passage-active {
+  background: rgba(180, 140, 50, 0.06);
+  border-color: var(--border);
+  color: var(--text-main);
+}
+.passage-locked {
+  background: transparent;
+  border-color: var(--border);
+  color: var(--text-dimmer);
+  opacity: .5;
+}
+.passage-lines { font-family: var(--font-serif); font-style: italic; }
+.passage-icon  { font-style: normal; font-size: .7rem; }
+
+.learn-entry-progress {
+  margin-bottom: 1.25rem;
+}
+
+.learn-entry-cta {
+  text-align: right;
+  font-size: .85rem;
+  color: var(--gold);
+  font-family: var(--font-serif);
+}
+
+/* ─── Stage cards (flashcards / word-order / translation pages) ─────────── */
 .stages {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -985,6 +1067,64 @@ blockquote em { color: var(--text); }
   color: var(--text-dim);
   line-height: 1.65;
 }
+
+/* ── Verb conjugation table ─────────────────────────────────────────────────── */
+.vc-verb-table-wrap {
+  margin-top: 1rem;
+  overflow-x: auto;
+}
+.vc-verb-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .82rem;
+}
+.vc-verb-table th {
+  background: #1a1a2e;
+  color: var(--gold);
+  font-weight: 600;
+  padding: .3rem .6rem;
+  text-align: left;
+  border-bottom: 1px solid var(--gold-dim);
+  white-space: nowrap;
+}
+.vc-verb-table th:first-child {
+  color: var(--text-dim);
+  font-weight: 400;
+}
+.vc-verb-table td {
+  padding: .28rem .6rem;
+  border-bottom: 1px solid #1e1e2e;
+  color: var(--text-main);
+}
+.vc-verb-table tr:last-child td { border-bottom: none; }
+.vc-verb-table td:first-child {
+  color: var(--text-dim);
+  font-style: italic;
+  white-space: nowrap;
+}
+.vc-verb-hl {
+  background: rgba(200, 160, 60, 0.18);
+  color: var(--gold) !important;
+  font-weight: 700;
+  border-radius: 3px;
+}
+.vc-verb-pp {
+  margin-top: .6rem;
+  font-size: .82rem;
+  color: var(--text-dim);
+}
+.vc-verb-pp strong {
+  color: var(--text-main);
+  font-weight: 600;
+}
+.vc-verb-pp .vc-verb-hl {
+  background: rgba(200, 160, 60, 0.18);
+  color: var(--gold);
+  font-weight: 700;
+  padding: .05rem .3rem;
+  border-radius: 3px;
+}
+
 .vc-btns {
   display: flex;
   gap: .65rem;
