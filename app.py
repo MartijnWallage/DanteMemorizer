@@ -7,29 +7,7 @@ from data.canto1 import VOCABULARY, WORD_ORDER, TRANSLATION, LINES, SENTENCES
 app = Flask(__name__)
 app.secret_key = "la-selva-oscura-key"
 
-# ─── Unlock thresholds ────────────────────────────────────────────────────────
-
-VOCAB_THRESHOLD = 10        # words marked known to unlock word-order
-WORD_ORDER_THRESHOLD = 5    # exercises done to unlock translation
-
-
 # ─── Helpers ──────────────────────────────────────────────────────────────────
-
-def get_progress():
-    return {
-        "vocab_known": session.get("vocab_known", []),
-        "word_order_done": session.get("word_order_done", []),
-        "translation_done": session.get("translation_done", []),
-    }
-
-
-def word_order_unlocked(p):
-    return len(p["vocab_known"]) >= VOCAB_THRESHOLD
-
-
-def translation_unlocked(p):
-    return len(p["word_order_done"]) >= WORD_ORDER_THRESHOLD
-
 
 def normalise(text):
     """Strip punctuation and accents, lowercase — for loose comparison."""
@@ -140,55 +118,6 @@ def index():
     )
 
 
-@app.route("/flashcards")
-def flashcards():
-    p = get_progress()
-    return render_template(
-        "flashcards.html",
-        vocab=VOCABULARY,
-        known=p["vocab_known"],
-        progress=p,
-        word_order_unlocked=word_order_unlocked(p),
-        translation_unlocked=translation_unlocked(p),
-        vocab_threshold=VOCAB_THRESHOLD,
-    )
-
-
-@app.route("/word-order")
-def word_order():
-    p = get_progress()
-    if not word_order_unlocked(p):
-        return render_template("locked.html",
-                               reason=f"Learn {VOCAB_THRESHOLD} vocabulary words first.",
-                               back_url="/flashcards")
-    return render_template(
-        "word_order.html",
-        exercises=WORD_ORDER,
-        done=p["word_order_done"],
-        progress=p,
-        word_order_unlocked=True,
-        translation_unlocked=translation_unlocked(p),
-        word_order_threshold=WORD_ORDER_THRESHOLD,
-    )
-
-
-@app.route("/translation")
-def translation():
-    p = get_progress()
-    if not translation_unlocked(p):
-        return render_template("locked.html",
-                               reason=f"Complete {WORD_ORDER_THRESHOLD} word-order exercises first.",
-                               back_url="/word-order")
-    return render_template(
-        "translation.html",
-        exercises=TRANSLATION,
-        done=p["translation_done"],
-        progress=p,
-        word_order_unlocked=True,
-        translation_unlocked=True,
-    )
-
-
 @app.route("/about")
 def about():
     p = get_progress()
@@ -211,92 +140,6 @@ def full_text():
         translation_unlocked=translation_unlocked(p),
     )
 
-
-# ─── API ─────────────────────────────────────────────────────────────────────
-
-@app.route("/api/vocab/mark", methods=["POST"])
-def api_vocab_mark():
-    data = request.get_json()
-    word_id = data.get("id")
-    known = data.get("known", True)
-
-    vocab_known = session.get("vocab_known", [])
-    if known and word_id not in vocab_known:
-        vocab_known.append(word_id)
-    elif not known and word_id in vocab_known:
-        vocab_known.remove(word_id)
-
-    session["vocab_known"] = vocab_known
-    p = get_progress()
-    return jsonify({
-        "vocab_known": vocab_known,
-        "word_order_unlocked": word_order_unlocked(p),
-    })
-
-
-@app.route("/api/word-order/check", methods=["POST"])
-def api_word_order_check():
-    data = request.get_json()
-    ex_id = data.get("id")
-    answer = data.get("answer", [])  # list of token strings in order
-
-    exercise = next((e for e in WORD_ORDER if e["id"] == ex_id), None)
-    if not exercise:
-        return jsonify({"error": "not found"}), 404
-
-    correct_tokens = exercise["tokens"]
-    results = token_match(answer, correct_tokens)
-    all_correct = all(r["ok"] for r in results) and len(answer) == len(correct_tokens)
-
-    if all_correct:
-        done = session.get("word_order_done", [])
-        if ex_id not in done:
-            done.append(ex_id)
-        session["word_order_done"] = done
-
-    p = get_progress()
-    return jsonify({
-        "correct": all_correct,
-        "results": results,
-        "translation": exercise["translation"],
-        "hint": exercise["hint"],
-        "translation_unlocked": translation_unlocked(p),
-        "word_order_done": p["word_order_done"],
-    })
-
-
-@app.route("/api/translation/submit", methods=["POST"])
-def api_translation_submit():
-    data = request.get_json()
-    ex_id = data.get("id")
-    answer = data.get("answer", "")
-
-    exercise = next((e for e in TRANSLATION if e["id"] == ex_id), None)
-    if not exercise:
-        return jsonify({"error": "not found"}), 404
-
-    result = compare_translation(answer, exercise["italian"])
-    status = result["status"]
-    response = {"status": status, "line_results": result["line_results"]}
-
-    if status == "correct":
-        done = session.get("translation_done", [])
-        if ex_id not in done:
-            done.append(ex_id)
-        session["translation_done"] = done
-        response["note"] = exercise["note"]
-        response["translation_done"] = done
-    elif status == "retry":
-        wrong_lines = sum(1 for lr in result["line_results"] if not lr["ok"])
-        total_lines = len(result["line_results"])
-        s = "s" if wrong_lines != 1 else ""
-        v = "have" if wrong_lines != 1 else "has"
-        response["hint"] = f"{wrong_lines} of {total_lines} line{s} {v} errors — try again."
-    # pass: return line_results only; student must retype before advancing
-
-    return jsonify(response)
-
-
 # ─── Learn flow ──────────────────────────────────────────────────────────────
 
 def _vocab_map():
@@ -309,15 +152,12 @@ def learn():
     mastery = session.get("word_mastery", {})
     raw     = session.get("learn_phase", {})
     phases  = {s["id"]: raw.get(s["id"], "vocab") for s in SENTENCES}
-    p = get_progress()
     return render_template(
         "learn.html",
         sentences=SENTENCES,
         vocab_map=_vocab_map(),
         mastery=mastery,
         phases=phases,
-        word_order_unlocked=True,
-        translation_unlocked=True,
     )
 
 
