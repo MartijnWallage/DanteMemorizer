@@ -297,8 +297,7 @@ function showVocabCard() {
   void inner.offsetHeight;          // force reflow so transition removal takes effect
   inner.style.transition = "";
 
-  document.getElementById("vc-btns").style.display = "none";
-  document.getElementById("vc-btns").innerHTML = "";
+  showVocabButtons();
 }
 
 // ── Verb conjugation table ─────────────────────────────────────────────────────

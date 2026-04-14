@@ -2,7 +2,7 @@ import re
 import unicodedata
 from flask import Flask, render_template, session, request, jsonify
 
-from data.canto1 import VOCABULARY, WORD_ORDER, TRANSLATION, LINES, SENTENCES
+from data.canto1 import VOCABULARY, LINES, SENTENCES
 
 app = Flask(__name__)
 app.secret_key = "la-selva-oscura-key"
@@ -120,25 +120,17 @@ def index():
 
 @app.route("/about")
 def about():
-    p = get_progress()
     return render_template(
         "about.html",
-        progress=p,
-        word_order_unlocked=word_order_unlocked(p),
-        translation_unlocked=translation_unlocked(p),
-    )
+   )
 
 
 @app.route("/text")
 def full_text():
-    p = get_progress()
     return render_template(
         "text.html",
         lines=LINES,
-        progress=p,
-        word_order_unlocked=word_order_unlocked(p),
-        translation_unlocked=translation_unlocked(p),
-    )
+   )
 
 # ─── Learn flow ──────────────────────────────────────────────────────────────
 
@@ -274,16 +266,6 @@ def api_learn_translation_submit():
 def api_reset():
     session.clear()
     return jsonify({"ok": True})
-
-
-@app.route("/api/progress")
-def api_progress():
-    p = get_progress()
-    return jsonify({
-        **p,
-        "word_order_unlocked": word_order_unlocked(p),
-        "translation_unlocked": translation_unlocked(p),
-    })
 
 
 if __name__ == "__main__":
