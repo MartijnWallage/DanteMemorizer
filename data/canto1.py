@@ -1436,6 +1436,1279 @@ VOCABULARY = [
         ),
         "category": "function",
     },
+
+    # ─── NEW VOCABULARY (lines 10-45) ─────────────────────────────────────────
+
+    # Verbs
+    {
+        "id": "abbandonare",
+        "italian": "abbandonare",
+        "english": "to abandon, to forsake",
+        "pos": "verb (abbandonare)",
+        "example_italian": "che la verace via abbandonai",
+        "example_english": "that I abandoned the true way",
+        "note": (
+            "From Old French abandoner (to give over to another's control), ultimately from a ban "
+            "(at someone's command/mercy). Abbandonai is 1st person singular passato remoto. "
+            "Unchanged in modern Italian; related to English 'abandon'."
+        ),
+        "forms": {
+            "infinitive": "abbandonare",
+            "present":        ["abbandono", "abbandoni", "abbandona", "abbandoniamo", "abbandonate", "abbandonano"],
+            "imperfect":      ["abbandonavo", "abbandonavi", "abbandonava", "abbandonavamo", "abbandonavate", "abbandonavano"],
+            "passato_remoto": ["abbandonai", "abbandonasti", "abbandonò", "abbandonammo", "abbandonaste", "abbandonarono"],
+            "future":         ["abbandonerò", "abbandonerai", "abbandonerà", "abbandoneremo", "abbandonerete", "abbandoneranno"],
+            "past_participle": "abbandonato",
+        },
+    },
+    {
+        "id": "terminare",
+        "italian": "terminare",
+        "english": "to end, to terminate",
+        "pos": "verb (terminare)",
+        "example_italian": "là dove terminava quella valle",
+        "example_english": "there where that valley ended",
+        "note": (
+            "From Latin terminare (to set a boundary), from terminus (boundary, end). "
+            "Terminava is 3rd person singular imperfect (was ending / came to an end). "
+            "Unchanged in modern Italian; related to English 'terminate', 'terminal'."
+        ),
+        "forms": {
+            "infinitive": "terminare",
+            "present":        ["termino", "termini", "termina", "terminiamo", "terminate", "terminano"],
+            "imperfect":      ["terminavo", "terminavi", "terminava", "terminavamo", "terminavate", "terminavano"],
+            "passato_remoto": ["terminai", "terminasti", "terminò", "terminammo", "terminaste", "terminarono"],
+            "future":         ["terminerò", "terminerai", "terminerà", "termineremo", "terminerete", "termineranno"],
+            "past_participle": "terminato",
+        },
+    },
+    {
+        "id": "guardare",
+        "italian": "guardare",
+        "english": "to look, to look up at, to gaze",
+        "pos": "verb (guardare)",
+        "example_italian": "guardai in alto e vidi le sue spalle",
+        "example_english": "I looked up high and saw its shoulders",
+        "note": (
+            "From Frankish *wardōn (to watch, guard), via Old French garder. "
+            "Guardai is 1st person singular passato remoto. "
+            "Related to English 'guard'; modern Italian guardare is unchanged. "
+            "Guardare in alto = to look up high."
+        ),
+        "forms": {
+            "infinitive": "guardare",
+            "present":        ["guardo", "guardi", "guarda", "guardiamo", "guardate", "guardano"],
+            "imperfect":      ["guardavo", "guardavi", "guardava", "guardavamo", "guardavate", "guardavano"],
+            "passato_remoto": ["guardai", "guardasti", "guardò", "guardammo", "guardaste", "guardarono"],
+            "future":         ["guarderò", "guarderai", "guarderà", "guarderemo", "guarderete", "guarderanno"],
+            "past_participle": "guardato",
+        },
+    },
+    {
+        "id": "vedere",
+        "italian": "vedere",
+        "english": "to see",
+        "pos": "verb (vedere)",
+        "example_italian": "guardai in alto e vidi le sue spalle",
+        "example_english": "I looked up high and saw its shoulders",
+        "note": (
+            "From Latin videre. Vidi is 1st person singular passato remoto (I saw), "
+            "directly descended from Latin vidi. "
+            "Related to English 'video', 'vision', 'evident'. "
+            "Common throughout the Commedia; Dante repeatedly says vidi (I saw)."
+        ),
+        "forms": {
+            "infinitive": "vedere",
+            "present":        ["vedo", "vedi", "vede", "vediamo", "vedete", "vedono"],
+            "imperfect":      ["vedevo", "vedevi", "vedeva", "vedevamo", "vedevate", "vedevano"],
+            "passato_remoto": ["vidi", "vedesti", "vide", "vedemmo", "vedeste", "videro"],
+            "future":         ["vedrò", "vedrai", "vedrà", "vedremo", "vedrete", "vedranno"],
+            "past_participle": "visto / veduto",
+        },
+    },
+    {
+        "id": "menare",
+        "italian": "menare",
+        "english": "to lead, to guide, to bring",
+        "pos": "verb (menare)",
+        "example_italian": "che mena dritto altrui per ogni calle",
+        "example_english": "that leads others straight along every path",
+        "note": (
+            "From Latin minare (to drive animals by threatening), related to minari (to threaten). "
+            "Mena is 3rd person singular present indicative. "
+            "Medieval Italian menare = to lead; the sun (the planet) leads people along the right path. "
+            "In modern Italian, condurre or guidare is preferred; menare survives in some dialects."
+        ),
+        "forms": {
+            "infinitive": "menare",
+            "present":        ["meno", "meni", "mena", "meniamo", "menate", "menano"],
+            "imperfect":      ["menavo", "menavi", "menava", "menavamo", "menavate", "menavano"],
+            "passato_remoto": ["menai", "menasti", "menò", "menammo", "menaste", "menarono"],
+            "future":         ["menerò", "menerai", "menerà", "meneremo", "menerete", "meneranno"],
+            "past_participle": "menato",
+        },
+    },
+    {
+        "id": "durare",
+        "italian": "durare",
+        "english": "to last, to endure",
+        "pos": "verb (durare)",
+        "example_italian": "che nel lago del cor m'era durata",
+        "example_english": "that had lasted in the lake of my heart",
+        "note": (
+            "From Latin durare (to harden, to last), related to durus (hard). "
+            "M'era durata is 3rd person singular pluperfect: 'had lasted to me'. "
+            "The reflexive dative m' (= mi) is a common medieval construction expressing "
+            "personal involvement. Related to English 'durable', 'duration', 'endure'."
+        ),
+        "forms": {
+            "infinitive": "durare",
+            "present":        ["duro", "duri", "dura", "duriamo", "durate", "durano"],
+            "imperfect":      ["duravo", "duravi", "durava", "duravamo", "duravate", "duravano"],
+            "passato_remoto": ["durai", "durasti", "durò", "durammo", "duraste", "durarono"],
+            "future":         ["durerò", "durerai", "durerà", "dureremo", "durerete", "dureranno"],
+            "past_participle": "durato",
+        },
+    },
+    {
+        "id": "passare",
+        "italian": "passare",
+        "english": "to pass, to spend (time)",
+        "pos": "verb (passare)",
+        "example_italian": "la notte ch'i' passai con tanta pieta",
+        "example_english": "the night that I passed with such great pity",
+        "note": (
+            "From Latin passus (step), via Vulgar Latin *passare. "
+            "Passai is 1st person singular passato remoto. "
+            "Passare il tempo / la notte = to spend time / the night. "
+            "Related to English 'pass', 'passage'. Unchanged in modern Italian."
+        ),
+        "forms": {
+            "infinitive": "passare",
+            "present":        ["passo", "passi", "passa", "passiamo", "passate", "passano"],
+            "imperfect":      ["passavo", "passavi", "passava", "passavamo", "passavate", "passavano"],
+            "passato_remoto": ["passai", "passasti", "passò", "passammo", "passaste", "passarono"],
+            "future":         ["passerò", "passerai", "passerà", "passeremo", "passerete", "passeranno"],
+            "past_participle": "passato",
+        },
+    },
+    {
+        "id": "volgere",
+        "italian": "volgere",
+        "english": "to turn, to turn back",
+        "pos": "verb (volgere)",
+        "example_italian": "si volge a l'acqua perigliosa e guata",
+        "example_english": "turns to the perilous water and gazes",
+        "note": (
+            "From Latin volvere (to roll, turn). Irregular. "
+            "Si volge = 3rd sg. present reflexive (turns himself). "
+            "Si volse = 3rd sg. passato remoto reflexive (turned himself). "
+            "Vòlto (line 36) is the past participle, with the accent marking the stressed open o. "
+            "Related to English 'revolve', 'involve'."
+        ),
+        "forms": {
+            "infinitive": "volgere",
+            "present":        ["volgo", "volgi", "volge", "volgiamo", "volgete", "volgono"],
+            "imperfect":      ["volgevo", "volgevi", "volgeva", "volgevamo", "volgevate", "volgevano"],
+            "passato_remoto": ["volsi", "volgesti", "volse", "volgemmo", "volgeste", "volsero"],
+            "future":         ["volgerò", "volgerai", "volgerà", "volgeremo", "volgerete", "volgeranno"],
+            "past_participle": "vòlto",
+        },
+    },
+    {
+        "id": "fuggire",
+        "italian": "fuggire",
+        "english": "to flee, to fly away",
+        "pos": "verb (fuggire)",
+        "example_italian": "così l'animo mio, ch'ancor fuggiva",
+        "example_english": "so my spirit, which was still fleeing",
+        "note": (
+            "From Latin fugere (to flee). Fuggiva is 3rd person singular imperfect "
+            "(was still fleeing — the imperfect marks continuing action). "
+            "Related to English 'fugitive', 'refuge'. Unchanged in modern Italian."
+        ),
+        "forms": {
+            "infinitive": "fuggire",
+            "present":        ["fuggo", "fuggi", "fugge", "fuggiamo", "fuggite", "fuggono"],
+            "imperfect":      ["fuggivo", "fuggivi", "fuggiva", "fuggivamo", "fuggivate", "fuggivano"],
+            "passato_remoto": ["fuggii", "fuggisti", "fuggì", "fuggimmo", "fuggiste", "fuggirono"],
+            "future":         ["fuggirò", "fuggirai", "fuggirà", "fuggiremo", "fuggirete", "fuggiranno"],
+            "past_participle": "fuggito",
+        },
+    },
+    {
+        "id": "rimirare",
+        "italian": "rimirare",
+        "english": "to gaze back at, to contemplate",
+        "pos": "verb (rimirare)",
+        "example_italian": "si volse a retro a rimirar lo passo",
+        "example_english": "turned back to gaze upon the pass",
+        "note": (
+            "Ri- (again, back) + mirare (to look at, aim at), from Latin mirare (to wonder at). "
+            "Rimirar is the apocopated infinitive. "
+            "The prefix ri- adds the sense of looking back at something already passed. "
+            "Related to English 'admire', 'mirror'. Modern Italian: rimirare (literary)."
+        ),
+        "forms": {
+            "infinitive": "rimirare",
+            "present":        ["rimiro", "rimiri", "rimira", "rimiriamo", "rimirate", "rimirano"],
+            "imperfect":      ["rimiravo", "rimiravi", "rimirava", "rimiravamo", "rimiravate", "rimiravano"],
+            "passato_remoto": ["rimirài", "rimirasti", "rimirò", "rimirammo", "rimiraste", "rimirarono"],
+            "future":         ["rimirerò", "rimirerai", "rimirerà", "rimireremo", "rimirerete", "rimireranno"],
+            "past_participle": "rimirato",
+        },
+    },
+    {
+        "id": "posare",
+        "italian": "posare",
+        "english": "to rest, to set down",
+        "pos": "verb (posare)",
+        "example_italian": "Poi ch'èi posato un poco il corpo lasso",
+        "example_english": "After I had rested a little the weary body",
+        "note": (
+            "From Latin pausare (to pause, rest), from Greek pausis (a stop). "
+            "Posato is the past participle used with avere (ch'èi posato = after I had rested). "
+            "Note ch'èi = che io ho in contracted/archaic form. "
+            "Related to English 'pause'. Modern Italian: posare (to rest, to put down)."
+        ),
+        "forms": {
+            "infinitive": "posare",
+            "present":        ["poso", "posi", "posa", "posiamo", "posate", "posano"],
+            "imperfect":      ["posavo", "posavi", "posava", "posavamo", "posavate", "posavano"],
+            "passato_remoto": ["posai", "posasti", "posò", "posammo", "posaste", "posarono"],
+            "future":         ["poserò", "poserai", "poserà", "poseremo", "poserete", "poseranno"],
+            "past_participle": "posato",
+        },
+    },
+    {
+        "id": "riprendere",
+        "italian": "riprendere",
+        "english": "to resume, to take up again",
+        "pos": "verb (riprendere)",
+        "example_italian": "ripresi via per la piaggia diserta",
+        "example_english": "I resumed my way along the deserted slope",
+        "note": (
+            "Ri- (again) + prendere (to take), from Latin prehendere. "
+            "Ripresi is 1st person singular passato remoto. "
+            "Ripresi via = I resumed (my) way/journey. "
+            "Prendere gives English 'apprehend', 'comprehend'. Modern Italian: riprendere."
+        ),
+        "forms": {
+            "infinitive": "riprendere",
+            "present":        ["riprendo", "riprendi", "riprende", "riprendiamo", "riprendete", "riprendono"],
+            "imperfect":      ["riprendevo", "riprendevi", "riprendeva", "riprendevamo", "riprendevate", "riprendevano"],
+            "passato_remoto": ["ripresi", "riprendesti", "riprese", "riprendemmo", "riprendeste", "ripresero"],
+            "future":         ["riprenderò", "riprenderai", "riprenderà", "riprenderemo", "riprenderete", "riprenderanno"],
+            "past_participle": "ripreso",
+        },
+    },
+    {
+        "id": "cominciare",
+        "italian": "cominciare",
+        "english": "to begin",
+        "pos": "verb (cominciare)",
+        "example_italian": "quasi al cominciar de l'erta",
+        "example_english": "almost at the beginning of the steep",
+        "note": (
+            "From Latin *comitiare (to inaugurate), from comitia (public assembly). "
+            "Cominciar is the apocopated infinitive used as a noun: 'the beginning'. "
+            "Al cominciar = at the beginning. Modern Italian: cominciare (also iniziare)."
+        ),
+        "forms": {
+            "infinitive": "cominciare",
+            "present":        ["comincio", "cominci", "comincia", "cominciamo", "cominciate", "cominciano"],
+            "imperfect":      ["cominciavo", "cominciavi", "cominciava", "cominciavamo", "cominciavate", "cominciavano"],
+            "passato_remoto": ["cominciai", "cominciasti", "cominciò", "cominciammo", "cominciaste", "cominciarono"],
+            "future":         ["comincerò", "comincerai", "comincerà", "cominceremo", "comincerete", "cominceranno"],
+            "past_participle": "cominciato",
+        },
+    },
+    {
+        "id": "partire",
+        "italian": "partire",
+        "english": "to depart, to leave",
+        "pos": "verb (partire)",
+        "example_italian": "e non mi si partia dinanzi al volto",
+        "example_english": "and it did not depart from before my face",
+        "note": (
+            "From Latin partire (to divide, depart). "
+            "Partia is the syncopated imperfect of partire (= partiva): 3rd person singular. "
+            "Non mi si partia = did not depart from before me. "
+            "Modern Italian: partire (to leave, depart). The syncopated imperfect -ia for -iva "
+            "is a common feature of medieval Italian verse."
+        ),
+        "forms": {
+            "infinitive": "partire",
+            "present":        ["parto", "parti", "parte", "partiamo", "partite", "partono"],
+            "imperfect":      ["partivo", "partivi", "partiva", "partivamo", "partivate", "partivano"],
+            "passato_remoto": ["partii", "partisti", "partì", "partimmo", "partiste", "partirono"],
+            "future":         ["partirò", "partirai", "partirà", "partiremo", "partirete", "partiranno"],
+            "past_participle": "partito",
+        },
+    },
+    {
+        "id": "impedire",
+        "italian": "impedire",
+        "english": "to impede, to hinder, to block",
+        "pos": "verb (impedire)",
+        "example_italian": "anzi 'mpediva tanto il mio cammino",
+        "example_english": "rather it so much impeded my advance",
+        "note": (
+            "From Latin impedire (to shackle, to hinder), from in- + pes/pedis (foot). "
+            "'Mpediva is the imperfect of impedire with elision of the initial i-. "
+            "The apostrophe marks the dropped vowel: 'mpediva = impediva. "
+            "Related to English 'impede', 'impediment'. Unchanged in modern Italian."
+        ),
+        "forms": {
+            "infinitive": "impedire",
+            "present":        ["impedisco", "impedisci", "impedisce", "impediamo", "impedite", "impediscono"],
+            "imperfect":      ["impedivo", "impedivi", "impediva", "impedivamo", "impedivate", "impedivano"],
+            "passato_remoto": ["impedii", "impedisti", "impedì", "impedimmo", "impediste", "impedirono"],
+            "future":         ["impedirò", "impedirai", "impedirà", "impediremo", "impedirete", "impediranno"],
+            "past_participle": "impedito",
+        },
+    },
+    {
+        "id": "tornare",
+        "italian": "tornare",
+        "english": "to return, to turn back",
+        "pos": "verb (tornare)",
+        "example_italian": "che fu per tornare più volte vòlto",
+        "example_english": "that many times it was turned back to return",
+        "note": (
+            "From Latin tornare (to turn on a lathe), related to tornus (lathe). "
+            "Fu per tornare = was on the verge of returning (fu per + infinitive = was about to). "
+            "Unchanged in modern Italian. Related to English 'turn', 'tour', 'tournament'."
+        ),
+        "forms": {
+            "infinitive": "tornare",
+            "present":        ["torno", "torni", "torna", "torniamo", "tornate", "tornano"],
+            "imperfect":      ["tornavo", "tornavi", "tornava", "tornavamo", "tornavate", "tornavano"],
+            "passato_remoto": ["tornai", "tornasti", "tornò", "tornammo", "tornaste", "tornarono"],
+            "future":         ["tornerò", "tornerai", "tornerà", "torneremo", "tornerete", "torneranno"],
+            "past_participle": "tornato",
+        },
+    },
+    {
+        "id": "montare",
+        "italian": "montare",
+        "english": "to climb, to mount, to rise",
+        "pos": "verb (montare)",
+        "example_italian": "e 'l sol montava 'n sù con quelle stelle",
+        "example_english": "and the sun was climbing upward with those stars",
+        "note": (
+            "From Latin montare (to mount), from mons/montis (mountain). "
+            "Montava is 3rd person singular imperfect (was climbing/mounting). "
+            "'l sol = il sole (apocopated + elided). "
+            "'n sù = in su (upward): double elision, poetic form. "
+            "Related to English 'mount', 'mountain'."
+        ),
+        "forms": {
+            "infinitive": "montare",
+            "present":        ["monto", "monti", "monta", "montiamo", "montate", "montano"],
+            "imperfect":      ["montavo", "montavi", "montava", "montavamo", "montavate", "montavano"],
+            "passato_remoto": ["montai", "montasti", "montò", "montammo", "montaste", "montarono"],
+            "future":         ["monterò", "monterai", "monterà", "monteremo", "monterete", "monteranno"],
+            "past_participle": "montato",
+        },
+    },
+    {
+        "id": "muovere",
+        "italian": "muovere",
+        "english": "to move, to set in motion",
+        "pos": "verb (muovere)",
+        "example_italian": "mosse di prima quelle cose belle",
+        "example_english": "first moved those beautiful things",
+        "note": (
+            "From Latin movere. Mosse is 3rd person singular passato remoto (moved). "
+            "The subject is l'amor divino (divine love, line 39), which at Creation "
+            "first set the heavens in motion. "
+            "Related to English 'move', 'motion', 'emotion'. Modern Italian: muovere / muoversi."
+        ),
+        "forms": {
+            "infinitive": "muovere",
+            "present":        ["muovo", "muovi", "muove", "muoviamo", "muovete", "muovono"],
+            "imperfect":      ["movevo", "movevi", "moveva", "movevamo", "movevate", "movevano"],
+            "passato_remoto": ["mossi", "movesti", "mosse", "movemmo", "moveste", "mossero"],
+            "future":         ["muoverò", "muoverai", "muoverà", "muoveremo", "muoverete", "muoveranno"],
+            "past_participle": "mosso",
+        },
+    },
+    {
+        "id": "sperare",
+        "italian": "sperare",
+        "english": "to hope",
+        "pos": "verb (sperare)",
+        "example_italian": "sì ch'a bene sperar m'era cagione",
+        "example_english": "so that it gave me cause to hope for good",
+        "note": (
+            "From Latin sperare (to hope, to expect). "
+            "Sperar is the apocopated infinitive. "
+            "Bene sperar = to hope for good things. "
+            "Related to English 'despair' (de + sperare = to stop hoping). "
+            "Unchanged in modern Italian."
+        ),
+        "forms": {
+            "infinitive": "sperare",
+            "present":        ["spero", "speri", "spera", "speriamo", "sperate", "sperano"],
+            "imperfect":      ["speravo", "speravi", "sperava", "speravamo", "speravate", "speravano"],
+            "passato_remoto": ["sperai", "sperasti", "sperò", "sperammo", "speraste", "sperarono"],
+            "future":         ["spererò", "spererai", "spererà", "spereremo", "spererete", "spereranno"],
+            "past_participle": "sperato",
+        },
+    },
+    {
+        "id": "dare",
+        "italian": "dare",
+        "english": "to give",
+        "pos": "verb (dare)",
+        "example_italian": "ma non sì che paura non mi desse",
+        "example_english": "but not so much that fear did not give me",
+        "note": (
+            "From Latin dare. Highly irregular. "
+            "Desse is 3rd person singular imperfect subjunctive (might give, would give). "
+            "Ma non sì che … non mi desse = but not so much that it did not give me (fear). "
+            "The double negative (non sì … non) is emphatic: it did indeed give him fear. "
+            "Related to English 'data', 'date' (given time)."
+        ),
+        "forms": {
+            "infinitive": "dare",
+            "present":        ["do", "dai", "dà", "diamo", "date", "danno"],
+            "imperfect":      ["davo", "davi", "dava", "davamo", "davate", "davano"],
+            "passato_remoto": ["diedi", "desti", "diede", "demmo", "deste", "diedero"],
+            "future":         ["darò", "darai", "darà", "daremo", "darete", "daranno"],
+            "past_participle": "dato",
+        },
+    },
+    {
+        "id": "apparire",
+        "italian": "apparire",
+        "english": "to appear, to come into view",
+        "pos": "verb (apparire)",
+        "example_italian": "la vista d'un leon che m'apparve poscia",
+        "example_english": "the sight of a lion that afterwards appeared to me",
+        "note": (
+            "From Latin apparere (to come in sight), from ad- + parere (to show oneself). "
+            "Apparve is 3rd person singular passato remoto (appeared). "
+            "M'apparve = mi apparve (appeared to me). "
+            "Related to English 'appear', 'apparent', 'apparition'. Modern Italian: apparire."
+        ),
+        "forms": {
+            "infinitive": "apparire",
+            "present":        ["appaio", "appari", "appare", "appariamo", "apparite", "appaiono"],
+            "imperfect":      ["apparivo", "apparivi", "appariva", "apparivamo", "apparivate", "apparivano"],
+            "passato_remoto": ["apparvi", "apparisti", "apparve", "apparimmo", "appariste", "apparvero"],
+            "future":         ["apparirò", "apparirai", "apparirà", "appariremo", "apparirete", "appariranno"],
+            "past_participle": "apparso",
+        },
+    },
+    {
+        "id": "guatare",
+        "italian": "guatare",
+        "english": "to gaze at, to stare",
+        "pos": "verb (guatare)",
+        "example_italian": "si volge a l'acqua perigliosa e guata",
+        "example_english": "turns to the perilous water and gazes",
+        "note": (
+            "From Old High German *wahtan (to watch), related to Germanic *wahtaz. "
+            "Guata is 3rd person singular present indicative. "
+            "An archaic/poetic verb in Italian; modern Italian would use guardare or fissare. "
+            "The word evokes a sustained, rapt stare — the survivor cannot look away from the sea."
+        ),
+        "forms": {
+            "infinitive": "guatare",
+            "present":        ["guato", "guati", "guata", "guatiamo", "guatate", "guatano"],
+            "passato_remoto": ["guatai", "guatasti", "guatò", "guatammo", "guataste", "guatarono"],
+            "past_participle": "guatato",
+        },
+    },
+
+    # Nouns (lines 10-45)
+    {
+        "id": "sonno",
+        "italian": "sonno",
+        "english": "sleep",
+        "pos": "noun (m.)",
+        "example_italian": "tant'era pien di sonno a quel punto",
+        "example_english": "so full of sleep was I at that point",
+        "note": (
+            "From Latin somnus (sleep). Unchanged in modern Italian. "
+            "Pien di sonno = full of sleep (pien is the apocopated form of pieno). "
+            "The sleep stands for spiritual torpor — Dante's falling into sin. "
+            "Related to English 'somnambulism', 'insomnia'."
+        ),
+    },
+    {
+        "id": "spalle",
+        "italian": "spalle",
+        "english": "shoulders",
+        "pos": "noun (f. pl.)",
+        "example_italian": "vidi le sue spalle / vestite già de' raggi del pianeta",
+        "example_english": "I saw its shoulders / already clothed in the rays of the planet",
+        "note": (
+            "Plural of spalla (shoulder), from Late Latin spatula (shoulder blade, small spatula). "
+            "Le sue spalle = its shoulders (referring to the hill, personified). "
+            "De' raggi = dei raggi (of the rays): de' is a poetic contraction of dei. "
+            "Related to English 'spatula', 'epaulette'."
+        ),
+    },
+    {
+        "id": "raggio",
+        "italian": "raggio",
+        "english": "ray, beam (of light)",
+        "pos": "noun (m.)",
+        "example_italian": "vestite già de' raggi del pianeta",
+        "example_english": "already clothed in the rays of the planet",
+        "note": (
+            "From Latin radius (ray, spoke of a wheel). Plural: raggi. "
+            "De' raggi = di + i + raggi (of the rays), poetically contracted. "
+            "Related to English 'radius', 'radiant'. Unchanged in modern Italian."
+        ),
+    },
+    {
+        "id": "calle",
+        "italian": "calle",
+        "english": "path, lane, narrow way",
+        "pos": "noun (f. or m.)",
+        "example_italian": "che mena dritto altrui per ogni calle",
+        "example_english": "that leads others straight along every path",
+        "note": (
+            "From Latin callis (narrow path, sheep track). "
+            "Archaic in standard Italian; survives in Venetian placenames (e.g., Calle Larga). "
+            "Per ogni calle = along every path. "
+            "The sun is said to lead all creatures along their proper way."
+        ),
+    },
+    {
+        "id": "pieta",
+        "italian": "pieta / pietà",
+        "english": "pity, compassion; piety",
+        "pos": "noun (f.)",
+        "example_italian": "la notte ch'i' passai con tanta pieta",
+        "example_english": "the night that I passed with such great pity/anguish",
+        "note": (
+            "From Latin pietas (dutiful conduct, piety, affection). "
+            "In Dante, pieta (without accent, for metre) = pity, grief, compassion. "
+            "Pietà (with accent) in modern Italian = pity, compassion; also the art term "
+            "(Michelangelo's Pietà). The commentators debate: pieta here may mean spiritual anguish "
+            "as much as pity."
+        ),
+    },
+    {
+        "id": "lena",
+        "italian": "lena",
+        "english": "breath, energy, strength",
+        "pos": "noun (f.)",
+        "example_italian": "E come quei che con lena affannata",
+        "example_english": "And like one who with laboured breath",
+        "note": (
+            "From Latin halena / alena (breath), related to halare (to breathe). "
+            "Lena affannata = laboured/breathless breath. "
+            "In modern Italian lena survives in the idiom di buona lena (energetically, with a will). "
+            "The simile compares Dante's soul to a swimmer who has just escaped the sea."
+        ),
+    },
+    {
+        "id": "pelago",
+        "italian": "pelago",
+        "english": "open sea, deep water",
+        "pos": "noun (m.)",
+        "example_italian": "uscito fuor del pelago a la riva",
+        "example_english": "having come out of the open sea to the shore",
+        "note": (
+            "From Greek pelagos (open sea) via Latin pelagus. "
+            "An elevated, literary word — the common word is mare. "
+            "Fuor del pelago = out of the open sea. "
+            "Dante uses the term also in Paradiso to describe his spiritual sea-voyage. "
+            "Related to English 'pelagic' (of the open sea)."
+        ),
+    },
+    {
+        "id": "riva",
+        "italian": "riva",
+        "english": "shore, bank",
+        "pos": "noun (f.)",
+        "example_italian": "uscito fuor del pelago a la riva",
+        "example_english": "having come out of the open sea to the shore",
+        "note": (
+            "From Latin ripa (bank, shore). Unchanged in modern Italian. "
+            "A la riva = to the shore (a + la). "
+            "Related to English 'river', 'arrive' (ad + ripam, to reach the bank). "
+            "Rival originally meant someone who uses the same stream."
+        ),
+    },
+    {
+        "id": "acqua",
+        "italian": "acqua",
+        "english": "water",
+        "pos": "noun (f.)",
+        "example_italian": "si volge a l'acqua perigliosa e guata",
+        "example_english": "turns to the perilous water and gazes",
+        "note": (
+            "From Latin aqua. Unchanged in modern Italian. "
+            "A l'acqua = a + la + acqua (elision before vowel). "
+            "Related to English 'aquatic', 'aquarium', 'aqueduct'."
+        ),
+    },
+    {
+        "id": "animo",
+        "italian": "animo",
+        "english": "soul, spirit, mind",
+        "pos": "noun (m.)",
+        "example_italian": "così l'animo mio, ch'ancor fuggiva",
+        "example_english": "so my spirit, which was still fleeing",
+        "note": (
+            "From Latin animus (mind, spirit, courage). "
+            "Distinct from anima (soul, breath of life, f.): animo suggests the rational, "
+            "volitional mind; anima the vital soul. "
+            "L'animo mio = my spirit/soul. Related to English 'animate', 'animal', 'unanimous'."
+        ),
+    },
+    {
+        "id": "passo",
+        "italian": "passo",
+        "english": "pass, passage; step",
+        "pos": "noun (m.)",
+        "example_italian": "si volse a retro a rimirar lo passo",
+        "example_english": "turned back to gaze upon the pass",
+        "note": (
+            "From Latin passus (step, pace). "
+            "Lo passo here refers to the dangerous pass or passage through the dark wood, "
+            "not a physical footstep. Lo is the archaic article (= il) before p-. "
+            "Related to English 'pass', 'passage', 'trespass'. Unchanged in modern Italian."
+        ),
+    },
+    {
+        "id": "persona",
+        "italian": "persona",
+        "english": "person, soul",
+        "pos": "noun (f.)",
+        "example_italian": "che non lasciò già mai persona viva",
+        "example_english": "that never yet left any person alive",
+        "note": (
+            "From Latin persona (mask, character in a play, person). "
+            "Non lasciò già mai persona viva = the pass/dark wood has never let anyone "
+            "escape with their life. Unchanged in modern Italian. "
+            "Related to English 'person', 'personal', 'impersonate'."
+        ),
+    },
+    {
+        "id": "corpo",
+        "italian": "corpo",
+        "english": "body",
+        "pos": "noun (m.)",
+        "example_italian": "riposato un poco il corpo lasso",
+        "example_english": "having rested a little the weary body",
+        "note": (
+            "From Latin corpus, corporis (body). Unchanged in modern Italian. "
+            "Il corpo lasso = the weary body (lasso = weary). "
+            "Related to English 'corps', 'corpse', 'corporeal', 'incorporate'."
+        ),
+    },
+    {
+        "id": "piaggia",
+        "italian": "piaggia",
+        "english": "hillside, slope; shore",
+        "pos": "noun (f.)",
+        "example_italian": "ripresi via per la piaggia diserta",
+        "example_english": "I resumed my way along the deserted slope",
+        "note": (
+            "From Latin plaga (region, zone). In Dante, piaggia = slope, hillside. "
+            "The word also means beach or shore in some contexts. "
+            "Diserta (= deserted, lonely) is a predicate adjective agreeing with piaggia (f.). "
+            "Modern Italian: piaggia (rare, poetic); spiaggia = beach."
+        ),
+    },
+    {
+        "id": "erta",
+        "italian": "erta",
+        "english": "steep slope, ascent",
+        "pos": "noun (f.)",
+        "example_italian": "quasi al cominciar de l'erta",
+        "example_english": "almost at the beginning of the steep",
+        "note": (
+            "From Latin ērecta (raised, erect), past participle of erigere. "
+            "L'erta = the steep slope (l' = la, elided before vowel). "
+            "De l'erta = di la erta = of the steep. "
+            "In modern Italian: erta (steep path, ascent); also stare sull'erta = to be on guard."
+        ),
+    },
+    {
+        "id": "pelo",
+        "italian": "pelo",
+        "english": "hide, fur, hair, coat",
+        "pos": "noun (m.)",
+        "example_italian": "che di pel macolato era coverta",
+        "example_english": "that was covered with a spotted hide",
+        "note": (
+            "From Latin pilus (a hair). Pel is the apocopated form. "
+            "Di pel macolato = with a spotted hide/coat. "
+            "The word refers to an animal's coat or hide. "
+            "Related to English 'pile' (as in velvet pile), 'depilatory'. Modern Italian: pelo."
+        ),
+    },
+    {
+        "id": "volto",
+        "italian": "volto",
+        "english": "face; (past participle of volgere) turned",
+        "pos": "noun (m.) / past participle",
+        "example_italian": "e non mi si partia dinanzi al volto",
+        "example_english": "and it did not depart from before my face",
+        "note": (
+            "As noun: face, from Latin vultus (face, expression). Dinanzi al volto = before my face. "
+            "Also the past participle of volgere (to turn): vòlto (line 36, with accent). "
+            "Fu per tornare più volte vòlto = was many times turned to return. "
+            "The two senses are etymologically distinct: vultus (face) vs volutus (turned)."
+        ),
+    },
+    {
+        "id": "cammino",
+        "italian": "cammino",
+        "english": "way, path, advance",
+        "pos": "noun (m.)",
+        "example_italian": "anzi 'mpediva tanto il mio cammino",
+        "example_english": "rather it so much impeded my advance",
+        "note": (
+            "Full form of cammin (see entry cammin). From Late Latin camminus. "
+            "Il mio cammino = my way/advance. "
+            "Cammino can mean the physical path or the act of walking/journeying. "
+            "The canto opens with cammin (apocopated) and uses cammino here — both forms appear."
+        ),
+    },
+    {
+        "id": "tempo",
+        "italian": "tempo",
+        "english": "time, season; weather",
+        "pos": "noun (m.)",
+        "example_italian": "Temp'era dal principio del mattino",
+        "example_english": "It was the time from the beginning of morning",
+        "note": (
+            "From Latin tempus (time). Temp'era = tempo era (elision before e). "
+            "The word covers both 'time' and 'weather' in Italian. "
+            "Dal principio = from the beginning (dal = da + il). "
+            "Related to English 'temporal', 'temporary', 'tempo' (in music)."
+        ),
+    },
+    {
+        "id": "mattino",
+        "italian": "mattino",
+        "english": "morning",
+        "pos": "noun (m.)",
+        "example_italian": "Temp'era dal principio del mattino",
+        "example_english": "It was the time from the beginning of morning",
+        "note": (
+            "From Latin matutinum (morning), from Matuta (goddess of dawn). "
+            "Del mattino = of the morning. Dante specifies the time: spring dawn. "
+            "L'ora del mattino (line 43): the hour of the morning. "
+            "Modern Italian: mattino (morning); mattina is the more common form."
+        ),
+    },
+    {
+        "id": "stella",
+        "italian": "stella",
+        "english": "star",
+        "pos": "noun (f.)",
+        "example_italian": "e 'l sol montava 'n sù con quelle stelle",
+        "example_english": "and the sun was climbing upward with those stars",
+        "note": (
+            "From Latin stella. Unchanged in modern Italian. "
+            "Quelle stelle = those stars (the constellation of Aries, under which "
+            "God created the world, according to medieval tradition). "
+            "Related to English 'stellar', 'constellation', 'star' (via Germanic)."
+        ),
+    },
+    {
+        "id": "amor",
+        "italian": "amor / amore",
+        "english": "love",
+        "pos": "noun (m.)",
+        "example_italian": "quando l'amor divino",
+        "example_english": "when divine love",
+        "note": (
+            "From Latin amor, amoris. Amor is the apocopated form used in verse. "
+            "L'amor divino = divine love, the creative force that set the universe in motion at Creation. "
+            "Dante's cosmology places Love as the prime mover. "
+            "Related to English 'amorous', 'enamoured'. Modern Italian: amore."
+        ),
+    },
+    {
+        "id": "cagione",
+        "italian": "cagione",
+        "english": "cause, reason",
+        "pos": "noun (f.)",
+        "example_italian": "sì ch'a bene sperar m'era cagione",
+        "example_english": "so that it gave me cause to hope for good",
+        "note": (
+            "From Latin occasionem (opportunity, cause), accusative of occasio. "
+            "M'era cagione = was (a) cause to me / gave me reason. "
+            "Also used at line 78: principio e cagion di tutta gioia. "
+            "Modern Italian: cagione (archaic/literary); common synonyms: causa, ragione."
+        ),
+    },
+    {
+        "id": "pelle",
+        "italian": "pelle",
+        "english": "skin, hide, pelt",
+        "pos": "noun (f.)",
+        "example_italian": "di quella fiera a la gaìa pelle",
+        "example_english": "of that beast with the gay-coloured hide",
+        "note": (
+            "From Latin pellis (skin, hide). Unchanged in modern Italian. "
+            "A la gaìa pelle = with the gay/bright-coloured hide. "
+            "Related to English 'peel', 'film' (via Latin pellicula). "
+            "Pelle in modern Italian = skin (of humans and animals); also leather goods."
+        ),
+    },
+    {
+        "id": "stagione",
+        "italian": "stagione",
+        "english": "season",
+        "pos": "noun (f.)",
+        "example_italian": "la stagion nova e l'ora del mattino",
+        "example_english": "the new season and the hour of morning",
+        "note": (
+            "From Latin stationem (a standing, station → season), accusative of statio. "
+            "Stagion is the apocopated form (final -e dropped). "
+            "La stagion nova = the new season (spring). "
+            "Related to English 'station'. Modern Italian: stagione (unchanged)."
+        ),
+    },
+    {
+        "id": "ora",
+        "italian": "ora",
+        "english": "hour, time of day; (adverb) now",
+        "pos": "noun (f.) / adverb",
+        "example_italian": "la stagion nova e l'ora del mattino",
+        "example_english": "the new season and the hour of morning",
+        "note": (
+            "From Latin hora (hour), from Greek hora (time, season). "
+            "L'ora del mattino = the hour of morning (spring dawn). "
+            "As adverb: ora = now (modern Italian). Dante uses or (apocopated) as adverb: "
+            "or se' tu = are you now (line 79). "
+            "Related to English 'hour', 'horoscope'."
+        ),
+    },
+    {
+        "id": "vista",
+        "italian": "vista",
+        "english": "sight, view, appearance",
+        "pos": "noun (f.)",
+        "example_italian": "la vista d'un leon che m'apparve poscia",
+        "example_english": "the sight of a lion that afterwards appeared to me",
+        "note": (
+            "Past participle of vedere (to see), used as a noun: 'the thing seen', hence sight, view. "
+            "La vista d'un leon = the sight of a lion. "
+            "In modern Italian vista = sight, view (also: in vista = in sight, a vista d'occhio = visibly). "
+            "Related to English 'vista', 'visit', 'vision'."
+        ),
+    },
+    {
+        "id": "principio",
+        "italian": "principio",
+        "english": "beginning, principle",
+        "pos": "noun (m.)",
+        "example_italian": "Temp'era dal principio del mattino",
+        "example_english": "It was the time from the beginning of morning",
+        "note": (
+            "From Latin principium (beginning, origin), from princeps (first, chief). "
+            "Dal principio = from the beginning. "
+            "Also used at line 78: principio e cagion di tutta gioia. "
+            "Related to English 'principle', 'principal', 'prince'. Unchanged in modern Italian."
+        ),
+    },
+
+    # Adjectives / Adverbs / Function words (lines 10-45)
+    {
+        "id": "verace",
+        "italian": "verace",
+        "english": "true, truthful",
+        "pos": "adjective",
+        "example_italian": "che la verace via abbandonai",
+        "example_english": "that I abandoned the true way",
+        "note": (
+            "From Latin verax, veracis (truthful, speaking truth), from verus (true). "
+            "La verace via = the true way, the right path. "
+            "Echoes la diritta via (line 3) — both phrases denote the path of righteousness. "
+            "Related to English 'veracious', 'verify', 'verity'. Modern Italian: verace."
+        ),
+    },
+    {
+        "id": "alto",
+        "italian": "alto",
+        "english": "high, up; (adverb) up high",
+        "pos": "adjective / adverb",
+        "example_italian": "guardai in alto e vidi le sue spalle",
+        "example_english": "I looked up high and saw its shoulders",
+        "note": (
+            "From Latin altus (high, deep). In alto = up high (used as adverbial phrase). "
+            "Con la test'alta (line 47): with head held high. "
+            "In music, alto = high voice. In modern Italian: alto/a (adjective: high, tall); "
+            "in alto (upward, up there). Related to English 'altitude', 'alto', 'exalt'."
+        ),
+    },
+    {
+        "id": "dritto",
+        "italian": "dritto",
+        "english": "straight, direct",
+        "pos": "adverb / adjective",
+        "example_italian": "che mena dritto altrui per ogni calle",
+        "example_english": "that leads others straight along every path",
+        "note": (
+            "Variant form of diritto/diritta (see entry diritta). From Latin directus. "
+            "Here used as an adverb: mena dritto = leads straight. "
+            "The sun as planet was believed to guide creatures along the right path. "
+            "Dritto and diritta are interchangeable forms in Dante."
+        ),
+    },
+    {
+        "id": "altrui",
+        "italian": "altrui",
+        "english": "others, other people; to others",
+        "pos": "pronoun (invariable)",
+        "example_italian": "che mena dritto altrui per ogni calle",
+        "example_english": "that leads others straight along every path",
+        "note": (
+            "From Latin alteri (to others), dative of alter. Invariable form. "
+            "Functions as object or dative: mena altrui = leads others. "
+            "Medieval Italian uses altrui freely; modern Italian prefers gli altri (others). "
+            "Also used genetically: l'altrui = someone else's."
+        ),
+        "category": "function",
+    },
+    {
+        "id": "allor",
+        "italian": "allor / allora",
+        "english": "then, at that point",
+        "pos": "adverb (temporal)",
+        "example_italian": "Allor fu la paura un poco queta",
+        "example_english": "Then the fear was a little quieted",
+        "note": (
+            "From Latin ad + illam + horam (at that hour). Allor is the apocopated form. "
+            "Used to mark a narrative turning point: then, at that moment. "
+            "Appears again at line 136: Allor si mosse (Then he moved on). "
+            "Modern Italian: allora (unchanged, also used as filler: well, so)."
+        ),
+        "category": "function",
+    },
+    {
+        "id": "queto",
+        "italian": "queto / quieto",
+        "english": "quiet, stilled, calmed",
+        "pos": "adjective",
+        "example_italian": "Allor fu la paura un poco queta",
+        "example_english": "Then the fear was a little quieted",
+        "note": (
+            "From Latin quietus (at rest, quiet). Queta is the feminine form, "
+            "agreeing with paura (f.). La paura fu queta = the fear was quieted. "
+            "The apocopated form queta (for quieta) is used for metre. "
+            "Modern Italian: quieto/a (adj.), quietare (to calm, quieten)."
+        ),
+    },
+    {
+        "id": "compunto",
+        "italian": "compunto",
+        "english": "pierced, stricken, moved (with feeling)",
+        "pos": "past participle / adjective (m.)",
+        "example_italian": "che m'aveva di paura il cor compunto",
+        "example_english": "that had pierced my heart with fear",
+        "note": (
+            "Past participle of compungere (to prick, pierce, sting), from Latin compungere "
+            "(com- + pungere, to prick). Compunto agrees with cor (m.). "
+            "M'aveva compunto il cor = had pierced my heart. "
+            "In religious language compunto means contrite, moved to repentance "
+            "(related to English 'compunction')."
+        ),
+    },
+    {
+        "id": "affannato",
+        "italian": "affannato",
+        "english": "breathless, exhausted, gasping",
+        "pos": "past participle / adjective",
+        "example_italian": "E come quei che con lena affannata",
+        "example_english": "And like one who with laboured breath",
+        "note": (
+            "Past participle of affannare (to distress, to breathe with difficulty), "
+            "from affanno (laboured breathing, anguish), possibly from Latin ad + *fannum. "
+            "Affannata (feminine) agrees with lena (f.): laboured breath. "
+            "Modern Italian: affannato (breathless, gasping); affanno (breathlessness, worry)."
+        ),
+    },
+    {
+        "id": "perigliosa",
+        "italian": "periglioso / perigliosa",
+        "english": "perilous, dangerous",
+        "pos": "adjective",
+        "example_italian": "si volge a l'acqua perigliosa e guata",
+        "example_english": "turns to the perilous water and gazes",
+        "note": (
+            "From Latin periculum (danger, trial), via Old Italian periglio (= modern pericolo). "
+            "Perigliosa is the feminine form agreeing with acqua (f.). "
+            "The form periglio (for pericolo) is archaic/poetic. "
+            "Related to English 'peril', 'perilous'. Modern Italian: pericoloso/a."
+        ),
+    },
+    {
+        "id": "diserto",
+        "italian": "diserto",
+        "english": "deserted, desolate",
+        "pos": "adjective",
+        "example_italian": "ripresi via per la piaggia diserta",
+        "example_english": "I resumed my way along the deserted slope",
+        "note": (
+            "From Latin desertus (abandoned, desolate), past participle of deserere. "
+            "Diserta is the feminine form agreeing with piaggia (f.). "
+            "Gran diserto = great wasteland (line 64). "
+            "Related to English 'desert', 'deserted', 'desertion'. "
+            "Modern Italian: deserto/a (unchanged)."
+        ),
+    },
+    {
+        "id": "fermo",
+        "italian": "fermo",
+        "english": "firm, steady, fixed",
+        "pos": "adjective",
+        "example_italian": "sì che 'l piè fermo sempre era 'l più basso",
+        "example_english": "so that the firm foot was always the lower",
+        "note": (
+            "From Latin firmus (firm, steadfast). Il piè fermo = the firm/stationary foot. "
+            "In climbing a slope, one foot stays lower and steady while the other advances: "
+            "the 'firm foot' is always the lower one. "
+            "Related to English 'firm', 'infirmary'. Modern Italian: fermo/a."
+        ),
+    },
+    {
+        "id": "sempre",
+        "italian": "sempre",
+        "english": "always",
+        "pos": "adverb",
+        "example_italian": "sì che 'l piè fermo sempre era 'l più basso",
+        "example_english": "so that the firm foot was always the lower",
+        "note": (
+            "From Latin semper (always). Unchanged in modern Italian. "
+            "One of the most common adverbs in Italian poetry. "
+            "Related to English expressions via Latin: semper fidelis (always faithful)."
+        ),
+        "category": "function",
+    },
+    {
+        "id": "basso",
+        "italian": "basso",
+        "english": "low, lower",
+        "pos": "adjective / adverb",
+        "example_italian": "sì che 'l piè fermo sempre era 'l più basso",
+        "example_english": "so that the firm foot was always the lower",
+        "note": (
+            "From Late Latin bassus (short, fat, low). "
+            "Il più basso = the lower (one) — superlative/comparative with più. "
+            "Also in line 61: in basso loco (in a low place). "
+            "Related to English 'bass' (musical term), 'base', 'abase'. Modern Italian: basso/a."
+        ),
+    },
+    {
+        "id": "quasi",
+        "italian": "quasi",
+        "english": "almost, nearly",
+        "pos": "adverb",
+        "example_italian": "quasi al cominciar de l'erta",
+        "example_english": "almost at the beginning of the steep",
+        "note": (
+            "From Latin quasi (as if, almost). Unchanged in modern Italian. "
+            "Quasi introduces the dramatic entrance of the leopard: almost at the very start "
+            "of the ascent, the beast appears. "
+            "Related to English 'quasi-' (prefix meaning almost, seemingly)."
+        ),
+        "category": "function",
+    },
+    {
+        "id": "leggero",
+        "italian": "leggero / leggera",
+        "english": "light, swift, nimble",
+        "pos": "adjective",
+        "example_italian": "una lonza leggera e presta molto",
+        "example_english": "a leopard, light and very swift",
+        "note": (
+            "From Latin leviarius (from levis, light in weight). "
+            "Leggera is the feminine form agreeing with lonza (f.). "
+            "Combined with presta (swift), the two adjectives evoke the leopard's dangerous agility. "
+            "Modern Italian: leggero/a (light in weight or character). "
+            "Related to English 'levity' (via Latin levis)."
+        ),
+    },
+    {
+        "id": "presto",
+        "italian": "presto",
+        "english": "swift, ready; (adverb) quickly, soon",
+        "pos": "adjective / adverb",
+        "example_italian": "una lonza leggera e presta molto",
+        "example_english": "a leopard, light and very swift",
+        "note": (
+            "From Latin praestus (ready, at hand), from praesto (available). "
+            "Presta (feminine) agrees with lonza (f.). Molto = very. "
+            "As adverb presto = quickly, soon (common in modern Italian). "
+            "Borrowed into music: presto = fast tempo. Related to English 'presto' (as in presto!)."
+        ),
+    },
+    {
+        "id": "macolato",
+        "italian": "macolato",
+        "english": "spotted, mottled",
+        "pos": "adjective",
+        "example_italian": "che di pel macolato era coverta",
+        "example_english": "that was covered with a spotted hide",
+        "note": (
+            "From Latin macula (spot, stain, blemish). "
+            "Di pel macolato = with a spotted hide. The word is archaic/poetic; "
+            "modern Italian uses macchiato or maculato (also used in zoological terminology). "
+            "Related to English 'immaculate' (without spot, from im- + macula)."
+        ),
+    },
+    {
+        "id": "coperto",
+        "italian": "coperto",
+        "english": "covered",
+        "pos": "past participle / adjective",
+        "example_italian": "che di pel macolato era coverta",
+        "example_english": "that was covered with a spotted hide",
+        "note": (
+            "Past participle of coprire (to cover), from Latin cooperire. "
+            "Coverta is the older/poetic feminine form (= modern coperta). "
+            "Era coverta = was covered (imperfect passive). "
+            "Related to English 'cover', 'covert', 'discover'. "
+            "Modern Italian: coperto/a (covered), scoperto/a (uncovered, discovered)."
+        ),
+    },
+    {
+        "id": "dinanzi",
+        "italian": "dinanzi",
+        "english": "before, in front of",
+        "pos": "preposition / adverb",
+        "example_italian": "e non mi si partia dinanzi al volto",
+        "example_english": "and it did not depart from before my face",
+        "note": (
+            "From Latin de + in + antius (from before). "
+            "Dinanzi al volto = before my face. "
+            "Medieval Italian form; also dinanzi a = in front of. "
+            "Modern Italian: davanti (a) is more common; dinanzi survives in formal/literary use."
+        ),
+        "category": "function",
+    },
+    {
+        "id": "anzi",
+        "italian": "anzi",
+        "english": "rather, on the contrary; indeed",
+        "pos": "adverb / conjunction (adversative)",
+        "example_italian": "anzi 'mpediva tanto il mio cammino",
+        "example_english": "rather, it so much impeded my advance",
+        "note": (
+            "From Latin ante (before, in front of → on the contrary). "
+            "Adversative: introduces a stronger contradiction or intensification. "
+            "Anzi = not merely not departing, but actively blocking. "
+            "Modern Italian: anzi = on the contrary; indeed (often used to strengthen or correct)."
+        ),
+        "category": "function",
+    },
+    {
+        "id": "retro",
+        "italian": "retro / a retro",
+        "english": "back, behind",
+        "pos": "adverb",
+        "example_italian": "si volse a retro a rimirar lo passo",
+        "example_english": "turned back to gaze upon the pass",
+        "note": (
+            "From Latin retro (backwards, behind). A retro = backwards. "
+            "Si volse a retro = turned himself back. "
+            "Survives in modern Italian as a prefix (retro-: retrogrado, etc.) "
+            "and in the phrase guardare indietro (to look back). "
+            "Related to English 'retro', 'retrograde'."
+        ),
+        "category": "function",
+    },
+    {
+        "id": "divino",
+        "italian": "divino",
+        "english": "divine",
+        "pos": "adjective",
+        "example_italian": "quando l'amor divino",
+        "example_english": "when divine love",
+        "note": (
+            "From Latin divinus (of the gods, divine), from divus (god). "
+            "L'amor divino = divine love, the creative force of God. "
+            "Dante uses divino throughout the Commedia: la divina commedia, the poem's title. "
+            "Related to English 'divine', 'divinity'. Unchanged in modern Italian."
+        ),
+    },
+    {
+        "id": "novo",
+        "italian": "novo / nuovo",
+        "english": "new",
+        "pos": "adjective",
+        "example_italian": "la stagion nova e l'ora del mattino",
+        "example_english": "the new season and the hour of morning",
+        "note": (
+            "From Latin novus (new). Nova is the poetic/archaic form (= modern nuova). "
+            "La stagion nova = the new season, spring. "
+            "Dante prefers novo/nova in verse for metrical reasons. "
+            "Related to English 'novel', 'novelty', 'innovate'. Modern Italian: nuovo/nuova."
+        ),
+    },
+    {
+        "id": "gaio",
+        "italian": "gaio / gaìa",
+        "english": "gay, bright, joyful",
+        "pos": "adjective",
+        "example_italian": "di quella fiera a la gaìa pelle",
+        "example_english": "of that beast with the gay-coloured hide",
+        "note": (
+            "From Old Provençal gai (joyful, bright). Gaìa (with diaeresis on the i) is the feminine, "
+            "marking that the i and a are pronounced as two separate syllables (ga-ì-a). "
+            "A la gaìa pelle = with the bright/gay-coloured hide. "
+            "In medieval usage, gai/gaio = joyful, lively, brightly coloured. "
+            "Related to English 'gay' (in its original sense of bright, merry)."
+        ),
+    },
+    {
+        "id": "poscia",
+        "italian": "poscia",
+        "english": "afterwards, then, next",
+        "pos": "adverb (temporal)",
+        "example_italian": "la vista d'un leon che m'apparve poscia",
+        "example_english": "the sight of a lion that afterwards appeared to me",
+        "note": (
+            "From Latin post + -ia. Archaic/poetic adverb, equivalent to poi or dopo. "
+            "M'apparve poscia = appeared to me afterwards (after the leopard). "
+            "Dante uses poscia frequently in the Commedia for narrative sequence. "
+            "Modern Italian: poi, dopo; poscia survives in formal/literary use."
+        ),
+        "category": "function",
+    },
+    {
+        "id": "prima",
+        "italian": "prima",
+        "english": "first, at first; before",
+        "pos": "adverb / adjective",
+        "example_italian": "mosse di prima quelle cose belle",
+        "example_english": "first moved those beautiful things",
+        "note": (
+            "From Latin prima (feminine of primus, first). "
+            "Di prima = first, for the first time, at the beginning. "
+            "Refers to the first moment of Creation when divine love set the heavens in motion. "
+            "Modern Italian: prima (first, before) — unchanged. Related to English 'primary', 'prime'."
+        ),
+        "category": "function",
+    },
+    {
+        "id": "bello",
+        "italian": "bello / bella",
+        "english": "beautiful, fair",
+        "pos": "adjective",
+        "example_italian": "mosse di prima quelle cose belle",
+        "example_english": "first moved those beautiful things",
+        "note": (
+            "From Latin bellus (fine, pretty). Belle is the feminine plural, agreeing with cose (f. pl.). "
+            "Quelle cose belle = those beautiful things (the heavenly bodies/the world at Creation). "
+            "Related to English 'belle', 'belladonna', 'embellish'. Modern Italian: bello/bella."
+        ),
+    },
 ]
 
 # ─── Word-order exercises ──────────────────────────────────────────────────────
@@ -2081,6 +3354,851 @@ SENTENCES = [
                 "Per trattar: per + infinitive expresses purpose (in order to speak of). "
                 "Ch'i' = che io; vi = there (adverb of place, archaic/poetic). "
                 "Dirò: future of dire (I will tell). Scorte: past participle of scorgere (to perceive, see)."
+            ),
+        },
+    },
+    {
+        "id": "s4",
+        "lines": (10, 12),
+        "italian": (
+            "Io non so ben ridir com'i' v'intrai,\n"
+            "tant'era pien di sonno a quel punto\n"
+            "che la verace via abbandonai."
+        ),
+        "vocab_ids": [
+            "essere", "adv_non", "dire", "ben", "adv_vi",
+            "tanto", "sonno", "al", "poco", "verace", "via", "abbandonare",
+            "conj_che", "art_la",
+        ],
+        "verb_highlights": {
+            "essere":      [{"tense": "imperfect",      "person_idx": 0}],  # tant'era
+            "dire":        [{"tense": "present",        "person_idx": 0}],  # so … ridir (infinitive)
+            "abbandonare": [{"tense": "passato_remoto", "person_idx": 0}],  # abbandonai
+        },
+        "word_order": [
+            {
+                "line": 10,
+                "tokens": ["Io", "non", "so", "ben", "ridir", "com'i'", "v'intrai,"],
+                "translation": "I do not know well how to tell again how I entered there,",
+                "hint": (
+                    "So = I know (1st sg. present of sapere). Ridir = ridire (to re-tell), "
+                    "apocopated infinitive. Com'i' = come io (how I). "
+                    "V'intrai = vi entrai (I entered there), passato remoto of entrare."
+                ),
+            },
+            {
+                "line": 11,
+                "tokens": ["tant'era", "pien", "di", "sonno", "a", "quel", "punto"],
+                "translation": "so full of sleep was I at that point",
+                "hint": (
+                    "Tant'era = tanto era (elision before e): so much was I. "
+                    "Pien = pieno (full), apocopated. Di sonno = of sleep. "
+                    "A quel punto = at that point."
+                ),
+            },
+            {
+                "line": 12,
+                "tokens": ["che", "la", "verace", "via", "abbandonai."],
+                "translation": "that I abandoned the true way.",
+                "hint": (
+                    "Che introduces a result clause: so full of sleep … that I abandoned. "
+                    "Verace = true, genuine (from Latin verax). Abbandonai = I abandoned "
+                    "(1st sg. passato remoto)."
+                ),
+            },
+        ],
+        "translation": {
+            "lines": (10, 12),
+            "prompt": (
+                "I not know well to tell again how I there entered,\n"
+                "so much was full of sleep at that point\n"
+                "that the true way I abandoned."
+            ),
+            "italian": (
+                "Io non so ben ridir com'i' v'intrai,\n"
+                "tant'era pien di sonno a quel punto\n"
+                "che la verace via abbandonai."
+            ),
+            "note": (
+                "Com'i' = come io: the pronoun io contracts after come. "
+                "V'intrai = vi entrai: vi (there) elides to v' before a vowel. "
+                "The result clause (tanto … che) explains not just how Dante lost his way, "
+                "but implies moral as well as physical sleep — spiritual negligence."
+            ),
+        },
+    },
+    {
+        "id": "s5",
+        "lines": (13, 15),
+        "italian": (
+            "Ma poi ch'i' fui al piè d'un colle giunto,\n"
+            "là dove terminava quella valle\n"
+            "che m'aveva di paura il cor compunto,"
+        ),
+        "vocab_ids": [
+            "conj_ma", "conj_poi", "essere", "al", "pie", "prep_di", "art_un",
+            "colle", "adv_là", "terminare", "valle", "conj_che",
+            "avere", "paura", "art_il", "cor", "compunto",
+        ],
+        "verb_highlights": {
+            "essere":    [{"tense": "passato_remoto", "person_idx": 0}],  # fui
+            "terminare": [{"tense": "imperfect",      "person_idx": 2}],  # terminava
+            "avere":     [{"tense": "imperfect",      "person_idx": 2}],  # m'aveva (pluperfect)
+        },
+        "word_order": [
+            {
+                "line": 13,
+                "tokens": ["Ma", "poi", "ch'i'", "fui", "al", "piè", "d'un", "colle", "giunto,"],
+                "translation": "But when I had arrived at the foot of a hill,",
+                "hint": (
+                    "Poi ch'i' = poi che io (once that I, when I). Fui = I was/I had been "
+                    "(passato remoto of essere). Giunto = arrived (past participle of giungere). "
+                    "Al piè = at the foot (al = a + il). D'un = di + un."
+                ),
+            },
+            {
+                "line": 14,
+                "tokens": ["là", "dove", "terminava", "quella", "valle"],
+                "translation": "there where that valley ended",
+                "hint": (
+                    "Là dove = there where (introduces a relative place clause). "
+                    "Terminava = was ending (imperfect of terminare). "
+                    "Quella valle = that valley (quella is the demonstrative feminine)."
+                ),
+            },
+            {
+                "line": 15,
+                "tokens": ["che", "m'aveva", "di", "paura", "il", "cor", "compunto,"],
+                "translation": "that had pierced my heart with fear,",
+                "hint": (
+                    "Che = which (relative pronoun, referring to the valley). "
+                    "M'aveva compunto = had pierced me (pluperfect: aveva + past participle). "
+                    "Di paura = with fear. Il cor = the heart (cor = cuore, apocopated)."
+                ),
+            },
+        ],
+        "translation": {
+            "lines": (13, 15),
+            "prompt": (
+                "But when I at the foot of a hill arrived,\n"
+                "there where was ending that valley\n"
+                "that had me with fear the heart pierced,"
+            ),
+            "italian": (
+                "Ma poi ch'i' fui al piè d'un colle giunto,\n"
+                "là dove terminava quella valle\n"
+                "che m'aveva di paura il cor compunto,"
+            ),
+            "note": (
+                "Giunto is a past participle used predicatively after fui: 'I was arrived' = 'I had arrived'. "
+                "The Italian object order differs from English: m'aveva di paura il cor compunto "
+                "places the subject (il cor) after the past participle (compunto), a common Dantesque inversion. "
+                "Compunto derives from Latin compungere (to prick); related to 'compunction'."
+            ),
+        },
+    },
+    {
+        "id": "s6",
+        "lines": (16, 18),
+        "italian": (
+            "guardai in alto e vidi le sue spalle\n"
+            "vestite già de' raggi del pianeta\n"
+            "che mena dritto altrui per ogni calle;"
+        ),
+        "vocab_ids": [
+            "guardare", "prep_in", "alto", "conj_e", "vedere", "art_le", "spalle",
+            "adv_già", "raggio", "del", "pianeta",
+            "conj_che", "menare", "dritto", "altrui", "prep_per", "calle",
+        ],
+        "verb_highlights": {
+            "guardare": [{"tense": "passato_remoto", "person_idx": 0}],  # guardai
+            "vedere":   [{"tense": "passato_remoto", "person_idx": 0}],  # vidi
+            "menare":   [{"tense": "present",        "person_idx": 2}],  # mena
+        },
+        "word_order": [
+            {
+                "line": 16,
+                "tokens": ["guardai", "in", "alto", "e", "vidi", "le", "sue", "spalle"],
+                "translation": "I looked up high and saw its shoulders",
+                "hint": (
+                    "Guardai and vidi are both 1st person singular passato remoto. "
+                    "In alto = up high (in + alto used adverbially). "
+                    "Sue spalle = its shoulders (sue is the possessive agreeing with spalle, f. pl.)."
+                ),
+            },
+            {
+                "line": 17,
+                "tokens": ["vestite", "già", "de'", "raggi", "del", "pianeta"],
+                "translation": "already clothed in the rays of the planet",
+                "hint": (
+                    "Vestite = clothed (past participle, feminine plural agreeing with spalle). "
+                    "Già = already. De' = dei = di + i (of the). "
+                    "Pianeta = the sun (Ptolemaic cosmology: the sun is one of seven planets)."
+                ),
+            },
+            {
+                "line": 18,
+                "tokens": ["che", "mena", "dritto", "altrui", "per", "ogni", "calle;"],
+                "translation": "that leads others straight along every path;",
+                "hint": (
+                    "Che = which (relative, referring to the sun/planet). "
+                    "Mena = leads (present of menare). Dritto = straight (adverb). "
+                    "Altrui = others (invariable pronoun). Calle = path, lane (archaic)."
+                ),
+            },
+        ],
+        "translation": {
+            "lines": (16, 18),
+            "prompt": (
+                "I looked up high and saw its shoulders\n"
+                "clothed already with the rays of the planet\n"
+                "that leads straight others along every path;"
+            ),
+            "italian": (
+                "guardai in alto e vidi le sue spalle\n"
+                "vestite già de' raggi del pianeta\n"
+                "che mena dritto altrui per ogni calle;"
+            ),
+            "note": (
+                "The hill's 'shoulders' are a bold personification. "
+                "The planet = the sun; de' = dei (di + i, of the) contracted poetically. "
+                "The sun leads creatures to their proper path, making it a symbol of right reason "
+                "and divine guidance. Mena (present tense) stresses the sun's ongoing, universal action."
+            ),
+        },
+    },
+    {
+        "id": "s7",
+        "lines": (19, 21),
+        "italian": (
+            "Allor fu la paura un poco queta,\n"
+            "che nel lago del cor m'era durata\n"
+            "la notte ch'i' passai con tanta pieta."
+        ),
+        "vocab_ids": [
+            "allor", "essere", "art_la", "paura", "art_un", "poco", "queto",
+            "conj_che", "nel", "lago", "del", "cor", "pron_mi", "durare",
+            "notte", "passare", "prep_con", "tanto", "pieta",
+        ],
+        "verb_highlights": {
+            "essere":  [{"tense": "passato_remoto", "person_idx": 2}],  # fu
+            "durare":  [{"tense": "imperfect",      "person_idx": 2}],  # m'era durata (pluperfect)
+            "passare": [{"tense": "passato_remoto", "person_idx": 0}],  # passai
+        },
+        "word_order": [
+            {
+                "line": 19,
+                "tokens": ["Allor", "fu", "la", "paura", "un", "poco", "queta,"],
+                "translation": "Then the fear was a little quieted,",
+                "hint": (
+                    "Allor = allora (then), apocopated. Fu = it was (passato remoto of essere, 3rd sg.). "
+                    "Queta = quieted, stilled (feminine, agreeing with paura). "
+                    "Un poco = a little."
+                ),
+            },
+            {
+                "line": 20,
+                "tokens": ["che", "nel", "lago", "del", "cor", "m'era", "durata"],
+                "translation": "that had lasted in the lake of my heart",
+                "hint": (
+                    "Che = which (relative, referring to paura). "
+                    "Nel lago del cor = in the lake of the heart (metaphor). "
+                    "M'era durata = had lasted to me (pluperfect: era + past participle)."
+                ),
+            },
+            {
+                "line": 21,
+                "tokens": ["la", "notte", "ch'i'", "passai", "con", "tanta", "pieta."],
+                "translation": "through the night that I had passed with such great pity.",
+                "hint": (
+                    "La notte is the subject of m'era durata (the fear had lasted … through the night). "
+                    "Ch'i' = che io (that I). Passai = I passed (passato remoto). "
+                    "Pieta (without accent) = pity, grief; con tanta pieta = with such great anguish."
+                ),
+            },
+        ],
+        "translation": {
+            "lines": (19, 21),
+            "prompt": (
+                "Then was the fear a little quieted,\n"
+                "that in the lake of the heart had lasted to me\n"
+                "the night that I passed with such great pity."
+            ),
+            "italian": (
+                "Allor fu la paura un poco queta,\n"
+                "che nel lago del cor m'era durata\n"
+                "la notte ch'i' passai con tanta pieta."
+            ),
+            "note": (
+                "Nel lago del cor is a striking metaphor: fear pooled like a lake in the heart. "
+                "M'era durata: the dative mi (to me) expresses personal involvement with the lasting fear. "
+                "Pieta (without accent) = compassion/pity/grief; distinct from pietà (piety). "
+                "The pluperfect m'era durata indicates the fear preceded and lasted through the night already past."
+            ),
+        },
+    },
+    {
+        "id": "s8",
+        "lines": (22, 24),
+        "italian": (
+            "E come quei che con lena affannata,\n"
+            "uscito fuor del pelago a la riva,\n"
+            "si volge a l'acqua perigliosa e guata,"
+        ),
+        "vocab_ids": [
+            "conj_e", "pron_si", "lena", "affannato", "prep_con",
+            "pelago", "prep_a", "riva", "volgere", "acqua", "perigliosa", "guatare",
+            "prep_di",
+        ],
+        "verb_highlights": {
+            "volgere": [{"tense": "present", "person_idx": 2}],  # si volge
+            "guatare": [{"tense": "present", "person_idx": 2}],  # guata
+        },
+        "word_order": [
+            {
+                "line": 22,
+                "tokens": ["E", "come", "quei", "che", "con", "lena", "affannata,"],
+                "translation": "And like one who with laboured breath,",
+                "hint": (
+                    "Come = like, as (introducing a simile). "
+                    "Quei = colui, that one (demonstrative pronoun, subject of si volge). "
+                    "Lena affannata = laboured breath (lena = breath; affannata = gasping, f.)."
+                ),
+            },
+            {
+                "line": 23,
+                "tokens": ["uscito", "fuor", "del", "pelago", "a", "la", "riva,"],
+                "translation": "having come out of the open sea to the shore,",
+                "hint": (
+                    "Uscito = having exited/come out (past participle of uscire, used absolutely). "
+                    "Fuor del = fuori dal (out of). Pelago = open sea (literary/archaic). "
+                    "A la riva = to the shore."
+                ),
+            },
+            {
+                "line": 24,
+                "tokens": ["si", "volge", "a", "l'acqua", "perigliosa", "e", "guata,"],
+                "translation": "turns to the perilous water and gazes,",
+                "hint": (
+                    "Si volge = turns (reflexive, 3rd sg. present of volgere). "
+                    "A l'acqua = a + l'acqua (elision). Perigliosa = perilous, dangerous (archaic form). "
+                    "Guata = gazes intently (present of guatare, archaic/poetic verb)."
+                ),
+            },
+        ],
+        "translation": {
+            "lines": (22, 24),
+            "prompt": (
+                "And like one who with breath laboured,\n"
+                "having come out from the open sea to the shore,\n"
+                "turns to the perilous water and gazes,"
+            ),
+            "italian": (
+                "E come quei che con lena affannata,\n"
+                "uscito fuor del pelago a la riva,\n"
+                "si volge a l'acqua perigliosa e guata,"
+            ),
+            "note": (
+                "This is a classic Dantesque epic simile: come … così (as … so), completed at line 25. "
+                "Quei = colui che (the one who) — an archaic demonstrative. "
+                "Pelago (open sea) is elevated literary vocabulary, from Greek pelagos. "
+                "Guatare (to stare, gaze) is an archaic/Germanic verb, distinct from guardare."
+            ),
+        },
+    },
+    {
+        "id": "s9",
+        "lines": (25, 27),
+        "italian": (
+            "così l'animo mio, ch'ancor fuggiva,\n"
+            "si volse a retro a rimirar lo passo\n"
+            "che non lasciò già mai persona viva."
+        ),
+        "vocab_ids": [
+            "animo", "fuggire", "pron_si", "volgere", "retro", "rimirare",
+            "passo", "conj_che", "adv_non", "adv_già", "adv_mai", "persona",
+        ],
+        "verb_highlights": {
+            "fuggire":  [{"tense": "imperfect",      "person_idx": 2}],  # fuggiva
+            "volgere":  [{"tense": "passato_remoto", "person_idx": 2}],  # si volse
+            "rimirare": [],  # rimirar is apocopated infinitive
+        },
+        "word_order": [
+            {
+                "line": 25,
+                "tokens": ["così", "l'animo", "mio,", "ch'ancor", "fuggiva,"],
+                "translation": "so my spirit, which was still fleeing,",
+                "hint": (
+                    "Così = so, thus (completing the simile begun with come at line 22). "
+                    "L'animo mio = my spirit/mind (l' = il, elided before vowel). "
+                    "Ch'ancor = che ancora (which still). Fuggiva = was fleeing (imperfect)."
+                ),
+            },
+            {
+                "line": 26,
+                "tokens": ["si", "volse", "a", "retro", "a", "rimirar", "lo", "passo"],
+                "translation": "turned back to gaze upon the pass",
+                "hint": (
+                    "Si volse = turned itself (passato remoto reflexive of volgere). "
+                    "A retro = backwards. A rimirar = to gaze upon (a + apocopated infinitive). "
+                    "Lo passo = the pass (lo is the archaic article = il before p-)."
+                ),
+            },
+            {
+                "line": 27,
+                "tokens": ["che", "non", "lasciò", "già", "mai", "persona", "viva."],
+                "translation": "that never yet had left any person alive.",
+                "hint": (
+                    "Che = which (relative, referring to the pass). "
+                    "Non … già mai = never ever (triple negation: non + già + mai). "
+                    "Lasciò = left (3rd sg. passato remoto of lasciare). "
+                    "Persona viva = a living person / anyone alive."
+                ),
+            },
+        ],
+        "translation": {
+            "lines": (25, 27),
+            "prompt": (
+                "so my spirit, which still was fleeing,\n"
+                "turned itself back to gaze upon the pass\n"
+                "that not ever yet a person living left."
+            ),
+            "italian": (
+                "così l'animo mio, ch'ancor fuggiva,\n"
+                "si volse a retro a rimirar lo passo\n"
+                "che non lasciò già mai persona viva."
+            ),
+            "note": (
+                "The simile (come … così) spans lines 22–26. "
+                "Non lasciò già mai: Dante intensifies the negative with three words "
+                "— non, già, and mai — a common medieval Italian emphatic pattern. "
+                "Lo passo (not il passo) illustrates the archaic article lo before p-. "
+                "The soul looks back even while still fleeing, capturing the psychology of escape."
+            ),
+        },
+    },
+    {
+        "id": "s10",
+        "lines": (28, 30),
+        "italian": (
+            "Poi ch'èi posato un poco il corpo lasso,\n"
+            "ripresi via per la piaggia diserta,\n"
+            "sì che 'l piè fermo sempre era 'l più basso."
+        ),
+        "vocab_ids": [
+            "conj_poi", "posare", "poco", "corpo", "lasso",
+            "riprendere", "via", "prep_per", "art_la", "piaggia", "diserto",
+            "adv_sì", "pie", "fermo", "sempre", "essere", "piu", "basso",
+        ],
+        "verb_highlights": {
+            "posare":    [{"tense": "past_participle", "person_idx": 0}],  # posato
+            "riprendere":[{"tense": "passato_remoto",  "person_idx": 0}],  # ripresi
+            "essere":    [{"tense": "imperfect",       "person_idx": 2}],  # era
+        },
+        "word_order": [
+            {
+                "line": 28,
+                "tokens": ["Poi", "ch'èi", "posato", "un", "poco", "il", "corpo", "lasso,"],
+                "translation": "After I had rested a little the weary body,",
+                "hint": (
+                    "Poi ch'èi = poi che io ho (after I have/had). "
+                    "Posato = rested (past participle of posare). "
+                    "Il corpo lasso = the weary body (lasso = weary, from Latin laxus)."
+                ),
+            },
+            {
+                "line": 29,
+                "tokens": ["ripresi", "via", "per", "la", "piaggia", "diserta,"],
+                "translation": "I resumed my way along the deserted slope,",
+                "hint": (
+                    "Ripresi = I resumed (1st sg. passato remoto of riprendere). "
+                    "Via = way (here the object). Per = along, through. "
+                    "Piaggia diserta = deserted slope (piaggia = hillside; diserta = deserted, f.)."
+                ),
+            },
+            {
+                "line": 30,
+                "tokens": ["sì", "che", "'l", "piè", "fermo", "sempre", "era", "'l", "più", "basso."],
+                "translation": "so that the firm foot was always the lower.",
+                "hint": (
+                    "Sì che = so that (result clause). 'l = il (article, elided). "
+                    "Il piè fermo = the firm foot (the downhill foot in climbing). "
+                    "Sempre era il più basso = was always the lower (comparative: più basso)."
+                ),
+            },
+        ],
+        "translation": {
+            "lines": (28, 30),
+            "prompt": (
+                "After I had rested a little the body weary,\n"
+                "I resumed my way along the slope deserted,\n"
+                "so that the foot firm always was the more low."
+            ),
+            "italian": (
+                "Poi ch'èi posato un poco il corpo lasso,\n"
+                "ripresi via per la piaggia diserta,\n"
+                "sì che 'l piè fermo sempre era 'l più basso."
+            ),
+            "note": (
+                "Ch'èi posato is an archaic contracted form of che io ho posato (after I have rested). "
+                "Piè fermo: the 'firm foot' is the lower, steadying foot when climbing a steep slope — "
+                "the image vividly conveys the difficulty of ascending. "
+                "Sì che here introduces a result or manner clause: in such a way that / so that."
+            ),
+        },
+    },
+    {
+        "id": "s11",
+        "lines": (31, 33),
+        "italian": (
+            "Ed ecco, quasi al cominciar de l'erta,\n"
+            "una lonza leggera e presta molto,\n"
+            "che di pel macolato era coverta;"
+        ),
+        "vocab_ids": [
+            "conj_e", "interj_ecco", "quasi", "al", "cominciare", "erta",
+            "art_un", "lonza", "leggero", "presto", "tanto",
+            "conj_che", "pelo", "macolato", "essere", "coperto",
+        ],
+        "verb_highlights": {
+            "essere": [{"tense": "imperfect", "person_idx": 2}],  # era coverta
+        },
+        "word_order": [
+            {
+                "line": 31,
+                "tokens": ["Ed", "ecco,", "quasi", "al", "cominciar", "de", "l'erta,"],
+                "translation": "And behold, almost at the beginning of the steep,",
+                "hint": (
+                    "Ed = e (and), used before a vowel to avoid hiatus. "
+                    "Ecco = behold, here (presentative adverb). Quasi = almost. "
+                    "Al cominciar = at the beginning (al + infinitive used as noun). "
+                    "De l'erta = di la erta (of/at the steep slope)."
+                ),
+            },
+            {
+                "line": 32,
+                "tokens": ["una", "lonza", "leggera", "e", "presta", "molto,"],
+                "translation": "a leopard, light and very swift,",
+                "hint": (
+                    "Una lonza: the subject of this tercet finally arrives — the leopard. "
+                    "Leggera = light (f., agreeing with lonza). Presta = swift, ready (f.). "
+                    "Molto = very. Both adjectives agree in gender with lonza (f.)."
+                ),
+            },
+            {
+                "line": 33,
+                "tokens": ["che", "di", "pel", "macolato", "era", "coverta;"],
+                "translation": "that was covered with a spotted hide;",
+                "hint": (
+                    "Che = which (relative, referring to the lonza). "
+                    "Di pel macolato = with a spotted hide (pel = pelo, apocopated). "
+                    "Era coverta = was covered (imperfect passive; coverta is poetic for coperta)."
+                ),
+            },
+        ],
+        "translation": {
+            "lines": (31, 33),
+            "prompt": (
+                "And behold, almost at the beginning of the steep,\n"
+                "a leopard light and swift very,\n"
+                "that with hide spotted was covered;"
+            ),
+            "italian": (
+                "Ed ecco, quasi al cominciar de l'erta,\n"
+                "una lonza leggera e presta molto,\n"
+                "che di pel macolato era coverta;"
+            ),
+            "note": (
+                "Ed ecco is a dramatic presentative formula (from Latin ecce, look!). "
+                "The leopard appears as a sudden obstacle almost at the very start of the ascent — "
+                "the irony is sharp. Lonza: the exact species is debated; most identify it as a leopard. "
+                "Coverta (for coperta) is an archaic feminine past participle."
+            ),
+        },
+    },
+    {
+        "id": "s12",
+        "lines": (34, 36),
+        "italian": (
+            "e non mi si partia dinanzi al volto,\n"
+            "anzi 'mpediva tanto il mio cammino,\n"
+            "che fu per tornare più volte vòlto."
+        ),
+        "vocab_ids": [
+            "conj_e", "adv_non", "pron_mi", "pron_si", "partire", "dinanzi", "al", "volto",
+            "anzi", "impedire", "tanto", "cammino",
+            "conj_che", "essere", "prep_per", "tornare", "piu", "volgere",
+        ],
+        "verb_highlights": {
+            "partire":  [{"tense": "imperfect",      "person_idx": 2}],  # partia (= partiva)
+            "impedire": [{"tense": "imperfect",      "person_idx": 2}],  # 'mpediva
+            "essere":   [{"tense": "passato_remoto", "person_idx": 2}],  # fu
+            "tornare":  [],  # infinitive after fu per
+        },
+        "word_order": [
+            {
+                "line": 34,
+                "tokens": ["e", "non", "mi", "si", "partia", "dinanzi", "al", "volto,"],
+                "translation": "and it did not depart from before my face,",
+                "hint": (
+                    "Non mi si partia = did not depart from before me. "
+                    "Mi si = to me (double clitic). Partia = partiva (syncopated imperfect). "
+                    "Dinanzi al volto = before my face (dinanzi = in front of; volto = face)."
+                ),
+            },
+            {
+                "line": 35,
+                "tokens": ["anzi", "'mpediva", "tanto", "il", "mio", "cammino,"],
+                "translation": "rather, it so much impeded my advance,",
+                "hint": (
+                    "Anzi = rather, on the contrary (adversative — not just failing to leave, but actively blocking). "
+                    "'Mpediva = impediva (imperfect of impedire), the initial vowel elided. "
+                    "Tanto = so much. Il mio cammino = my advance, my path."
+                ),
+            },
+            {
+                "line": 36,
+                "tokens": ["che", "fu", "per", "tornare", "più", "volte", "vòlto."],
+                "translation": "that many times it/I was turned back to return.",
+                "hint": (
+                    "Che introduces a result clause. Fu per + infinitive = was about to / was forced to. "
+                    "Più volte = many times. Vòlto = turned (past participle of volgere, with accent "
+                    "marking the stressed syllable, and punning on volto = face at line 34)."
+                ),
+            },
+        ],
+        "translation": {
+            "lines": (34, 36),
+            "prompt": (
+                "and not to me departed from before the face,\n"
+                "rather it impeded so much my advance,\n"
+                "that it was on the point of turning many times turned."
+            ),
+            "italian": (
+                "e non mi si partia dinanzi al volto,\n"
+                "anzi 'mpediva tanto il mio cammino,\n"
+                "che fu per tornare più volte vòlto."
+            ),
+            "note": (
+                "Partia = partiva: medieval Italian syncopates -iva to -ia in the imperfect of -ire verbs. "
+                "Anzi escalates: the beast does not merely stay — it actively blocks. "
+                "Vòlto as past participle of volgere puns with volto (face) at line 34, a typical Dantesque wordplay. "
+                "Fu per tornare: the construction fu per + infinitive = was on the point of / was forced to."
+            ),
+        },
+    },
+    {
+        "id": "s13",
+        "lines": (37, 39),
+        "italian": (
+            "Temp'era dal principio del mattino,\n"
+            "e 'l sol montava 'n sù con quelle stelle\n"
+            "ch'eran con lui quando l'amor divino"
+        ),
+        "vocab_ids": [
+            "tempo", "essere", "prep_da", "principio", "del", "mattino",
+            "conj_e", "sole", "montare", "stella",
+            "conj_quando", "amor", "divino",
+        ],
+        "verb_highlights": {
+            "essere":  [
+                {"tense": "imperfect", "person_idx": 2},   # Temp'era
+                {"tense": "imperfect", "person_idx": 5},   # ch'eran
+            ],
+            "montare": [{"tense": "imperfect", "person_idx": 2}],  # montava
+        },
+        "word_order": [
+            {
+                "line": 37,
+                "tokens": ["Temp'era", "dal", "principio", "del", "mattino,"],
+                "translation": "It was the time from the beginning of morning,",
+                "hint": (
+                    "Temp'era = tempo era (elision before e): it was the time / it was the season. "
+                    "Dal principio = from the beginning (da + il = dal). "
+                    "Del mattino = of the morning."
+                ),
+            },
+            {
+                "line": 38,
+                "tokens": ["e", "'l", "sol", "montava", "'n", "sù", "con", "quelle", "stelle"],
+                "translation": "and the sun was climbing upward with those stars",
+                "hint": (
+                    "'l = il (elided). Sol = sole (apocopated). Montava = was climbing (imperfect). "
+                    "'n sù = in su (upward): double elision common in Dante. "
+                    "Quelle stelle = those stars (Aries, the spring constellation)."
+                ),
+            },
+            {
+                "line": 39,
+                "tokens": ["ch'eran", "con", "lui", "quando", "l'amor", "divino"],
+                "translation": "that were with it when divine love",
+                "hint": (
+                    "Ch'eran = che erano (that were), with elision. Con lui = with it (the sun). "
+                    "Quando = when. L'amor = il + amor (elision). "
+                    "Divino = divine (adjective modifying amor)."
+                ),
+            },
+        ],
+        "translation": {
+            "lines": (37, 39),
+            "prompt": (
+                "It was the time from the beginning of morning,\n"
+                "and the sun was climbing upward with those stars\n"
+                "that were with it when divine love"
+            ),
+            "italian": (
+                "Temp'era dal principio del mattino,\n"
+                "e 'l sol montava 'n sù con quelle stelle\n"
+                "ch'eran con lui quando l'amor divino"
+            ),
+            "note": (
+                "Dante places the encounter in the spring at sunrise — "
+                "the sun in Aries, the same configuration medieval tradition assigned to Creation. "
+                "This tercet opens a longer sentence ending at line 43; the verse structure enacts suspense. "
+                "Sol = apocopated sole; 'n sù = in su (upward). Ch'eran = che erano."
+            ),
+        },
+    },
+    {
+        "id": "s14",
+        "lines": (40, 42),
+        "italian": (
+            "mosse di prima quelle cose belle;\n"
+            "sì ch'a bene sperar m'era cagione\n"
+            "di quella fiera a la gaìa pelle"
+        ),
+        "vocab_ids": [
+            "muovere", "prima", "cosa", "bello",
+            "adv_sì", "ben", "sperare", "pron_mi", "essere", "cagione",
+            "prep_di", "fiera", "prep_a", "gaio", "pelle",
+        ],
+        "verb_highlights": {
+            "muovere": [{"tense": "passato_remoto", "person_idx": 2}],  # mosse
+            "sperare": [],  # sperar is apocopated infinitive
+            "essere":  [{"tense": "imperfect",      "person_idx": 2}],  # m'era
+        },
+        "word_order": [
+            {
+                "line": 40,
+                "tokens": ["mosse", "di", "prima", "quelle", "cose", "belle;"],
+                "translation": "first moved those beautiful things;",
+                "hint": (
+                    "Mosse = moved (3rd sg. passato remoto of muovere). "
+                    "Di prima = for the first time, at first. "
+                    "Quelle cose belle = those beautiful things (the heavens, at Creation). "
+                    "Belle is the feminine plural agreeing with cose (f. pl.)."
+                ),
+            },
+            {
+                "line": 41,
+                "tokens": ["sì", "ch'a", "bene", "sperar", "m'era", "cagione"],
+                "translation": "so that it gave me cause to hope for good",
+                "hint": (
+                    "Sì ch'a = sì che a (so that, followed by the infinitive phrase). "
+                    "Bene sperar = to hope for good (ben = bene, adverb; sperar = apocopated infinitive). "
+                    "M'era cagione = was (a) cause to me / gave me reason."
+                ),
+            },
+            {
+                "line": 42,
+                "tokens": ["di", "quella", "fiera", "a", "la", "gaìa", "pelle"],
+                "translation": "of that beast with the gay-coloured hide",
+                "hint": (
+                    "Di quella fiera = of that beast (the leopard). "
+                    "A la gaìa pelle = with the bright/gay hide (a la = with). "
+                    "Gaìa (note diaeresis: two syllables ga-ì-a). Pelle = skin, hide."
+                ),
+            },
+        ],
+        "translation": {
+            "lines": (40, 42),
+            "prompt": (
+                "moved at first those things beautiful;\n"
+                "so that to good to hope to me was cause\n"
+                "of that beast with the gay hide"
+            ),
+            "italian": (
+                "mosse di prima quelle cose belle;\n"
+                "sì ch'a bene sperar m'era cagione\n"
+                "di quella fiera a la gaìa pelle"
+            ),
+            "note": (
+                "The subject of mosse is l'amor divino (line 39): divine love first moved the heavens. "
+                "Sì ch'a bene sperar m'era cagione: the spring sunrise gives Dante hope despite the beast. "
+                "Gaìa: the diaeresis (two dots over ì) signals that i and a are separate syllables, "
+                "maintaining the poem's hendecasyllabic metre."
+            ),
+        },
+    },
+    {
+        "id": "s15",
+        "lines": (43, 45),
+        "italian": (
+            "la stagion nova e l'ora del mattino;\n"
+            "ma non sì che paura non mi desse\n"
+            "la vista d'un leon che m'apparve poscia."
+        ),
+        "vocab_ids": [
+            "stagione", "novo", "conj_e", "ora", "del", "mattino",
+            "conj_ma", "adv_non", "adv_sì", "paura", "pron_mi", "dare",
+            "art_la", "vista", "art_un", "leone", "conj_che", "apparire", "poscia",
+        ],
+        "verb_highlights": {
+            "dare":    [{"tense": "imperfect", "person_idx": 2}],  # desse (imperfect subjunctive)
+            "apparire":[{"tense": "passato_remoto", "person_idx": 2}],  # apparve
+        },
+        "word_order": [
+            {
+                "line": 43,
+                "tokens": ["la", "stagion", "nova", "e", "l'ora", "del", "mattino;"],
+                "translation": "the new season and the hour of morning;",
+                "hint": (
+                    "Stagion = stagione (apocopated). Nova = nuova (new), archaic/poetic form. "
+                    "L'ora = la + ora (elision). Del mattino = of the morning. "
+                    "These are the subjects (with di quella fiera, line 42) of m'era cagione."
+                ),
+            },
+            {
+                "line": 44,
+                "tokens": ["ma", "non", "sì", "che", "paura", "non", "mi", "desse"],
+                "translation": "but not so much that fear did not give me",
+                "hint": (
+                    "Ma = but (adversative turn). Non sì che = not so much that. "
+                    "Desse = imperfect subjunctive of dare (might give, would give). "
+                    "The double non (non sì … non desse) is emphatic: the fear does grip him."
+                ),
+            },
+            {
+                "line": 45,
+                "tokens": ["la", "vista", "d'un", "leon", "che", "m'apparve", "poscia."],
+                "translation": "the sight of a lion that afterwards appeared to me.",
+                "hint": (
+                    "La vista = the sight (subject of desse). D'un = di + un. "
+                    "Leon = leone (apocopated). M'apparve = appeared to me "
+                    "(apparve is 3rd sg. passato remoto of apparire). "
+                    "Poscia = afterwards (archaic adverb)."
+                ),
+            },
+        ],
+        "translation": {
+            "lines": (43, 45),
+            "prompt": (
+                "the season new and the hour of morning;\n"
+                "but not so much that fear not to me gave\n"
+                "the sight of a lion that to me appeared afterwards."
+            ),
+            "italian": (
+                "la stagion nova e l'ora del mattino;\n"
+                "ma non sì che paura non mi desse\n"
+                "la vista d'un leon che m'apparve poscia."
+            ),
+            "note": (
+                "Stagion nova and l'ora del mattino are the final subjects of the long sentence "
+                "beginning at line 37: the spring morning gave cause for hope … but not enough. "
+                "Desse is an imperfect subjunctive (3rd sg. of dare), expressing what the hope "
+                "was not sufficient to prevent. The double negative (non sì … non mi desse) "
+                "confirms that fear wins: the lion does frighten him. "
+                "Poscia (afterwards) is an archaic adverb equivalent to modern poi or dopo."
             ),
         },
     },
