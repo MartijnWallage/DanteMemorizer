@@ -3779,4 +3779,130 @@ SENTENCES = [
             ),
         },
     },
+    {
+        "id": "s16",
+        "lines": (46, 48),
+        "italian": (
+            "Questi parea che contra me venisse\n"
+            "con la test'alta e con rabbiosa fame,\n"
+            "sì che parea che l'aere ne tremesse;"
+        ),
+        "literal": [
+            "This one seemed that against me he was coming",
+            "with head high and with rabid hunger,",
+            "so that it seemed that the air thereof trembled;",
+        ],
+    },
+    {
+        "id": "s17",
+        "lines": (49, 51),
+        "italian": (
+            "ed una lupa, che di tutte brame\n"
+            "sembrava carca ne la sua magrezza,\n"
+            "e molte genti fé già viver grame,"
+        ),
+        "literal": [
+            "and a she-wolf, who of all cravings",
+            "seemed laden in her leanness,",
+            "and many peoples has made already to live in misery,",
+        ],
+    },
+    {
+        "id": "s18",
+        "lines": (52, 54),
+        "italian": (
+            "questa mi porse tanto di gravezza\n"
+            "con la paura ch'uscia di sua vista,\n"
+            "che io perdei la speranza de l'altezza."
+        ),
+        "literal": [
+            "this one upon me laid such weight of heaviness",
+            "with the fear that issued from her sight,",
+            "that I lost the hope of the height.",
+        ],
+    },
+    {
+        "id": "s19",
+        "lines": (55, 57),
+        "italian": (
+            "E qual è quei che volentieri acquista,\n"
+            "e giugne 'l tempo che perder lo face,\n"
+            "che 'n tutt'i suoi pensier piange e s'attrista;"
+        ),
+        "literal": [
+            "And such as is he who willingly acquires,",
+            "and the time arrives that makes him lose,",
+            "that in all his thoughts he weeps and grows sad;",
+        ],
+    },
+    {
+        "id": "s20",
+        "lines": (58, 60),
+        "italian": (
+            "tal mi fece la bestia sanza pace,\n"
+            "che, venendomi 'ncontro, a poco a poco\n"
+            "mi ripigneva là dove 'l sol tace."
+        ),
+        "literal": [
+            "such did make me the beast without peace,",
+            "which, coming against me, little by little",
+            "was driving me back there where the sun is silent.",
+        ],
+    },
+    {
+        "id": "s21",
+        "lines": (61, 63),
+        "italian": (
+            "Mentre ch'i' rovinava in basso loco,\n"
+            "dinanzi a li occhi mi si fu offerto\n"
+            "chi per lungo silenzio parea fioco."
+        ),
+        "literal": [
+            "While I was tumbling down to a low place,",
+            "before my eyes there offered itself to me",
+            "one who by long silence seemed faint.",
+        ],
+    },
+    {
+        "id": "s22",
+        "lines": (64, 66),
+        "italian": (
+            "Quando vidi costui nel gran diserto,\n"
+            "«Miserere di me» gridai a lui,\n"
+            "«qual che tu sii, od ombra od omo vero!»"
+        ),
+        "literal": [
+            "When I saw this one in the great desert,",
+            "«Have mercy on me» I cried to him,",
+            "«whatever you may be, or shade or true man!»",
+        ],
+    },
+    {
+        "id": "s23",
+        "lines": (67, 69),
+        "italian": (
+            "Rispuosemi: «Non omo, omo già fui,\n"
+            "e li parenti miei furon lombardi,\n"
+            "mantoani per patrïa ambedui."
+        ),
+        "literal": [
+            "He answered me: «Not man, man once I was,",
+            "and my parents were Lombards,",
+            "Mantuans by homeland both.",
+        ],
+    },
+    {
+        "id": "s24",
+        "lines": (70, 72),
+        "italian": (
+            "Nacqui sub Iulio, ancor che fosse tardi,\n"
+            "e vissi a Roma sotto 'l buono Augusto\n"
+            "nel tempo de li dèi falsi e bugiardi."
+        ),
+        "literal": [
+            "I was born under Julius, though it was late,",
+            "and I lived in Rome under the good Augustus",
+            "in the time of the false and lying gods.",
+        ],
+    },
 ]

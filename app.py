@@ -7,6 +7,38 @@ from data.canto1 import VOCABULARY, LINES, SENTENCES
 app = Flask(__name__)
 app.secret_key = "la-selva-oscura-key"
 
+# ─── Data expansion ───────────────────────────────────────────────────────────
+
+def _expand_sentence(s):
+    """Fill in derived fields from a minimal {italian, literal} sentence entry."""
+    if "word_order" in s and "translation" in s:
+        return s
+    s = dict(s)
+    italian_lines = [l for l in s["italian"].split("\n") if l.strip()]
+    literal_lines = s.get("literal", [""] * len(italian_lines))
+    start_line = s["lines"][0]
+    if "word_order" not in s:
+        s["word_order"] = [
+            {
+                "line": start_line + i,
+                "tokens": line.split(),
+                "translation": literal_lines[i] if i < len(literal_lines) else "",
+                "hint": "",
+            }
+            for i, line in enumerate(italian_lines)
+        ]
+    if "translation" not in s:
+        s["translation"] = {
+            "lines": s["lines"],
+            "prompt": "\n".join(literal_lines),
+            "italian": s["italian"],
+            "note": "",
+        }
+    s.setdefault("vocab_ids", [])
+    return s
+
+SENTENCES = [_expand_sentence(s) for s in SENTENCES]
+
 # ─── Helpers ──────────────────────────────────────────────────────────────────
 
 def normalise(text):
