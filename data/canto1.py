@@ -3905,4 +3905,306 @@ SENTENCES = [
             "in the time of the false and lying gods.",
         ],
     },
+    {
+        "id": "s25",
+        "lines": (73, 75),
+        "italian": (
+            "Poeta fui, e cantai di quel giusto\n"
+            "figliuol d'Anchise che venne di Troia,\n"
+            "poi che 'l superbo Ilïón fu combusto."
+        ),
+        "literal": [
+            "Poet I was, and I sang of that just",
+            "son of Anchises who came from Troy,",
+            "after the proud Ilion was burned.",
+        ],
+    },
+    {
+        "id": "s26",
+        "lines": (76, 78),
+        "italian": (
+            "Ma tu perché ritorni a tanta noia?\n"
+            "perché non sali il dilettoso monte\n"
+            "che è principio e cagion di tutta gioia?»"
+        ),
+        "literal": [
+            "But you why do you return to such misery?",
+            "why do you not climb the delightful mountain",
+            "that is the beginning and cause of all joy?»",
+        ],
+    },
+    {
+        "id": "s27",
+        "lines": (79, 81),
+        "italian": (
+            "«Or se' tu quel Virgilio e quella fonte\n"
+            "che spandi di parlar sì largo fiume?»\n"
+            "rispuos'io lui con vergogna e fronte."
+        ),
+        "literal": [
+            "«Are you then that Virgil and that fountain",
+            "who pours forth of speech so wide a river?»",
+            "I answered him with shame and brow.",
+        ],
+    },
+    {
+        "id": "s28",
+        "lines": (82, 84),
+        "italian": (
+            "«O de li altri poeti onore e lume,\n"
+            "vagliami 'l lungo studio e 'l grande amore\n"
+            "che m'ha fatto cercar lo tuo volume."
+        ),
+        "literal": [
+            "«O of the other poets honor and light,",
+            "may avail me the long study and the great love",
+            "that has made me search your volume.",
+        ],
+    },
+    {
+        "id": "s29",
+        "lines": (85, 87),
+        "italian": (
+            "Tu se' lo mio maestro e 'l mio autore,\n"
+            "tu se' solo colui da cu' io tolsi\n"
+            "lo bello stilo che m'ha fatto onore."
+        ),
+        "literal": [
+            "You are my master and my author,",
+            "you are the only one from whom I took",
+            "the fair style that has done me honor.",
+        ],
+    },
+    {
+        "id": "s30",
+        "lines": (88, 90),
+        "italian": (
+            "Vedi la bestia per cu' io mi volsi;\n"
+            "aiutami da lei, famoso saggio,\n"
+            "ch'ella mi fa tremar le vene e i polsi»."
+        ),
+        "literal": [
+            "See the beast because of which I turned back;",
+            "help me from her, famous sage,",
+            "for she makes me tremble in the veins and pulse».",
+        ],
+    },
+    {
+        "id": "s31",
+        "lines": (91, 93),
+        "italian": (
+            "«A te convien tenere altro viaggio»,\n"
+            "rispuose poi che lagrimar mi vide,\n"
+            "«se vuo' campar d'esto loco selvaggio;"
+        ),
+        "literal": [
+            "«For you it is needful to hold another road»,",
+            "he answered after he saw me weeping,",
+            "«if you wish to escape from this wild place;",
+        ],
+    },
+    {
+        "id": "s32",
+        "lines": (94, 96),
+        "italian": (
+            "ché questa bestia, per la qual tu gride,\n"
+            "non lascia altrui passar per la sua via,\n"
+            "ma tanto 'mpedisce che l'uccide;"
+        ),
+        "literal": [
+            "for this beast, because of which you cry out,",
+            "lets no one pass along her road,",
+            "but so much impedes that she kills;",
+        ],
+    },
+    {
+        "id": "s33",
+        "lines": (97, 99),
+        "italian": (
+            "e ha natura sì malvagia e ria,\n"
+            "che mai non empie la bramosa voglia,\n"
+            "e dopo 'l pasto ha più fame che pria."
+        ),
+        "literal": [
+            "and she has a nature so malicious and wicked,",
+            "that never does she fill her craving will,",
+            "and after the meal she has more hunger than before.",
+        ],
+    },
+    {
+        "id": "s34",
+        "lines": (100, 102),
+        "italian": (
+            "Molti son li animai a cui s'ammoglia,\n"
+            "e più saranno ancora, infin che 'l Veltro\n"
+            "verrà, che la farà morir con doglia."
+        ),
+        "literal": [
+            "Many are the animals to whom she mates herself,",
+            "and more will be yet, until the Greyhound",
+            "will come, who will make her die in pain.",
+        ],
+    },
+    {
+        "id": "s35",
+        "lines": (103, 105),
+        "italian": (
+            "Questi non ciberà terra né peltro,\n"
+            "ma sapïenza, amore e virtute,\n"
+            "e sua nazion sarà tra feltro e feltro."
+        ),
+        "literal": [
+            "This one will not feed on land or pewter,",
+            "but wisdom, love and virtue,",
+            "and his birthplace will be between felt and felt.",
+        ],
+    },
+    {
+        "id": "s36",
+        "lines": (106, 108),
+        "italian": (
+            "Di quella umile Italia fia salute\n"
+            "per cui morì la vergine Camilla,\n"
+            "Eurialo e Turno e Niso di ferute."
+        ),
+        "literal": [
+            "Of that humble Italy will be the salvation",
+            "for which the virgin Camilla died,",
+            "Euryalus and Turnus and Nisus of wounds.",
+        ],
+    },
+    {
+        "id": "s37",
+        "lines": (109, 111),
+        "italian": (
+            "Questi la caccerà per ogne villa,\n"
+            "fin che l'avrà rimessa ne lo 'nferno,\n"
+            "là onde 'nvidia prima dipartilla."
+        ),
+        "literal": [
+            "This one will hunt her through every town,",
+            "until he will have sent her back into Hell,",
+            "there whence envy first sent her forth.",
+        ],
+    },
+    {
+        "id": "s38",
+        "lines": (112, 114),
+        "italian": (
+            "Ond'io per lo tuo me' penso e discerno\n"
+            "che tu mi segua, e io sarò tua guida,\n"
+            "e trarrotti di qui per loco etterno;"
+        ),
+        "literal": [
+            "Wherefore I for your good think and judge",
+            "that you follow me, and I will be your guide,",
+            "and I will draw you from here through eternal place;",
+        ],
+    },
+    {
+        "id": "s39",
+        "lines": (115, 117),
+        "italian": (
+            "e udrai le disperate strida,\n"
+            "vedrai li antichi spiriti dolenti,\n"
+            "che la seconda morte ciascun grida;"
+        ),
+        "literal": [
+            "and you will hear the desperate cries,",
+            "you will see the ancient spirits in sorrow,",
+            "each of whom cries out at the second death;",
+        ],
+    },
+    {
+        "id": "s40",
+        "lines": (118, 120),
+        "italian": (
+            "e vederai color che son contenti\n"
+            "nel foco, perché speran di venire\n"
+            "quando che sia a le beate genti;"
+        ),
+        "literal": [
+            "and you will see those who are content",
+            "in the fire, because they hope to come",
+            "whensoever it may be to the blessed people;",
+        ],
+    },
+    {
+        "id": "s41",
+        "lines": (121, 123),
+        "italian": (
+            "a le quai poi se tu vorrai salire,\n"
+            "anima fia a ciò più di me degna;\n"
+            "con lei ti lascerò in su la fine:"
+        ),
+        "literal": [
+            "to whom then if you will wish to ascend,",
+            "a soul there will be for that more worthy than I;",
+            "with her I will leave you at the end:",
+        ],
+    },
+    {
+        "id": "s42",
+        "lines": (124, 126),
+        "italian": (
+            "ché quello 'mperador che là sù regna,\n"
+            "perché fu' io ribello a la sua legge,\n"
+            "non vuol che 'n sua città per me si vegna."
+        ),
+        "literal": [
+            "for that Emperor who reigns up there,",
+            "because I was rebel to his law,",
+            "wills not that through me one come into his city.",
+        ],
+    },
+    {
+        "id": "s43",
+        "lines": (127, 129),
+        "italian": (
+            "In tutte parti impera e quivi regge;\n"
+            "quivi è la sua città e l'alto seggio:\n"
+            "oh felice colui cu' ivi elegge!»."
+        ),
+        "literal": [
+            "In all parts he reigns and there he rules;",
+            "there is his city and the high throne:",
+            "oh happy he whom there he chooses!».",
+        ],
+    },
+    {
+        "id": "s44",
+        "lines": (130, 132),
+        "italian": (
+            "E io a lui: «Poeta, io ti richieggio\n"
+            "per quello Dio che tu non conoscesti,\n"
+            "acciò ch'io fugga questo male e peggio,"
+        ),
+        "literal": [
+            "And I to him: «Poet, I beseech you",
+            "by that God whom you did not know,",
+            "so that I may flee this evil and worse,",
+        ],
+    },
+    {
+        "id": "s45",
+        "lines": (133, 135),
+        "italian": (
+            "che tu mi meni là dov'or dicesti,\n"
+            "sì ch'io vegga la porta di san Pietro\n"
+            "e color che tu fai cotanto mesti»."
+        ),
+        "literal": [
+            "that you lead me there where you have now said,",
+            "so that I may see the gate of Saint Peter",
+            "and those whom you make so sorrowful».",
+        ],
+    },
+    {
+        "id": "s46",
+        "lines": (136, 136),
+        "italian": "Allor si mosse, e io li tenni dietro.",
+        "literal": [
+            "Then he moved on, and I kept close behind him.",
+        ],
+    },
 ]
