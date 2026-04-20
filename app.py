@@ -70,8 +70,12 @@ def compare_translation(student_text, correct_text):
     'retry' (>15% errors), plus per-line token results for display.
     Each token result carries the correct raw word and an ok flag.
     """
-    student_lines = [l.strip() for l in student_text.strip().split('\n')]
-    correct_lines = [l.strip() for l in correct_text.strip().split('\n')]
+    def collapse_elisions(text):
+        # "era 'l" → "era'l": remove space before apostrophe-initial tokens
+        return re.sub(r" +'", "'", text)
+
+    student_lines = [collapse_elisions(l.strip()) for l in student_text.strip().split('\n')]
+    correct_lines = [collapse_elisions(l.strip()) for l in correct_text.strip().split('\n')]
 
     total_c = 0
     total_wrong = 0
